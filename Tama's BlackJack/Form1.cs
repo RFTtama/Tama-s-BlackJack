@@ -22,6 +22,8 @@ namespace Tama_s_BlackJack
         private String tip;                                     //チップ情報
         private List<String> sData;                             //セーブデータ保持リスト
         private int[] total;                                    //カードの合計値
+        private int playerMinTotal;                             //プレイヤーカードの最低値
+        private double bustPer;                                  //プレイヤーのバスト確率
         private int deck;                                       //デッキの数
         private const double shafflePer = 0.2;                  //何%になったらシャッフルするか
         private const int maxCards = 8;                         //場に出せるカードの最大数
@@ -120,6 +122,7 @@ namespace Tama_s_BlackJack
                 DeckPicture.Image = Properties.Resources.card_ura_handmade;
             }
             SetMemberData();
+            MentalLabel.Text = this.mental + "";
             ArrowTimer.Enabled = true;
         }
 
@@ -256,19 +259,23 @@ namespace Tama_s_BlackJack
                 Panels[tag, cardIndex[tag]].Visible = true;
             }));
             this.total[tag] = 0;
+            this.playerMinTotal = 0;
             for (int i = 0; i <= cardIndex[tag]; i++)
             {
                 if (Cards[tag, i].number == 1)
                 {
                     this.total[tag] += 11;
+                    this.playerMinTotal += 1;
                 }
                 else if (Cards[tag, i].number > 10)
                 {
                     this.total[tag] += 10;
+                    this.playerMinTotal += 10;
                 }
                 else
                 {
                     this.total[tag] += Cards[tag, i].number;
+                    this.playerMinTotal += Cards[tag, i].number;
                 }
             }
             for (int i = 0; i <= cardIndex[tag]; i++)
@@ -429,7 +436,7 @@ namespace Tama_s_BlackJack
                 ButtonLock();
                 DealButton.Enabled = false;
                 InformationLabel.Text = "";
-                InformationLabel.Text = "ゲームを続けるメンタルが残っていません。 あなたのポイントは" + this.point + "、T-Scoreは" + (int)tScore + "です";
+                InformationLabel.Text = "賭けに使える最低額のクレジットが残っていません。 あなたのポイントは" + this.point + "、T-Scoreは" + (int)tScore + "です";
                 try
                 {
                     using (StreamWriter sw = new StreamWriter("History.txt", true))
@@ -713,7 +720,7 @@ namespace Tama_s_BlackJack
             int remainingCard = 0;
             for (int i = 0; i < 9; i++)
             {
-                if (total[1] + (i + 1) > 21)
+                if (playerMinTotal + (i + 1) > 21)
                 {
                     per += card.GetCardDrawPer(i) * 100.0;
                     remainingCard += card.GetRemainingCard(i);
@@ -721,13 +728,14 @@ namespace Tama_s_BlackJack
             }
             for (int i = 9; i < 13; i++)
             {
-                if (total[1] + 10 > 21)
+                if (playerMinTotal + 10 > 21)
                 {
                     per += card.GetCardDrawPer(i) * 100.0;
                     remainingCard += card.GetRemainingCard(i);
                 }
             }
             per = (int)per - (int)per % 5;
+            bustPer = per;
             tip = LB + LB + "バスト確率: 約" + per.ToString("F0") + "%";
             toolTip1.SetToolTip(DeckPicture, this.tip + tip);
         }
@@ -805,28 +813,11 @@ namespace Tama_s_BlackJack
             if (InformationLabel.Text != "")
             {
                 InformationLabel.Visible = true;
-                InformationLabel.Left = this.Width;
-                InformationTimer.Enabled = true;
             }
-        }
-
-        /// <summary>
-        /// 字を動かすやつ
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void InformationTimer_Tick(object sender, EventArgs e)
-        {
-            Task task = Task.Run(() =>
+            else
             {
-                InformationLabel.Left -= 2;
-                if (InformationLabel.Left + InformationLabel.Width <= 0)
-                {
-                    InformationLabel.Text = "";
-                    InformationLabel.Visible = false;
-                    InformationTimer.Enabled = false;
-                }
-            });
+                InformationLabel.Visible = false;
+            }
         }
 
         
@@ -906,9 +897,8 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture1.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "スタンダードモード" + LB + "デッキ数: 3" + LB + "メンタル: 200" + LB +
-            "賭けメンタル: 10" + LB + "サレンダー: 5" + LB + "ダブルダウン: 20" +
-            LB + "インシュランス: 0 失敗: 5";
+            ExplainLabel.Text = "スタンダードモード" + LB + "デッキ数: 3" + LB + "クレジット: 200" + LB +
+            "賭けクレジット: 10";
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
@@ -920,6 +910,7 @@ namespace Tama_s_BlackJack
             MemberPicture.Visible = false;
             MemberPanel.Visible = false;
             SetStats();
+            MentalLabel.Text = this.mental + "";
         }
 
         /// <summary>
@@ -931,9 +922,8 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture2.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "カジュアルモード" + LB + "デッキ数: 2" + LB + "メンタル: 100" + LB +
-            "賭けメンタル: 10" + LB + "サレンダー: 5" + LB + "ダブルダウン: 20" +
-            LB + "インシュランス: 0 失敗: 5";
+            ExplainLabel.Text = "カジュアルモード" + LB + "デッキ数: 2" + LB + "クレジット: 100" + LB +
+            "賭けクレジット: 10";
             this.deck = 2;
             this.maxMental = 100;
             this.mainPoint = 1000;
@@ -945,6 +935,7 @@ namespace Tama_s_BlackJack
             MemberPicture.Visible = false;
             MemberPanel.Visible = false;
             SetStats();
+            MentalLabel.Text = this.mental + "";
         }
 
         /// <summary>
@@ -990,9 +981,10 @@ namespace Tama_s_BlackJack
             this.defaultMagn = 1.0f;
             this.magn = this.defaultMagn;
             pData.SetNowGameMode(3);
-            this.BackgroundImage = Properties.Resources.ranked_playmat;
+            this.BackgroundImage = Properties.Resources.playmat_green1;
             MemberPicture.Visible = true;
             SetStats();
+            MentalLabel.Text = this.mental + "";
         }
 
         private void SetMemberData()
@@ -1009,6 +1001,44 @@ namespace Tama_s_BlackJack
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void HitPicture_MouseEnter(object sender, EventArgs e)
+        {
+            if (bustPer > 0.0)
+            {
+                MinusLabel.Text = "-10";
+            }
+        }
+
+        private void StandPicture_MouseEnter(object sender, EventArgs e)
+        {
+            MinusLabel.Text = "-10";
+        }
+
+        private void InsurancePicture_MouseEnter(object sender, EventArgs e)
+        {
+            MinusLabel.Text = "-5";
+        }
+
+        private void SurrenderPicture_MouseEnter(object sender, EventArgs e)
+        {
+            MinusLabel.Text = "-5";
+        }
+
+        private void DoublePicture_MouseEnter(object sender, EventArgs e)
+        {
+            MinusLabel.Text = "-20";
+        }
+
+        private void SplitPicture_MouseEnter(object sender, EventArgs e)
+        {
+            MinusLabel.Text = "-20";
+        }
+
+        private void HitPicture_MouseLeave(object sender, EventArgs e)
+        {
+            MinusLabel.Text = "";
         }
     }
 }

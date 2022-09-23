@@ -119,7 +119,6 @@ namespace Tama_s_BlackJack
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
             this.InformationLabel = new System.Windows.Forms.Label();
-            this.InformationTimer = new System.Windows.Forms.Timer(this.components);
             this.PointTimer = new System.Windows.Forms.Timer(this.components);
             this.ColorTimer = new System.Windows.Forms.Timer(this.components);
             this.ArrowTimer = new System.Windows.Forms.Timer(this.components);
@@ -200,6 +199,10 @@ namespace Tama_s_BlackJack
             this.ArrowPicture = new System.Windows.Forms.PictureBox();
             this.DeckPicture = new System.Windows.Forms.PictureBox();
             this.MentalLabel = new System.Windows.Forms.Label();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.label65 = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.MinusLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -277,6 +280,8 @@ namespace Tama_s_BlackJack
             this.HelpParentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArrowPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeckPicture)).BeginInit();
+            this.panel17.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // DealButton
@@ -517,6 +522,8 @@ namespace Tama_s_BlackJack
             this.SplitPicture.TabStop = false;
             this.toolTip1.SetToolTip(this.SplitPicture, "*スプリットカード*\r\nカードを分けてそれぞれディールを行います\r\n・Aのカードは1枚しかカードを引くことができません");
             this.SplitPicture.Visible = false;
+            this.SplitPicture.MouseEnter += new System.EventHandler(this.SplitPicture_MouseEnter);
+            this.SplitPicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
             // StatPicture
             // 
@@ -540,8 +547,10 @@ namespace Tama_s_BlackJack
             this.SurrenderPicture.Size = new System.Drawing.Size(100, 100);
             this.SurrenderPicture.TabIndex = 30;
             this.SurrenderPicture.TabStop = false;
-            this.toolTip1.SetToolTip(this.SurrenderPicture, "*サレンダー*\r\nディーラーの手よりも弱いと予想し、このディールを降ります\r\n・負けた際よりもメンタルダメージが少ないです");
+            this.toolTip1.SetToolTip(this.SurrenderPicture, "*サレンダー*\r\nこのディールを降ります\r\n・負けた際の1/2のクレジットが返却されます");
             this.SurrenderPicture.Click += new System.EventHandler(this.SurrenderPicture_Click);
+            this.SurrenderPicture.MouseEnter += new System.EventHandler(this.SurrenderPicture_MouseEnter);
+            this.SurrenderPicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
             // InsurancePicture
             // 
@@ -552,8 +561,10 @@ namespace Tama_s_BlackJack
             this.InsurancePicture.Size = new System.Drawing.Size(100, 100);
             this.InsurancePicture.TabIndex = 29;
             this.InsurancePicture.TabStop = false;
-            this.toolTip1.SetToolTip(this.InsurancePicture, "*インシュランス*\r\nディーラーのブラックジャックに対して保険をかけます\r\nディーラーがブラックジャックだった場合メンタルダメージを0にします");
+            this.toolTip1.SetToolTip(this.InsurancePicture, "*インシュランス*\r\nディーラーのブラックジャックに対して5クレジットの保険をかけます\r\nディーラーがブラックジャックだった場合、クレジットが返却されます");
             this.InsurancePicture.Click += new System.EventHandler(this.InsurancePicture_Click);
+            this.InsurancePicture.MouseEnter += new System.EventHandler(this.InsurancePicture_MouseEnter);
+            this.InsurancePicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
             // DoublePicture
             // 
@@ -565,8 +576,10 @@ namespace Tama_s_BlackJack
             this.DoublePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.DoublePicture.TabIndex = 28;
             this.DoublePicture.TabStop = false;
-            this.toolTip1.SetToolTip(this.DoublePicture, "*ダブルダウン*\r\n掛け金(メンタル)を2倍にして\r\n1枚だけカードを追加します");
+            this.toolTip1.SetToolTip(this.DoublePicture, "*ダブルダウン*\r\n賭けるクレジットを2倍にして\r\n1枚だけカードを追加します");
             this.DoublePicture.Click += new System.EventHandler(this.DoublePicture_Click);
+            this.DoublePicture.MouseEnter += new System.EventHandler(this.DoublePicture_MouseEnter);
+            this.DoublePicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
             // StandPicture
             // 
@@ -580,6 +593,8 @@ namespace Tama_s_BlackJack
             this.StandPicture.TabStop = false;
             this.toolTip1.SetToolTip(this.StandPicture, "*スタンド*\r\nディーラーの手札と勝負します");
             this.StandPicture.Click += new System.EventHandler(this.StandPicture_Click);
+            this.StandPicture.MouseEnter += new System.EventHandler(this.StandPicture_MouseEnter);
+            this.StandPicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
             // HitPicture
             // 
@@ -593,6 +608,8 @@ namespace Tama_s_BlackJack
             this.HitPicture.TabStop = false;
             this.toolTip1.SetToolTip(this.HitPicture, "*ヒット*\r\nカードを1枚追加します");
             this.HitPicture.Click += new System.EventHandler(this.HitPicture_Click);
+            this.HitPicture.MouseEnter += new System.EventHandler(this.HitPicture_MouseEnter);
+            this.HitPicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
             // pictureBox17
             // 
@@ -1246,18 +1263,13 @@ namespace Tama_s_BlackJack
             this.InformationLabel.AutoSize = true;
             this.InformationLabel.BackColor = System.Drawing.Color.Transparent;
             this.InformationLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.InformationLabel.Location = new System.Drawing.Point(716, 506);
+            this.InformationLabel.Location = new System.Drawing.Point(54, 2);
             this.InformationLabel.Name = "InformationLabel";
             this.InformationLabel.Size = new System.Drawing.Size(34, 16);
             this.InformationLabel.TabIndex = 34;
             this.InformationLabel.Text = "Info";
             this.InformationLabel.Visible = false;
             this.InformationLabel.TextChanged += new System.EventHandler(this.InformationLabel_TextChanged);
-            // 
-            // InformationTimer
-            // 
-            this.InformationTimer.Interval = 10;
-            this.InformationTimer.Tick += new System.EventHandler(this.InformationTimer_Tick);
             // 
             // PointTimer
             // 
@@ -1343,10 +1355,9 @@ namespace Tama_s_BlackJack
             this.ExplainLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ExplainLabel.Location = new System.Drawing.Point(3, 7);
             this.ExplainLabel.Name = "ExplainLabel";
-            this.ExplainLabel.Size = new System.Drawing.Size(179, 105);
+            this.ExplainLabel.Size = new System.Drawing.Size(142, 60);
             this.ExplainLabel.TabIndex = 0;
-            this.ExplainLabel.Text = "スタンダードモード\r\nデッキ数: 3\r\nメンタル: 200\r\n賭けメンタル: 10\r\nサレンダー: 5\r\nダブルダウン: 20\r\nインシュランス: 0 失敗: 5" +
-    "";
+            this.ExplainLabel.Text = "スタンダードモード\r\nデッキ数: 3\r\nクレジット: 200\r\n賭けクレジット: 10";
             // 
             // HelpPanel
             // 
@@ -2142,14 +2153,53 @@ namespace Tama_s_BlackJack
             // 
             this.MentalLabel.AutoSize = true;
             this.MentalLabel.BackColor = System.Drawing.Color.Transparent;
-            this.MentalLabel.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MentalLabel.ForeColor = System.Drawing.Color.Blue;
-            this.MentalLabel.Location = new System.Drawing.Point(571, 136);
+            this.MentalLabel.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MentalLabel.ForeColor = System.Drawing.Color.Black;
+            this.MentalLabel.Location = new System.Drawing.Point(3, 7);
             this.MentalLabel.Name = "MentalLabel";
-            this.MentalLabel.Size = new System.Drawing.Size(25, 25);
+            this.MentalLabel.Size = new System.Drawing.Size(26, 25);
             this.MentalLabel.TabIndex = 49;
             this.MentalLabel.Text = "0";
-            this.MentalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MentalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel17
+            // 
+            this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel17.Controls.Add(this.label65);
+            this.panel17.Controls.Add(this.InformationLabel);
+            this.panel17.Location = new System.Drawing.Point(-6, 506);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(770, 25);
+            this.panel17.TabIndex = 50;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Font = new System.Drawing.Font("HGPｺﾞｼｯｸE", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label65.Location = new System.Drawing.Point(9, 3);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(39, 15);
+            this.label65.TabIndex = 51;
+            this.label65.Text = "Info: ";
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.Gold;
+            this.panel18.Controls.Add(this.MentalLabel);
+            this.panel18.Location = new System.Drawing.Point(552, 132);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(61, 37);
+            this.panel18.TabIndex = 51;
+            // 
+            // MinusLabel
+            // 
+            this.MinusLabel.AutoSize = true;
+            this.MinusLabel.Font = new System.Drawing.Font("MV Boli", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MinusLabel.ForeColor = System.Drawing.Color.Crimson;
+            this.MinusLabel.Location = new System.Drawing.Point(611, 138);
+            this.MinusLabel.Name = "MinusLabel";
+            this.MinusLabel.Size = new System.Drawing.Size(0, 28);
+            this.MinusLabel.TabIndex = 52;
             // 
             // Form1
             // 
@@ -2158,7 +2208,6 @@ namespace Tama_s_BlackJack
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
             this.ClientSize = new System.Drawing.Size(759, 525);
-            this.Controls.Add(this.MentalLabel);
             this.Controls.Add(this.HelpParentPanel);
             this.Controls.Add(this.StatPanel);
             this.Controls.Add(this.MemberPanel);
@@ -2168,7 +2217,6 @@ namespace Tama_s_BlackJack
             this.Controls.Add(this.ArrowPicture);
             this.Controls.Add(this.TscoreLabel);
             this.Controls.Add(this.PointLabel);
-            this.Controls.Add(this.InformationLabel);
             this.Controls.Add(this.SurrenderPicture);
             this.Controls.Add(this.InsurancePicture);
             this.Controls.Add(this.DoublePicture);
@@ -2200,6 +2248,9 @@ namespace Tama_s_BlackJack
             this.Controls.Add(this.label17);
             this.Controls.Add(this.ExplainPanel);
             this.Controls.Add(this.MemberPicture);
+            this.Controls.Add(this.panel18);
+            this.Controls.Add(this.panel17);
+            this.Controls.Add(this.MinusLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -2305,6 +2356,10 @@ namespace Tama_s_BlackJack
             this.HelpParentPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ArrowPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeckPicture)).EndInit();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2373,7 +2428,6 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox SurrenderPicture;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label InformationLabel;
-        private System.Windows.Forms.Timer InformationTimer;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.Label PointLabel;
         private System.Windows.Forms.Timer PointTimer;
@@ -2480,6 +2534,10 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox MemberProgress;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label MentalLabel;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label MinusLabel;
     }
 }
 
