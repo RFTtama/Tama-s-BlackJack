@@ -1,0 +1,14 @@
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\bin\Release\Tama's BlackJack.exe.config
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\bin\Release\Tama's BlackJack.exe
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\bin\Release\Tama's BlackJack.pdb
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\obj\Release\Tama_s_BlackJack.Form1.resources
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\obj\Release\Tama_s_BlackJack.Properties.Resources.resources
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\obj\Release\Tama's BlackJack.csproj.GenerateResource.cache
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\obj\Release\Tama's BlackJack.csproj.CoreCompileInputs.cache
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\obj\Release\Tama's BlackJack.exe
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\obj\Release\Tama's BlackJack.pdb
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\bin\Release\Tama's BlackJack.exe.manifest
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\bin\Release\Tama's BlackJack.application
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\obj\Release\Tama's BlackJack.exe.manifest
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\obj\Release\Tama's BlackJack.application
+C:\Users\rft_k\OneDrive\ドキュメント\Visual Studio 2019\Tama's BlackJack\Tama's BlackJack\obj\Release\Tama's BlackJack.csproj.AssemblyReference.cache
