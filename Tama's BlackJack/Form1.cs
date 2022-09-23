@@ -436,7 +436,7 @@ namespace Tama_s_BlackJack
                 ButtonLock();
                 DealButton.Enabled = false;
                 InformationLabel.Text = "";
-                InformationLabel.Text = "賭けに使える最低額のクレジットが残っていません。 あなたのポイントは" + this.point + "、T-Scoreは" + (int)tScore + "です";
+                InformationLabel.Text = "あなたのポイントは" + this.point + "、T-Scoreは" + (int)tScore + "です";
                 try
                 {
                     using (StreamWriter sw = new StreamWriter("History.txt", true))
