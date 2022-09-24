@@ -196,6 +196,12 @@
     <None Include="Resources\bar2.png" />
     <None Include="Resources\bar1.png" />
     <None Include="Resources\ranked_playmat.png" />
+    <None Include="Resources\slash_1.png" />
+    <None Include="Resources\slash_2.png" />
+    <None Include="Resources\slash_3.png" />
+    <None Include="Resources\slash_rev_1.png" />
+    <None Include="Resources\slash_rev_2.png" />
+    <None Include="Resources\slash_rev_3.png" />
     <Content Include="tb.ico" />
     <Content Include="tb1.ico" />
   </ItemGroup>

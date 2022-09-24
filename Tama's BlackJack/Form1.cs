@@ -521,6 +521,7 @@ namespace Tama_s_BlackJack
             }
             else if (overFlg[1])
             {
+                Slash();
                 InformationLabel.Text = "";
                 InformationLabel.Text = "プレイヤーのミスフォーチュンです";
                 PlusPoint((int)(mainPoint * 2.0));
@@ -535,6 +536,7 @@ namespace Tama_s_BlackJack
             }
             else if(total[0] > 21)
             {
+                Slash();
                 InformationLabel.Text = "";
                 InformationLabel.Text = "ディーラーのバストです";
                 PlusPoint(mainPoint);
@@ -553,6 +555,7 @@ namespace Tama_s_BlackJack
             }
             else if (bjFlg[1])
             {
+                Slash();
                 InformationLabel.Text = "";
                 InformationLabel.Text = "プレイヤーのブラックジャックです";
                 PlusPoint((int)(mainPoint * 1.50));
@@ -567,6 +570,7 @@ namespace Tama_s_BlackJack
             }
             else if(total[1] > total[0])
             {
+                Slash();
                 InformationLabel.Text = "";
                 InformationLabel.Text = "プレイヤーの勝ちです";
                 PlusPoint(mainPoint);
@@ -633,6 +637,7 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            ResetSlash();
             ArrowPicture.Visible = false;
             ExplainPanel.Visible = false;
             ArrowTimer.Enabled = false;
@@ -1039,6 +1044,63 @@ namespace Tama_s_BlackJack
         private void HitPicture_MouseLeave(object sender, EventArgs e)
         {
             MinusLabel.Text = "";
+        }
+
+        /// <summary>
+        /// スラッシュアニメーションを再生する
+        /// </summary>
+        private void Slash()
+        {
+            slashCnt = 0;
+            SlashPic.Visible = true;
+            SlashRevPic.Visible = true;
+            SlashTimer.Enabled = true;
+        }
+
+        /// <summary>
+        /// スラッシュアニメーションを非表示
+        /// </summary>
+        private void ResetSlash()
+        {
+            SlashPic.Visible = false;
+            SlashRevPic.Visible = false;
+            SlashPic.Image = null;
+            SlashRevPic.Image = null;
+        }
+
+        /// <summary>
+        /// アニメーションカウント
+        /// </summary>
+        int slashCnt = 0;
+
+        System.Drawing.Bitmap[] slashResources =
+        {
+            Properties.Resources.slash_1,
+            Properties.Resources.slash_2,
+            Properties.Resources.slash_3
+        };
+
+        System.Drawing.Bitmap[] slashRevResources =
+        {
+            Properties.Resources.slash_rev_1,
+            Properties.Resources.slash_rev_2,
+            Properties.Resources.slash_rev_3
+        };
+
+        /// <summary>
+        /// アニメーションタイマー
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SlashTimer_Tick(object sender, EventArgs e)
+        {
+            SlashPic.Image = slashResources[slashCnt];
+            SlashRevPic.Image = slashRevResources[slashCnt];
+            slashCnt++;
+            if(slashCnt > 2)
+            {
+                SlashTimer.Enabled = false;
+            }
         }
     }
 }
