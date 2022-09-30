@@ -209,6 +209,7 @@ namespace Tama_s_BlackJack
             this.SlashPlPic = new System.Windows.Forms.PictureBox();
             this.SlashRevPlPic = new System.Windows.Forms.PictureBox();
             this.panel19 = new System.Windows.Forms.Panel();
+            this.BustIncreaseTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -458,7 +459,7 @@ namespace Tama_s_BlackJack
             this.KatagakiLabel2.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.KatagakiLabel2.Location = new System.Drawing.Point(218, 235);
             this.KatagakiLabel2.Name = "KatagakiLabel2";
-            this.KatagakiLabel2.Size = new System.Drawing.Size(40, 16);
+            this.KatagakiLabel2.Size = new System.Drawing.Size(39, 16);
             this.KatagakiLabel2.TabIndex = 47;
             this.KatagakiLabel2.Text = "なし";
             this.toolTip1.SetToolTip(this.KatagakiLabel2, "現在の平均tScore評価です");
@@ -469,7 +470,7 @@ namespace Tama_s_BlackJack
             this.KatagakiLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.KatagakiLabel.Location = new System.Drawing.Point(218, 135);
             this.KatagakiLabel.Name = "KatagakiLabel";
-            this.KatagakiLabel.Size = new System.Drawing.Size(40, 16);
+            this.KatagakiLabel.Size = new System.Drawing.Size(39, 16);
             this.KatagakiLabel.TabIndex = 45;
             this.KatagakiLabel.Text = "なし";
             this.toolTip1.SetToolTip(this.KatagakiLabel, "現在の腕前レベルを表示します");
@@ -725,7 +726,7 @@ namespace Tama_s_BlackJack
             this.MemberLvLabel.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.MemberLvLabel.Location = new System.Drawing.Point(132, 49);
             this.MemberLvLabel.Name = "MemberLvLabel";
-            this.MemberLvLabel.Size = new System.Drawing.Size(17, 16);
+            this.MemberLvLabel.Size = new System.Drawing.Size(16, 16);
             this.MemberLvLabel.TabIndex = 3;
             this.MemberLvLabel.Text = "0";
             // 
@@ -735,7 +736,7 @@ namespace Tama_s_BlackJack
             this.label66.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label66.Location = new System.Drawing.Point(15, 48);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(107, 16);
+            this.label66.Size = new System.Drawing.Size(106, 16);
             this.label66.TabIndex = 2;
             this.label66.Text = "総会員レベル:";
             // 
@@ -1268,7 +1269,7 @@ namespace Tama_s_BlackJack
             this.InformationLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.InformationLabel.Location = new System.Drawing.Point(54, 2);
             this.InformationLabel.Name = "InformationLabel";
-            this.InformationLabel.Size = new System.Drawing.Size(34, 16);
+            this.InformationLabel.Size = new System.Drawing.Size(33, 16);
             this.InformationLabel.TabIndex = 34;
             this.InformationLabel.Text = "Info";
             this.InformationLabel.Visible = false;
@@ -2132,14 +2133,15 @@ namespace Tama_s_BlackJack
             // 
             // ArrowPicture
             // 
-            this.ArrowPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ArrowPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ArrowPicture.Image = ((System.Drawing.Image)(resources.GetObject("ArrowPicture.Image")));
-            this.ArrowPicture.Location = new System.Drawing.Point(679, 185);
+            this.ArrowPicture.Location = new System.Drawing.Point(679, 182);
             this.ArrowPicture.Name = "ArrowPicture";
             this.ArrowPicture.Size = new System.Drawing.Size(50, 50);
             this.ArrowPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ArrowPicture.TabIndex = 38;
             this.ArrowPicture.TabStop = false;
+            this.ArrowPicture.Click += new System.EventHandler(this.ArrowPicture_Click);
             // 
             // DeckPicture
             // 
@@ -2156,11 +2158,11 @@ namespace Tama_s_BlackJack
             // 
             this.MentalLabel.AutoSize = true;
             this.MentalLabel.BackColor = System.Drawing.Color.Transparent;
-            this.MentalLabel.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MentalLabel.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MentalLabel.ForeColor = System.Drawing.Color.Black;
             this.MentalLabel.Location = new System.Drawing.Point(3, 7);
             this.MentalLabel.Name = "MentalLabel";
-            this.MentalLabel.Size = new System.Drawing.Size(26, 25);
+            this.MentalLabel.Size = new System.Drawing.Size(25, 25);
             this.MentalLabel.TabIndex = 49;
             this.MentalLabel.Text = "0";
             this.MentalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2265,11 +2267,16 @@ namespace Tama_s_BlackJack
             // 
             // panel19
             // 
-            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.panel19.Location = new System.Drawing.Point(524, 175);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(221, 325);
             this.panel19.TabIndex = 60;
+            // 
+            // BustIncreaseTimer
+            // 
+            this.BustIncreaseTimer.Interval = 5;
+            this.BustIncreaseTimer.Tick += new System.EventHandler(this.BustIncreaseTimer_Tick);
             // 
             // Form1
             // 
@@ -2626,6 +2633,7 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox SlashPlPic;
         private System.Windows.Forms.PictureBox SlashRevPlPic;
         private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Timer BustIncreaseTimer;
     }
 }
 

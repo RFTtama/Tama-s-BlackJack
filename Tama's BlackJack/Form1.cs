@@ -784,7 +784,8 @@ namespace Tama_s_BlackJack
                 }
             }
             per = (int)per - (int)per % 5;
-            bustPer = per;
+            this.bustPer = per;
+            MoveBustPer();
             BustPerLabel.Text = per.ToString("F0") + "%";
         }
 
@@ -1191,6 +1192,50 @@ namespace Tama_s_BlackJack
         private void ClearAdditionalText()
         {
             this.AdditionalLabel.Text = "";
+        }
+
+        /// <summary>
+        /// 前のBustPer
+        /// </summary>
+        private int bustPerBef = 0;
+
+        /// <summary>
+        /// BustPerを変更する
+        /// </summary>
+        /// <param name="per"></param>
+        private void MoveBustPer()
+        {
+            BustIncreaseTimer.Enabled = true;
+        }
+
+        /// <summary>
+        /// BustPerの変更処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BustIncreaseTimer_Tick(object sender, EventArgs e)
+        {
+            if(this.bustPerBef < this.bustPer)
+            {
+                this.bustPerBef++;
+                BustPerLabel.ForeColor = Color.Red;
+            }
+            else if(this.bustPerBef > this.bustPer)
+            {
+                this.bustPerBef--;
+                BustPerLabel.ForeColor = Color.Blue;
+            }
+            else if(this.bustPerBef == this.bustPer)
+            {
+                BustIncreaseTimer.Enabled=false;
+                BustPerLabel.ForeColor = Color.Black;
+            }
+            BustPerLabel.Text = this.bustPerBef.ToString() + "%";
+        }
+
+        private void ArrowPicture_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
