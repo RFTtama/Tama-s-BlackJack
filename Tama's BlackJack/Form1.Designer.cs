@@ -63,10 +63,9 @@ namespace Tama_s_BlackJack
             this.TabPicture2 = new System.Windows.Forms.PictureBox();
             this.TabPicture1 = new System.Windows.Forms.PictureBox();
             this.MemberPicture = new System.Windows.Forms.PictureBox();
+            this.AdditionalLabel = new System.Windows.Forms.Label();
+            this.pictureBox42 = new System.Windows.Forms.PictureBox();
             this.MemberPanel = new System.Windows.Forms.Panel();
-            this.label67 = new System.Windows.Forms.Label();
-            this.MemberProgress = new System.Windows.Forms.PictureBox();
-            this.pictureBox41 = new System.Windows.Forms.PictureBox();
             this.MemberLvLabel = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
@@ -206,11 +205,10 @@ namespace Tama_s_BlackJack
             this.SlashPic = new System.Windows.Forms.PictureBox();
             this.SlashTimer = new System.Windows.Forms.Timer(this.components);
             this.SlashRevPic = new System.Windows.Forms.PictureBox();
-            this.AdditionalLabel = new System.Windows.Forms.Label();
             this.BustPerLabel = new System.Windows.Forms.Label();
-            this.pictureBox42 = new System.Windows.Forms.PictureBox();
             this.SlashPlPic = new System.Windows.Forms.PictureBox();
             this.SlashRevPlPic = new System.Windows.Forms.PictureBox();
+            this.panel19 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -223,9 +221,8 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberPicture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
             this.MemberPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MemberProgress)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -292,7 +289,6 @@ namespace Tama_s_BlackJack
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPlPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPlPic)).BeginInit();
             this.SuspendLayout();
@@ -686,12 +682,34 @@ namespace Tama_s_BlackJack
             this.MemberPicture.Visible = false;
             this.MemberPicture.Click += new System.EventHandler(this.MemberPicture_Click);
             // 
+            // AdditionalLabel
+            // 
+            this.AdditionalLabel.AutoSize = true;
+            this.AdditionalLabel.BackColor = System.Drawing.Color.Transparent;
+            this.AdditionalLabel.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdditionalLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.AdditionalLabel.Location = new System.Drawing.Point(531, 94);
+            this.AdditionalLabel.Name = "AdditionalLabel";
+            this.AdditionalLabel.Size = new System.Drawing.Size(16, 20);
+            this.AdditionalLabel.TabIndex = 55;
+            this.AdditionalLabel.Text = " ";
+            this.toolTip1.SetToolTip(this.AdditionalLabel, "直近の追加スコアです");
+            // 
+            // pictureBox42
+            // 
+            this.pictureBox42.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox42.Image = global::Tama_s_BlackJack.Properties.Resources.slash_3;
+            this.pictureBox42.Location = new System.Drawing.Point(438, 190);
+            this.pictureBox42.Name = "pictureBox42";
+            this.pictureBox42.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox42.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox42.TabIndex = 57;
+            this.pictureBox42.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox42, "次のカードを引いた際にプレイヤーがバストする確率です");
+            // 
             // MemberPanel
             // 
             this.MemberPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.MemberPanel.Controls.Add(this.label67);
-            this.MemberPanel.Controls.Add(this.MemberProgress);
-            this.MemberPanel.Controls.Add(this.pictureBox41);
             this.MemberPanel.Controls.Add(this.MemberLvLabel);
             this.MemberPanel.Controls.Add(this.label66);
             this.MemberPanel.Controls.Add(this.label64);
@@ -700,34 +718,6 @@ namespace Tama_s_BlackJack
             this.MemberPanel.Size = new System.Drawing.Size(403, 144);
             this.MemberPanel.TabIndex = 48;
             this.MemberPanel.Visible = false;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label67.Location = new System.Drawing.Point(166, 83);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(72, 16);
-            this.label67.TabIndex = 6;
-            this.label67.Text = "総進行度";
-            // 
-            // MemberProgress
-            // 
-            this.MemberProgress.Image = global::Tama_s_BlackJack.Properties.Resources.bar1;
-            this.MemberProgress.Location = new System.Drawing.Point(56, 107);
-            this.MemberProgress.Name = "MemberProgress";
-            this.MemberProgress.Size = new System.Drawing.Size(300, 15);
-            this.MemberProgress.TabIndex = 5;
-            this.MemberProgress.TabStop = false;
-            // 
-            // pictureBox41
-            // 
-            this.pictureBox41.Image = global::Tama_s_BlackJack.Properties.Resources.bar2;
-            this.pictureBox41.Location = new System.Drawing.Point(56, 107);
-            this.pictureBox41.Name = "pictureBox41";
-            this.pictureBox41.Size = new System.Drawing.Size(300, 15);
-            this.pictureBox41.TabIndex = 4;
-            this.pictureBox41.TabStop = false;
             // 
             // MemberLvLabel
             // 
@@ -2241,19 +2231,6 @@ namespace Tama_s_BlackJack
             this.SlashRevPic.TabStop = false;
             this.SlashRevPic.Visible = false;
             // 
-            // AdditionalLabel
-            // 
-            this.AdditionalLabel.AutoSize = true;
-            this.AdditionalLabel.BackColor = System.Drawing.Color.Transparent;
-            this.AdditionalLabel.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AdditionalLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.AdditionalLabel.Location = new System.Drawing.Point(531, 94);
-            this.AdditionalLabel.Name = "AdditionalLabel";
-            this.AdditionalLabel.Size = new System.Drawing.Size(16, 20);
-            this.AdditionalLabel.TabIndex = 55;
-            this.AdditionalLabel.Text = " ";
-            this.toolTip1.SetToolTip(this.AdditionalLabel, "直近の追加スコアです");
-            // 
             // BustPerLabel
             // 
             this.BustPerLabel.AutoSize = true;
@@ -2263,18 +2240,6 @@ namespace Tama_s_BlackJack
             this.BustPerLabel.Name = "BustPerLabel";
             this.BustPerLabel.Size = new System.Drawing.Size(0, 25);
             this.BustPerLabel.TabIndex = 56;
-            // 
-            // pictureBox42
-            // 
-            this.pictureBox42.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox42.Image = global::Tama_s_BlackJack.Properties.Resources.slash_3;
-            this.pictureBox42.Location = new System.Drawing.Point(438, 190);
-            this.pictureBox42.Name = "pictureBox42";
-            this.pictureBox42.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox42.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox42.TabIndex = 57;
-            this.pictureBox42.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox42, "次のカードを引いた際にプレイヤーがバストする確率です");
             // 
             // SlashPlPic
             // 
@@ -2298,16 +2263,24 @@ namespace Tama_s_BlackJack
             this.SlashRevPlPic.TabStop = false;
             this.SlashRevPlPic.Visible = false;
             // 
+            // panel19
+            // 
+            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panel19.Location = new System.Drawing.Point(524, 175);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(221, 325);
+            this.panel19.TabIndex = 60;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
-            this.ClientSize = new System.Drawing.Size(759, 525);
+            this.ClientSize = new System.Drawing.Size(1187, 525);
+            this.Controls.Add(this.MemberPanel);
             this.Controls.Add(this.HelpParentPanel);
             this.Controls.Add(this.StatPanel);
-            this.Controls.Add(this.MemberPanel);
             this.Controls.Add(this.HelpLabel);
             this.Controls.Add(this.SplitPicture);
             this.Controls.Add(this.StatPicture);
@@ -2355,6 +2328,7 @@ namespace Tama_s_BlackJack
             this.Controls.Add(this.AdditionalLabel);
             this.Controls.Add(this.TscoreLabel);
             this.Controls.Add(this.pictureBox17);
+            this.Controls.Add(this.panel19);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2376,10 +2350,9 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberPicture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
             this.MemberPanel.ResumeLayout(false);
             this.MemberPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MemberProgress)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -2467,7 +2440,6 @@ namespace Tama_s_BlackJack
             this.panel18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPlPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPlPic)).EndInit();
             this.ResumeLayout(false);
@@ -2640,9 +2612,6 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.Label MemberLvLabel;
         private System.Windows.Forms.Label label66;
         private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.PictureBox pictureBox41;
-        private System.Windows.Forms.PictureBox MemberProgress;
-        private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label MentalLabel;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Label label65;
@@ -2656,6 +2625,7 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox pictureBox42;
         private System.Windows.Forms.PictureBox SlashPlPic;
         private System.Windows.Forms.PictureBox SlashRevPlPic;
+        private System.Windows.Forms.Panel panel19;
     }
 }
 

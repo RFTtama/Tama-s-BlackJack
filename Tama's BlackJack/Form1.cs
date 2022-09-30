@@ -43,7 +43,6 @@ namespace Tama_s_BlackJack
         private int mentalBef;                                  //1ディール前のメンタル
         private int helpDefaultTop;                             //ヘルプパネルの初期位置
         private bool reaMode;                                   //レアモードか否か
-        private int defaultProgressSize;                        //進行バー初期サイズ
         private int additionalScore = 0;                        //追加t-score
         private int streak = 0;                                 //勢い
 
@@ -53,6 +52,8 @@ namespace Tama_s_BlackJack
         public Form1()
         {
             InitializeComponent();
+            this.Width = 775;
+            this.Height = 564;
             encryption.fileName = "encryptedData.dat";
             HelpParentPanel.Top = 37;
             HelpParentPanel.Left = 49;
@@ -93,7 +94,6 @@ namespace Tama_s_BlackJack
             this.defaultMagn = 1.0f;
             this.mainPoint = 500;
             this.mentalBef = 0;
-            this.defaultProgressSize = MemberProgress.Width;
             this.helpDefaultTop = HelpPanel.Top;
             this.card = new CardManager();
             this.Cards = new CardProperties[2, maxCards];
@@ -632,7 +632,7 @@ namespace Tama_s_BlackJack
         {
             if (pData.GetNowGameMode() == 3)
             {
-                PlusPoint((int)((float)-this.point * (0.003f * rateMan.rate)));
+                PlusPoint((int)((float)-this.point * (0.002f * rateMan.rate)));
             }
         }
 
@@ -1041,7 +1041,6 @@ namespace Tama_s_BlackJack
         private void SetMemberData()
         {
             MemberLvLabel.Text = rateMan.rate + "";
-            MemberProgress.Width = (int)(defaultProgressSize * (rateMan.rate / 200.0f));
         }
 
         private void MemberPicture_Click(object sender, EventArgs e)

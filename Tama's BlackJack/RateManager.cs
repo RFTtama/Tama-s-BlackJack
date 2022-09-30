@@ -11,6 +11,7 @@ namespace Tama_s_BlackJack
     {
         private int _rate;
         private const int maxRate = 200;
+        private const int maxIncrease = 10;
         public int rate
         {
             set
@@ -42,9 +43,9 @@ namespace Tama_s_BlackJack
         public void CalcRate(float tScore)
         {
             int score = ((int)tScore / 200) - 2;
-            if(score > 5)
+            if(score > maxIncrease)
             {
-                score = 5;
+                score = maxIncrease;
             }
             if(this._rate + score > maxRate)
             {
