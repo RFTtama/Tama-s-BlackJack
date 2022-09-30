@@ -206,6 +206,7 @@ namespace Tama_s_BlackJack
             this.SlashPic = new System.Windows.Forms.PictureBox();
             this.SlashTimer = new System.Windows.Forms.Timer(this.components);
             this.SlashRevPic = new System.Windows.Forms.PictureBox();
+            this.AdditionalLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -362,7 +363,7 @@ namespace Tama_s_BlackJack
             this.TscoreLabel.AutoSize = true;
             this.TscoreLabel.BackColor = System.Drawing.Color.Transparent;
             this.TscoreLabel.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TscoreLabel.Location = new System.Drawing.Point(544, 86);
+            this.TscoreLabel.Location = new System.Drawing.Point(522, 77);
             this.TscoreLabel.Name = "TscoreLabel";
             this.TscoreLabel.Size = new System.Drawing.Size(74, 20);
             this.TscoreLabel.TabIndex = 37;
@@ -454,7 +455,7 @@ namespace Tama_s_BlackJack
             this.KatagakiLabel2.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.KatagakiLabel2.Location = new System.Drawing.Point(218, 235);
             this.KatagakiLabel2.Name = "KatagakiLabel2";
-            this.KatagakiLabel2.Size = new System.Drawing.Size(39, 16);
+            this.KatagakiLabel2.Size = new System.Drawing.Size(40, 16);
             this.KatagakiLabel2.TabIndex = 47;
             this.KatagakiLabel2.Text = "なし";
             this.toolTip1.SetToolTip(this.KatagakiLabel2, "現在の平均tScore評価です");
@@ -465,7 +466,7 @@ namespace Tama_s_BlackJack
             this.KatagakiLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.KatagakiLabel.Location = new System.Drawing.Point(218, 135);
             this.KatagakiLabel.Name = "KatagakiLabel";
-            this.KatagakiLabel.Size = new System.Drawing.Size(39, 16);
+            this.KatagakiLabel.Size = new System.Drawing.Size(40, 16);
             this.KatagakiLabel.TabIndex = 45;
             this.KatagakiLabel.Text = "なし";
             this.toolTip1.SetToolTip(this.KatagakiLabel, "現在の腕前レベルを表示します");
@@ -699,7 +700,7 @@ namespace Tama_s_BlackJack
             this.label67.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label67.Location = new System.Drawing.Point(166, 83);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(71, 16);
+            this.label67.Size = new System.Drawing.Size(72, 16);
             this.label67.TabIndex = 6;
             this.label67.Text = "総進行度";
             // 
@@ -727,7 +728,7 @@ namespace Tama_s_BlackJack
             this.MemberLvLabel.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.MemberLvLabel.Location = new System.Drawing.Point(132, 49);
             this.MemberLvLabel.Name = "MemberLvLabel";
-            this.MemberLvLabel.Size = new System.Drawing.Size(16, 16);
+            this.MemberLvLabel.Size = new System.Drawing.Size(17, 16);
             this.MemberLvLabel.TabIndex = 3;
             this.MemberLvLabel.Text = "0";
             // 
@@ -737,7 +738,7 @@ namespace Tama_s_BlackJack
             this.label66.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label66.Location = new System.Drawing.Point(15, 48);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(106, 16);
+            this.label66.Size = new System.Drawing.Size(107, 16);
             this.label66.TabIndex = 2;
             this.label66.Text = "総会員レベル:";
             // 
@@ -1270,7 +1271,7 @@ namespace Tama_s_BlackJack
             this.InformationLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.InformationLabel.Location = new System.Drawing.Point(54, 2);
             this.InformationLabel.Name = "InformationLabel";
-            this.InformationLabel.Size = new System.Drawing.Size(33, 16);
+            this.InformationLabel.Size = new System.Drawing.Size(34, 16);
             this.InformationLabel.TabIndex = 34;
             this.InformationLabel.Text = "Info";
             this.InformationLabel.Visible = false;
@@ -2233,6 +2234,19 @@ namespace Tama_s_BlackJack
             this.SlashRevPic.TabStop = false;
             this.SlashRevPic.Visible = false;
             // 
+            // AdditionalLabel
+            // 
+            this.AdditionalLabel.AutoSize = true;
+            this.AdditionalLabel.BackColor = System.Drawing.Color.Transparent;
+            this.AdditionalLabel.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdditionalLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.AdditionalLabel.Location = new System.Drawing.Point(541, 96);
+            this.AdditionalLabel.Name = "AdditionalLabel";
+            this.AdditionalLabel.Size = new System.Drawing.Size(16, 20);
+            this.AdditionalLabel.TabIndex = 55;
+            this.AdditionalLabel.Text = " ";
+            this.toolTip1.SetToolTip(this.AdditionalLabel, "直近の追加スコアです");
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2285,6 +2299,7 @@ namespace Tama_s_BlackJack
             this.Controls.Add(this.MinusLabel);
             this.Controls.Add(this.SlashRevPic);
             this.Controls.Add(this.SlashPic);
+            this.Controls.Add(this.AdditionalLabel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2578,6 +2593,7 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox SlashPic;
         private System.Windows.Forms.Timer SlashTimer;
         private System.Windows.Forms.PictureBox SlashRevPic;
+        private System.Windows.Forms.Label AdditionalLabel;
     }
 }
 
