@@ -10,3 +10,4 @@ Coins: 12250 T-Score 2407
 Coins: 4000 T-Score 0
 Coins: 10500 T-Score 1050
 Coins: 8500 T-Score 637
+Coins: 7983 T-Score 1261

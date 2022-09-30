@@ -4,7 +4,7 @@
   <description asmv2:iconFile="tb1.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Tama's BlackJack" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Tama's BlackJack" version="1.1.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="Tama's BlackJack.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Tama's BlackJack.exe" size="291288">
-      <assemblyIdentity name="Tama's BlackJack" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Tama's BlackJack.exe" size="292312">
+      <assemblyIdentity name="Tama's BlackJack" version="1.1.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4OWumg1zAzBY9O2oUGTVpG0RqD/OK3n480wPQTiHAqM=</dsig:DigestValue>
+        <dsig:DigestValue>NEYam0S1RYpF5/ui0NM1dxJk+GRCibd3zPoNDMnvN2I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
