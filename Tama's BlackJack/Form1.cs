@@ -10,17 +10,17 @@ namespace Tama_s_BlackJack
     public partial class Form1 : Form
     {
         private CardManager card;                               //カードデッキの操作クラス
-        public const String LB = "\r\n";                        //LineBreak
+        public const string LB = "\r\n";                        //LineBreak
         private CardProperties[ , ] Cards;                      //場のカード集
         private Random rand = new Random();                     //ランダムクラス
         private Encryption encryption = new Encryption();       //暗号化クラス
         private RateManager rateMan;                            //レート管理
         private PlData pData;                                   //pDataクラス
-        private System.Windows.Forms.Panel[,] Panels;           //パネル管理用配列
-        private System.Windows.Forms.Label[,] Numbers;          //数字管理用配列
-        private System.Windows.Forms.PictureBox[,] Pictures;    //画像管理用配列
-        private String tip;                                     //チップ情報
-        private List<String> sData;                             //セーブデータ保持リスト
+        private Panel[,] Panels;           //パネル管理用配列
+        private Label[,] Numbers;          //数字管理用配列
+        private PictureBox[,] Pictures;    //画像管理用配列
+        private string tip;                                     //チップ情報
+        private List<string> sData;                             //セーブデータ保持リスト
         private int[] total;                                    //カードの合計値
         private int playerMinTotal;                             //プレイヤーカードの最低値
         private double bustPer;                                  //プレイヤーのバスト確率
@@ -439,7 +439,7 @@ namespace Tama_s_BlackJack
                 ButtonLock();
                 DealButton.Enabled = false;
                 InformationLabel.Text = "";
-                InformationLabel.Text = "最終ポイント" + this.point + "、T-Score" + (int)tScore + " +" + additionalScore;
+                InformationLabel.Text = "Coins" + this.point + "、T-Score" + (int)tScore + " +" + additionalScore;
                 try
                 {
                     using (StreamWriter sw = new StreamWriter("History.txt", true))
@@ -514,14 +514,14 @@ namespace Tama_s_BlackJack
             if (overFlg[0] && overFlg[1])
             {
                 InformationLabel.Text = "";
-                InformationLabel.Text = "お互いがミスフォーチュンです";
+                InformationLabel.Text = "Misfortune push";
                this. streak = 0;
             }
             else if (overFlg[0])
             {
                 Slash(true);
                 InformationLabel.Text = "";
-                InformationLabel.Text = "ディーラーのミスフォーチュンです";
+                InformationLabel.Text = "Dealer's misfortune";
                 this.mental -= (int)(10 * magn);
                 SetPenarty();
                 this.streak = 0;
@@ -530,7 +530,7 @@ namespace Tama_s_BlackJack
             {
                 Slash(false);
                 InformationLabel.Text = "";
-                InformationLabel.Text = "プレイヤーのミスフォーチュンです";
+                InformationLabel.Text = "Player's misfortune";
                 SetAdditionalScore(20, "Super Luck");
                 PlusPoint((int)(mainPoint * 2.0));
                 if(pointMagn == 2.0)
@@ -546,8 +546,9 @@ namespace Tama_s_BlackJack
             else if(total[1] > 21)
             {
                 Slash(true);
+                BustTimer.Enabled = true;
                 InformationLabel.Text = "";
-                InformationLabel.Text = "プレイヤーのバストです";
+                InformationLabel.Text = "Player's bust";
                 this.mental -= (int)(10 * magn);
                 SetPenarty();
                 this.streak = 0;
@@ -556,7 +557,7 @@ namespace Tama_s_BlackJack
             {
                 Slash(false);
                 InformationLabel.Text = "";
-                InformationLabel.Text = "ディーラーのバストです";
+                InformationLabel.Text = "Dealer's bust";
                 PlusPoint(mainPoint);
                 if (pointMagn == 2.0)
                 {
@@ -571,13 +572,13 @@ namespace Tama_s_BlackJack
             else if(bjFlg[0] && bjFlg[1])
             {
                 InformationLabel.Text = "";
-                InformationLabel.Text = "ブラックジャックのプッシュです";
+                InformationLabel.Text = "Blackjack push";
                 this.streak = 0;
             }else if (bjFlg[0])
             {
                 Slash(true);
                 InformationLabel.Text = "";
-                InformationLabel.Text = "ディーラーのブラックジャックです";
+                InformationLabel.Text = "Dealer's Blackjack";
                 this.mental -= (int)(10 * magn);
                 SetPenarty();
                 this.streak = 0;
@@ -586,7 +587,7 @@ namespace Tama_s_BlackJack
             {
                 Slash(false);
                 InformationLabel.Text = "";
-                InformationLabel.Text = "プレイヤーのブラックジャックです";
+                InformationLabel.Text = "Player's Blackjack";
                 PlusPoint((int)(mainPoint * 1.50));
                 if (streak > 0)
                 {
@@ -598,7 +599,7 @@ namespace Tama_s_BlackJack
             {
                 Slash(true);
                 InformationLabel.Text = "";
-                InformationLabel.Text = "ディーラーの勝ちです";
+                InformationLabel.Text = "Dealer wins";
                 this.mental -= (int)(10 * magn);
                 SetPenarty();
                 this.streak = 0;
@@ -607,7 +608,7 @@ namespace Tama_s_BlackJack
             {
                 Slash(false);
                 InformationLabel.Text = "";
-                InformationLabel.Text = "プレイヤーの勝ちです";
+                InformationLabel.Text = "Player wins";
                 PlusPoint(mainPoint);
                 if (pointMagn == 2.0)
                 {
@@ -622,7 +623,7 @@ namespace Tama_s_BlackJack
             else
             {
                 InformationLabel.Text = "";
-                InformationLabel.Text = "プッシュです";
+                InformationLabel.Text = "Push";
                 this.streak = 0;
             }
             MentalCheck();
@@ -682,6 +683,8 @@ namespace Tama_s_BlackJack
         private void button1_Click(object sender, EventArgs e)
         {
             ResetSlash();
+            BustIcon.Visible = true;
+            BustIcon.Image = slashResources[0];
             ClearAdditionalText();
             ArrowPicture.Visible = false;
             ExplainPanel.Visible = false;
@@ -701,7 +704,7 @@ namespace Tama_s_BlackJack
                         card.CreateDeck();
                         card.ShaffleDeck();
                         InformationLabel.Text = "";
-                        InformationLabel.Text = "デッキをシャッフルしました";
+                        InformationLabel.Text = "Shuffled decks";
                     }
                     catch (Exception ex)
                     {
@@ -719,7 +722,7 @@ namespace Tama_s_BlackJack
                     card.CreateDeck();
                     card.ShaffleDeck();
                     InformationLabel.Text = "";
-                    InformationLabel.Text = "ディールを開始します";
+                    InformationLabel.Text = "Place your bets";
                 }
                 catch (Exception ex)
                 {
@@ -825,14 +828,14 @@ namespace Tama_s_BlackJack
                 ButtonLock();
                 SetCard(0, hiddenCard, true);
                 InformationLabel.Text = "";
-                InformationLabel.Text = "インシュランス成功";
+                InformationLabel.Text = "Insurance success";
             }
             else
             {
                 InsurancePicture.Visible = false;
                 this.mental -= 5;
                 InformationLabel.Text = "";
-                InformationLabel.Text = "インシュランス失敗";
+                InformationLabel.Text = "Insurance failure";
                 MentalCheck();
             }
         }
@@ -848,7 +851,7 @@ namespace Tama_s_BlackJack
             ButtonLock();
             SetCard(0, hiddenCard, true);
             InformationLabel.Text = "";
-            InformationLabel.Text = "勝負を降りました";
+            InformationLabel.Text = "You surrendered";
             this.mental -= 5;
             this.streak = 0;
             SetAdditionalScore(-5, "Nope");
@@ -1126,14 +1129,14 @@ namespace Tama_s_BlackJack
         /// </summary>
         int slashCnt = 0;
 
-        System.Drawing.Bitmap[] slashResources =
+        private Bitmap[] slashResources =
         {
             Properties.Resources.slash_1,
             Properties.Resources.slash_2,
             Properties.Resources.slash_3
         };
 
-        System.Drawing.Bitmap[] slashRevResources =
+        private Bitmap[] slashRevResources =
         {
             Properties.Resources.slash_rev_1,
             Properties.Resources.slash_rev_2,
@@ -1233,9 +1236,26 @@ namespace Tama_s_BlackJack
             BustPerLabel.Text = this.bustPerBef.ToString() + "%";
         }
 
-        private void ArrowPicture_Click(object sender, EventArgs e)
-        {
+        /// <summary>
+        /// バストアイコン用
+        /// </summary>
+        private short bustIconCnt = 0;
 
+        /// <summary>
+        /// バストした際の演出
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BustTimer_Tick(object sender, EventArgs e)
+        {
+            if (bustIconCnt > 2)
+            {
+                BustTimer.Enabled = false;
+                bustIconCnt = 0;
+                return;
+            }
+            BustIcon.Image = slashResources[bustIconCnt];
+            bustIconCnt++;
         }
     }
 }

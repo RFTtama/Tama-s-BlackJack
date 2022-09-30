@@ -64,7 +64,7 @@ namespace Tama_s_BlackJack
             this.TabPicture1 = new System.Windows.Forms.PictureBox();
             this.MemberPicture = new System.Windows.Forms.PictureBox();
             this.AdditionalLabel = new System.Windows.Forms.Label();
-            this.pictureBox42 = new System.Windows.Forms.PictureBox();
+            this.BustIcon = new System.Windows.Forms.PictureBox();
             this.MemberPanel = new System.Windows.Forms.Panel();
             this.MemberLvLabel = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
@@ -210,6 +210,7 @@ namespace Tama_s_BlackJack
             this.SlashRevPlPic = new System.Windows.Forms.PictureBox();
             this.panel19 = new System.Windows.Forms.Panel();
             this.BustIncreaseTimer = new System.Windows.Forms.Timer(this.components);
+            this.BustTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -222,7 +223,7 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberPicture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BustIcon)).BeginInit();
             this.MemberPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -360,7 +361,7 @@ namespace Tama_s_BlackJack
             this.PointLabel.Size = new System.Drawing.Size(25, 25);
             this.PointLabel.TabIndex = 36;
             this.PointLabel.Text = "0";
-            this.toolTip1.SetToolTip(this.PointLabel, "獲得したポイントです");
+            this.toolTip1.SetToolTip(this.PointLabel, "獲得したコインです");
             // 
             // TscoreLabel
             // 
@@ -631,7 +632,7 @@ namespace Tama_s_BlackJack
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox17.TabIndex = 35;
             this.pictureBox17.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox17, "獲得したポイントです");
+            this.toolTip1.SetToolTip(this.pictureBox17, "獲得したコインです");
             // 
             // TabPicture3
             // 
@@ -696,17 +697,18 @@ namespace Tama_s_BlackJack
             this.AdditionalLabel.Text = " ";
             this.toolTip1.SetToolTip(this.AdditionalLabel, "直近の追加スコアです");
             // 
-            // pictureBox42
+            // BustIcon
             // 
-            this.pictureBox42.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox42.Image = global::Tama_s_BlackJack.Properties.Resources.slash_3;
-            this.pictureBox42.Location = new System.Drawing.Point(438, 190);
-            this.pictureBox42.Name = "pictureBox42";
-            this.pictureBox42.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox42.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox42.TabIndex = 57;
-            this.pictureBox42.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBox42, "次のカードを引いた際にプレイヤーがバストする確率です");
+            this.BustIcon.BackColor = System.Drawing.Color.Transparent;
+            this.BustIcon.Image = global::Tama_s_BlackJack.Properties.Resources.slash_1;
+            this.BustIcon.Location = new System.Drawing.Point(477, 167);
+            this.BustIcon.Name = "BustIcon";
+            this.BustIcon.Size = new System.Drawing.Size(30, 30);
+            this.BustIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BustIcon.TabIndex = 57;
+            this.BustIcon.TabStop = false;
+            this.toolTip1.SetToolTip(this.BustIcon, "次のカードを引いた際にプレイヤーがバストする確率です");
+            this.BustIcon.Visible = false;
             // 
             // MemberPanel
             // 
@@ -1348,7 +1350,7 @@ namespace Tama_s_BlackJack
             this.ExplainPanel.Controls.Add(this.TabPicture2);
             this.ExplainPanel.Controls.Add(this.TabPicture1);
             this.ExplainPanel.Controls.Add(this.ExplainLabel);
-            this.ExplainPanel.Location = new System.Drawing.Point(527, 243);
+            this.ExplainPanel.Location = new System.Drawing.Point(525, 263);
             this.ExplainPanel.Name = "ExplainPanel";
             this.ExplainPanel.Size = new System.Drawing.Size(218, 123);
             this.ExplainPanel.TabIndex = 42;
@@ -2141,7 +2143,6 @@ namespace Tama_s_BlackJack
             this.ArrowPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ArrowPicture.TabIndex = 38;
             this.ArrowPicture.TabStop = false;
-            this.ArrowPicture.Click += new System.EventHandler(this.ArrowPicture_Click);
             // 
             // DeckPicture
             // 
@@ -2183,9 +2184,9 @@ namespace Tama_s_BlackJack
             this.label65.Font = new System.Drawing.Font("HGPｺﾞｼｯｸE", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label65.Location = new System.Drawing.Point(9, 3);
             this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(39, 15);
+            this.label65.Size = new System.Drawing.Size(45, 15);
             this.label65.TabIndex = 51;
-            this.label65.Text = "Info: ";
+            this.label65.Text = "INFO: ";
             // 
             // panel18
             // 
@@ -2278,6 +2279,11 @@ namespace Tama_s_BlackJack
             this.BustIncreaseTimer.Interval = 5;
             this.BustIncreaseTimer.Tick += new System.EventHandler(this.BustIncreaseTimer_Tick);
             // 
+            // BustTimer
+            // 
+            this.BustTimer.Interval = 80;
+            this.BustTimer.Tick += new System.EventHandler(this.BustTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2331,11 +2337,11 @@ namespace Tama_s_BlackJack
             this.Controls.Add(this.SlashPic);
             this.Controls.Add(this.SlashRevPic);
             this.Controls.Add(this.BustPerLabel);
-            this.Controls.Add(this.pictureBox42);
             this.Controls.Add(this.AdditionalLabel);
             this.Controls.Add(this.TscoreLabel);
             this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.panel19);
+            this.Controls.Add(this.BustIcon);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -2357,7 +2363,7 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberPicture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BustIcon)).EndInit();
             this.MemberPanel.ResumeLayout(false);
             this.MemberPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -2629,11 +2635,12 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox SlashRevPic;
         private System.Windows.Forms.Label AdditionalLabel;
         private System.Windows.Forms.Label BustPerLabel;
-        private System.Windows.Forms.PictureBox pictureBox42;
+        private System.Windows.Forms.PictureBox BustIcon;
         private System.Windows.Forms.PictureBox SlashPlPic;
         private System.Windows.Forms.PictureBox SlashRevPlPic;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Timer BustIncreaseTimer;
+        private System.Windows.Forms.Timer BustTimer;
     }
 }
 
