@@ -545,7 +545,6 @@ namespace Tama_s_BlackJack
             {
                 InformationLabel.Text = "";
                 InformationLabel.Text = "プレイヤーのバストです";
-                SetAdditionalScore(-5, "Bust");
                 this.mental -= (int)(10 * magn);
                 SetPenarty();
                 this.streak = 0;

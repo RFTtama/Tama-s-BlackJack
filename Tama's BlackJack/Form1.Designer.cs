@@ -2240,7 +2240,7 @@ namespace Tama_s_BlackJack
             this.AdditionalLabel.BackColor = System.Drawing.Color.Transparent;
             this.AdditionalLabel.Font = new System.Drawing.Font("MV Boli", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdditionalLabel.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.AdditionalLabel.Location = new System.Drawing.Point(541, 96);
+            this.AdditionalLabel.Location = new System.Drawing.Point(541, 94);
             this.AdditionalLabel.Name = "AdditionalLabel";
             this.AdditionalLabel.Size = new System.Drawing.Size(16, 20);
             this.AdditionalLabel.TabIndex = 55;
@@ -2254,6 +2254,7 @@ namespace Tama_s_BlackJack
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
             this.ClientSize = new System.Drawing.Size(759, 525);
+            this.Controls.Add(this.AdditionalLabel);
             this.Controls.Add(this.HelpParentPanel);
             this.Controls.Add(this.StatPanel);
             this.Controls.Add(this.MemberPanel);
@@ -2299,7 +2300,6 @@ namespace Tama_s_BlackJack
             this.Controls.Add(this.MinusLabel);
             this.Controls.Add(this.SlashRevPic);
             this.Controls.Add(this.SlashPic);
-            this.Controls.Add(this.AdditionalLabel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
