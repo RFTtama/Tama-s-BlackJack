@@ -2132,9 +2132,9 @@ namespace Tama_s_BlackJack
             // 
             // ArrowPicture
             // 
-            this.ArrowPicture.BackColor = System.Drawing.Color.Transparent;
+            this.ArrowPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ArrowPicture.Image = ((System.Drawing.Image)(resources.GetObject("ArrowPicture.Image")));
-            this.ArrowPicture.Location = new System.Drawing.Point(679, 175);
+            this.ArrowPicture.Location = new System.Drawing.Point(679, 185);
             this.ArrowPicture.Name = "ArrowPicture";
             this.ArrowPicture.Size = new System.Drawing.Size(50, 50);
             this.ArrowPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
