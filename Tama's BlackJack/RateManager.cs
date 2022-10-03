@@ -7,6 +7,7 @@ namespace Tama_s_BlackJack
     class RateManager
     {
         private int _rate;
+        private const int MaxRate = 2699;
         public int rate
         {
             set
@@ -38,6 +39,7 @@ namespace Tama_s_BlackJack
         public void CalcRate(float tScore)
         {
             _rate += (int)(tScore - _rate) / 3;
+            if(_rate > MaxRate)_rate = MaxRate;
             encrypt.Encrypt(this._rate.ToString());
         }
 

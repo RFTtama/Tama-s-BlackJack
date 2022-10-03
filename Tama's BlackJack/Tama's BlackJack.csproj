@@ -202,6 +202,15 @@
     <None Include="Resources\slash_rev_1.png" />
     <None Include="Resources\slash_rev_2.png" />
     <None Include="Resources\slash_rev_3.png" />
+    <None Include="Resources\neko1_1.png" />
+    <None Include="Resources\neko1_2.png" />
+    <None Include="Resources\neko1_3.png" />
+    <None Include="Resources\neko2_1.png" />
+    <None Include="Resources\neko2_2.png" />
+    <None Include="Resources\neko2_3.png" />
+    <None Include="Resources\neko3_1.png" />
+    <None Include="Resources\neko3_2.png" />
+    <None Include="Resources\neko3_3.png" />
     <Content Include="tb.ico" />
     <Content Include="tb1.ico" />
   </ItemGroup>

@@ -523,7 +523,6 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer's misfortune";
                 this.mental -= (int)(10 * magn);
-                SetPenarty();
                 this.streak = 0;
             }
             else if (overFlg[1])
@@ -550,7 +549,6 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Player's bust";
                 this.mental -= (int)(10 * magn);
-                SetPenarty();
                 this.streak = 0;
             }
             else if(total[0] > 21)
@@ -580,7 +578,6 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer's Blackjack";
                 this.mental -= (int)(10 * magn);
-                SetPenarty();
                 this.streak = 0;
             }
             else if (bjFlg[1])
@@ -601,7 +598,6 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer wins";
                 this.mental -= (int)(10 * magn);
-                SetPenarty();
                 this.streak = 0;
             }
             else if(total[1] > total[0])
@@ -627,14 +623,6 @@ namespace Tama_s_BlackJack
                 this.streak = 0;
             }
             MentalCheck();
-        }
-
-        private void SetPenarty()
-        {
-            if (pData.GetNowGameMode() == 3)
-            {
-                PlusPoint((int)((float)-this.point * (0.002f * rateMan.rate)));
-            }
         }
 
         /// <summary>
@@ -1041,9 +1029,44 @@ namespace Tama_s_BlackJack
             MentalLabel.Text = this.mental + "";
         }
 
+        private Bitmap[] rankResources =
+        {
+            Properties.Resources.neko1_1,
+            Properties.Resources.neko1_2,
+            Properties.Resources.neko1_3,
+            Properties.Resources.neko2_1,
+            Properties.Resources.neko2_2,
+            Properties.Resources.neko2_3,
+            Properties.Resources.neko3_1,
+            Properties.Resources.neko3_2,
+            Properties.Resources.neko3_3
+        };
+
+        private string[] rankNames =
+        {
+            "Normal Cat Ⅰ",
+            "Normal Cat Ⅱ",
+            "Normal Cat Ⅲ",
+            "Stray Cat Ⅰ",
+            "Stray Cat Ⅱ",
+            "Stray Cat Ⅲ",
+            "Abandoned Cat Ⅰ",
+            "Abandoned Cat Ⅱ",
+            "Abandoned Cat Ⅲ"
+        };
+
         private void SetMemberData()
         {
+            int interval = 300;
             MemberLvLabel.Text = rateMan.rate + "";
+            int upRate = (rateMan.rate / interval) * interval + interval;
+            upRate = upRate - rateMan.rate - 1;
+            RankUpLabel.Text = upRate + "";
+            int downRate = (rateMan.rate / interval) * interval;
+            downRate = rateMan.rate - downRate;
+            RankDownLabel.Text = downRate + "";
+            RankPic.Image = rankResources[rateMan.rate / interval];
+            NameLabel.Text = rankNames[rateMan.rate / interval];
         }
 
         private void MemberPicture_Click(object sender, EventArgs e)
