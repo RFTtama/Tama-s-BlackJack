@@ -417,9 +417,7 @@ namespace Tama_s_BlackJack
             AvgCoinsLabel.Text = pData.GetMaxOfPoint() + "";
             int avg = (int)pData.GetAvgOftScore();
             AvgtScoreLabel.Text = avg.ToString();
-            KatagakiLabel.Text = pData.GetEvalOfPoint() + "レベル";
             TotalCoinsLabel.Text = "Total: " + pData.GetTotalOfAllPoint() + "";
-            KatagakiLabel2.Text = pData.GetEvalOftScore() + "並み";
             MaxtScoreLabel.Text = "Max: " + pData.GetMaxOftScore();
             PlayTimesLabel.Text = "Play times: " + pData.GetPlayTimes();
             int po = pData.GetTotalOfAllPoint();

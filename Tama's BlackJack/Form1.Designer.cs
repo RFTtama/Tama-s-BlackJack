@@ -45,8 +45,6 @@ namespace Tama_s_BlackJack
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.PlayTimesLabel = new System.Windows.Forms.Label();
-            this.KatagakiLabel2 = new System.Windows.Forms.Label();
-            this.KatagakiLabel = new System.Windows.Forms.Label();
             this.AvgtScoreLabel = new System.Windows.Forms.Label();
             this.AvgCoinsLabel = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -463,28 +461,6 @@ namespace Tama_s_BlackJack
             this.PlayTimesLabel.TabIndex = 49;
             this.PlayTimesLabel.Text = "Play times:";
             this.toolTip1.SetToolTip(this.PlayTimesLabel, "T\'sブラックジャックをプレイした回数です");
-            // 
-            // KatagakiLabel2
-            // 
-            this.KatagakiLabel2.AutoSize = true;
-            this.KatagakiLabel2.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.KatagakiLabel2.Location = new System.Drawing.Point(218, 235);
-            this.KatagakiLabel2.Name = "KatagakiLabel2";
-            this.KatagakiLabel2.Size = new System.Drawing.Size(39, 16);
-            this.KatagakiLabel2.TabIndex = 47;
-            this.KatagakiLabel2.Text = "なし";
-            this.toolTip1.SetToolTip(this.KatagakiLabel2, "現在の平均tScore評価です");
-            // 
-            // KatagakiLabel
-            // 
-            this.KatagakiLabel.AutoSize = true;
-            this.KatagakiLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.KatagakiLabel.Location = new System.Drawing.Point(218, 135);
-            this.KatagakiLabel.Name = "KatagakiLabel";
-            this.KatagakiLabel.Size = new System.Drawing.Size(39, 16);
-            this.KatagakiLabel.TabIndex = 45;
-            this.KatagakiLabel.Text = "なし";
-            this.toolTip1.SetToolTip(this.KatagakiLabel, "現在の腕前レベルを表示します");
             // 
             // AvgtScoreLabel
             // 
@@ -1390,15 +1366,13 @@ namespace Tama_s_BlackJack
             this.StatPanel.Controls.Add(this.PointEvalPicture);
             this.StatPanel.Controls.Add(this.PlayTimesLabel);
             this.StatPanel.Controls.Add(this.MaxtScoreLabel);
-            this.StatPanel.Controls.Add(this.KatagakiLabel2);
             this.StatPanel.Controls.Add(this.TotalCoinsLabel);
-            this.StatPanel.Controls.Add(this.KatagakiLabel);
             this.StatPanel.Controls.Add(this.AvgtScoreLabel);
             this.StatPanel.Controls.Add(this.AvgCoinsLabel);
             this.StatPanel.Controls.Add(this.label20);
             this.StatPanel.Controls.Add(this.label19);
             this.StatPanel.Controls.Add(this.pictureBox18);
-            this.StatPanel.Location = new System.Drawing.Point(777, 86);
+            this.StatPanel.Location = new System.Drawing.Point(839, 540);
             this.StatPanel.Name = "StatPanel";
             this.StatPanel.Size = new System.Drawing.Size(400, 300);
             this.StatPanel.TabIndex = 40;
@@ -2381,7 +2355,7 @@ namespace Tama_s_BlackJack
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
-            this.ClientSize = new System.Drawing.Size(1187, 525);
+            this.ClientSize = new System.Drawing.Size(1455, 883);
             this.Controls.Add(this.MemberPanel);
             this.Controls.Add(this.HelpParentPanel);
             this.Controls.Add(this.StatPanel);
@@ -2630,9 +2604,7 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.Label AvgtScoreLabel;
         private System.Windows.Forms.Label AvgCoinsLabel;
-        private System.Windows.Forms.Label KatagakiLabel;
         private System.Windows.Forms.Label TotalCoinsLabel;
-        private System.Windows.Forms.Label KatagakiLabel2;
         private System.Windows.Forms.Label MaxtScoreLabel;
         private System.Windows.Forms.Label PlayTimesLabel;
         private System.Windows.Forms.PictureBox PointEvalPicture;
