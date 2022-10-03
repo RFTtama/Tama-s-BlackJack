@@ -629,7 +629,6 @@ namespace Tama_s_BlackJack
             this.TabPicture3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TabPicture3.TabIndex = 45;
             this.TabPicture3.TabStop = false;
-            this.toolTip1.SetToolTip(this.TabPicture3, "T\'s BJ 会員クラスモード\r\n高得点を獲得して、より上のクラスを目指しましょう");
             this.TabPicture3.Click += new System.EventHandler(this.TabPicture3_Click);
             // 
             // TabPicture2
@@ -641,7 +640,6 @@ namespace Tama_s_BlackJack
             this.TabPicture2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TabPicture2.TabIndex = 44;
             this.TabPicture2.TabStop = false;
-            this.toolTip1.SetToolTip(this.TabPicture2, "カジュアルモード\r\n少ない時間で気軽に楽しめます\r\n・コインボーナス×2");
             this.TabPicture2.Click += new System.EventHandler(this.TabPicture2_Click);
             // 
             // TabPicture1
@@ -653,7 +651,6 @@ namespace Tama_s_BlackJack
             this.TabPicture1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.TabPicture1.TabIndex = 43;
             this.TabPicture1.TabStop = false;
-            this.toolTip1.SetToolTip(this.TabPicture1, "スタンダードモード\r\n標準のモードです\r\n高得点を目指しましょう!");
             this.TabPicture1.Click += new System.EventHandler(this.TabPicture1_Click);
             // 
             // MemberPicture
@@ -1415,12 +1412,12 @@ namespace Tama_s_BlackJack
             // ExplainLabel
             // 
             this.ExplainLabel.AutoSize = true;
-            this.ExplainLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ExplainLabel.Font = new System.Drawing.Font("OCRB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExplainLabel.Location = new System.Drawing.Point(3, 7);
             this.ExplainLabel.Name = "ExplainLabel";
-            this.ExplainLabel.Size = new System.Drawing.Size(142, 75);
+            this.ExplainLabel.Size = new System.Drawing.Size(139, 80);
             this.ExplainLabel.TabIndex = 0;
-            this.ExplainLabel.Text = "スタンダードモード\r\n\r\nデッキ数: 3\r\nクレジット: 200\r\n賭けクレジット: 10";
+            this.ExplainLabel.Text = "Standard\r\n\r\nDecks: 3\r\nCredits: 200\r\nBets: 10";
             // 
             // HelpPanel
             // 

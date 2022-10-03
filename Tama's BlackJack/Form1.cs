@@ -876,8 +876,8 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture1.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "スタンダードモード" + LB + LB + "デッキ数: 3" + LB + "クレジット: 200" + LB +
-            "賭けクレジット: 10";
+            ExplainLabel.Text = "Standard" + LB + LB + "Decks: 3" + LB + "Credits: 200" + LB +
+            "Bets: 10";
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
@@ -901,8 +901,8 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture2.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "カジュアルモード" + LB + LB + "デッキ数: 2" + LB + "クレジット: 100" + LB +
-            "賭けクレジット: 10";
+            ExplainLabel.Text = "Casual" + LB + LB + "Decks: 2" + LB + "Credits: 100" + LB +
+            "Bets: 10";
             this.deck = 2;
             this.maxMental = 100;
             this.mainPoint = 1000;
@@ -951,8 +951,8 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture3.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "Cat's tower" + LB + LB + "デッキ数: 3" + LB + "クレジット: 200" + LB +
-            "賭けクレジット: 10" + LB + "高みを目指せ";
+            ExplainLabel.Text = "Cat's tower " + LB + "- placement" + LB + LB + "Decks: 3" + LB + "Credits: 200" + LB +
+            "Bets: 10";
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
