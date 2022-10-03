@@ -211,6 +211,7 @@
     <None Include="Resources\neko3_1.png" />
     <None Include="Resources\neko3_2.png" />
     <None Include="Resources\neko3_3.png" />
+    <None Include="Resources\barcode.png" />
     <Content Include="tb.ico" />
     <Content Include="tb1.ico" />
   </ItemGroup>
