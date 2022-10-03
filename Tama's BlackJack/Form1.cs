@@ -971,12 +971,12 @@ namespace Tama_s_BlackJack
             Properties.Resources.neko1_1,
             Properties.Resources.neko1_2,
             Properties.Resources.neko1_3,
-            Properties.Resources.neko2_1,
-            Properties.Resources.neko2_2,
-            Properties.Resources.neko2_3,
             Properties.Resources.neko3_1,
             Properties.Resources.neko3_2,
-            Properties.Resources.neko3_3
+            Properties.Resources.neko3_3,
+            Properties.Resources.neko2_1,
+            Properties.Resources.neko2_2,
+            Properties.Resources.neko2_3
         };
 
         private string[] rankNames =
