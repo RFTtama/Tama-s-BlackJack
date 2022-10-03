@@ -738,9 +738,9 @@ namespace Tama_s_BlackJack
             this.label66.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label66.Location = new System.Drawing.Point(15, 48);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(58, 16);
+            this.label66.Size = new System.Drawing.Size(42, 16);
             this.label66.TabIndex = 2;
-            this.label66.Text = "レート:";
+            this.label66.Text = "Rank:";
             // 
             // label64
             // 
@@ -748,9 +748,9 @@ namespace Tama_s_BlackJack
             this.label64.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label64.Location = new System.Drawing.Point(14, 11);
             this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(156, 19);
+            this.label64.Size = new System.Drawing.Size(97, 19);
             this.label64.TabIndex = 0;
-            this.label64.Text = "T\'s BJ 会員モード";
+            this.label64.Text = "Cat\'s tower";
             // 
             // panel1
             // 

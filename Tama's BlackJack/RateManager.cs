@@ -37,7 +37,7 @@ namespace Tama_s_BlackJack
 
         public void CalcRate(float tScore)
         {
-            _rate += (int)tScore / 3;
+            _rate += (int)(tScore - _rate) / 3;
             encrypt.Encrypt(this._rate.ToString());
         }
 

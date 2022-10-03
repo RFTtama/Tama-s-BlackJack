@@ -1027,8 +1027,7 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture3.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "T's BJ 会員モード" + LB + "デッキ数: 3" + LB + LB + "負けペナルティ:"
-                + LB + "ポイント没収";
+            ExplainLabel.Text = "Cat's tower" + LB + "デッキ数: 3";
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
