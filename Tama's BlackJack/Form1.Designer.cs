@@ -741,9 +741,9 @@ namespace Tama_s_BlackJack
             this.label67.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label67.Location = new System.Drawing.Point(6, 69);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(53, 16);
+            this.label67.Size = new System.Drawing.Size(75, 16);
             this.label67.TabIndex = 7;
-            this.label67.Text = "・Skill";
+            this.label67.Text = "・Position";
             // 
             // RankDownLabel
             // 
