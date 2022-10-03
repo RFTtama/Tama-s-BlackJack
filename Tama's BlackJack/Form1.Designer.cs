@@ -738,9 +738,9 @@ namespace Tama_s_BlackJack
             this.label66.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label66.Location = new System.Drawing.Point(15, 48);
             this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(106, 16);
+            this.label66.Size = new System.Drawing.Size(58, 16);
             this.label66.TabIndex = 2;
-            this.label66.Text = "総会員レベル:";
+            this.label66.Text = "レート:";
             // 
             // label64
             // 

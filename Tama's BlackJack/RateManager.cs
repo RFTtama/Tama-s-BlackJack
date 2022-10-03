@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tama_s_BlackJack
 {
     class RateManager
     {
         private int _rate;
-        private const int maxRate = 200;
-        private const int maxIncrease = 10;
         public int rate
         {
             set
@@ -36,37 +31,15 @@ namespace Tama_s_BlackJack
             }
             catch (FileNotFoundException)
             {
-                this._rate = 1;
+                this._rate = 0;
             }
         }
 
         public void CalcRate(float tScore)
         {
-            int score = ((int)tScore / 200) - 2;
-            if(score > maxIncrease)
-            {
-                score = maxIncrease;
-            }
-            if(this._rate + score > maxRate)
-            {
-                this._rate = maxRate;
-            }
-            else if(this._rate + score >= 1)
-            {
-                this._rate += score;
-            }
-            else
-            {
-                this._rate = 1;
-            }
+            _rate += (int)tScore / 3;
             encrypt.Encrypt(this._rate.ToString());
         }
 
-        public float GetDifficultyMagn()
-        {
-            float magn;
-            magn = this._rate * 0.1f;
-            return magn;
-        }
     }
 }
