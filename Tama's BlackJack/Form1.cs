@@ -40,9 +40,7 @@ namespace Tama_s_BlackJack
         private int totalDeal;                                  //合計ディール数
         private int[] cardIndex;                                //次のカード置き場所
         private CardProperties hiddenCard;                      //隠されたカード
-        private int mentalBef;                                  //1ディール前のメンタル
         private int helpDefaultTop;                             //ヘルプパネルの初期位置
-        private bool reaMode;                                   //レアモードか否か
         private int additionalScore = 0;                        //追加t-score
         private int streak = 0;                                 //勢い
 
@@ -84,7 +82,6 @@ namespace Tama_s_BlackJack
             }
             SetStats();
             ButtonLock();
-            this.reaMode = false;
             this.deck = 3;
             this.mental = maxMental;
             this.point = 0;
@@ -93,7 +90,6 @@ namespace Tama_s_BlackJack
             this.pointMagn = 1.0f;
             this.defaultMagn = 1.0f;
             this.mainPoint = 500;
-            this.mentalBef = 0;
             this.helpDefaultTop = HelpPanel.Top;
             this.card = new CardManager();
             this.Cards = new CardProperties[2, maxCards];
@@ -117,12 +113,7 @@ namespace Tama_s_BlackJack
                 { pictureBox1, pictureBox2, pictureBox3, pictureBox4,pictureBox5, pictureBox6, pictureBox7, pictureBox8 },
                 { pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16 }
             };
-            int reaPer = 20;
-            if(rand.Next(0, reaPer) == 0)
-            {
-                this.reaMode = true;
-                DeckPicture.Image = Properties.Resources.card_ura_handmade;
-            }
+            DeckPicture.Image = Properties.Resources.card_ura_handmade;
             SetMemberData();
             MentalLabel.Text = this.mental + "";
             ArrowTimer.Enabled = true;
@@ -175,86 +166,41 @@ namespace Tama_s_BlackJack
                 Panels[0, 1].Visible = true;
             }
             Cards[tag, cardIndex[tag]] = cp;
-            if (reaMode)
+            if (cp.number == 1)
             {
-                if (cp.number == 1)
+                Numbers[tag, cardIndex[tag]].Visible = false;
+                if (rand.Next(9) == 0)
                 {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    if (rand.Next(9) == 0)
-                    {
-                        Pictures[tag, cardIndex[tag]].Image = Properties.Resources.ace_nyan;
-                    }
-                    else
-                    {
-                        Pictures[tag, cardIndex[tag]].Image = Properties.Resources.tamaAce_handmade;
-                    }
-                }
-                else if (cp.number == 11)
-                {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.jack_handmade;
-                }
-                else if (cp.number == 12)
-                {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.queen_handmade;
-                }
-                else if (cp.number == 13)
-                {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.king_handmade;
-                }
-                else if (cp.number == 10 && rand.Next(7) == 0)
-                {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.tenrea;
+                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.ace_nyan;
                 }
                 else
                 {
-                    Numbers[tag, cardIndex[tag]].Text = cp.number + "";
+                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.tamaAce_handmade;
                 }
+            }
+            else if (cp.number == 11)
+            {
+                Numbers[tag, cardIndex[tag]].Visible = false;
+                Pictures[tag, cardIndex[tag]].Image = Properties.Resources.jack_handmade;
+            }
+            else if (cp.number == 12)
+            {
+                Numbers[tag, cardIndex[tag]].Visible = false;
+                Pictures[tag, cardIndex[tag]].Image = Properties.Resources.queen_handmade;
+            }
+            else if (cp.number == 13)
+            {
+                Numbers[tag, cardIndex[tag]].Visible = false;
+                Pictures[tag, cardIndex[tag]].Image = Properties.Resources.king_handmade;
+            }
+            else if (cp.number == 10 && rand.Next(7) == 0)
+            {
+                Numbers[tag, cardIndex[tag]].Visible = false;
+                Pictures[tag, cardIndex[tag]].Image = Properties.Resources.tenrea;
             }
             else
             {
-                if (cp.number == 1)
-                {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    if (rand.Next(9) == 0)
-                    {
-                        Pictures[tag, cardIndex[tag]].Image = Properties.Resources.ace_nyan;
-                    }
-                    else
-                    {
-                        Pictures[tag, cardIndex[tag]].Image = Properties.Resources.tamaAce;
-                    }
-                }
-                else if (cp.number == 11)
-                {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.jack;
-                }
-                else if (cp.number == 12)
-                {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.queen;
-                }
-                else if (cp.number == 13)
-                {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.king;
-                }
-                else if (cp.number == 10 && rand.Next(7) == 0)
-                {
-                    Numbers[tag, cardIndex[tag]].Visible = false;
-                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.tenrea;
-                }
-                else
-                {
-                    this.Invoke(new Action(() =>
-                    {
-                        Numbers[tag, cardIndex[tag]].Text = cp.number + "";
-                    }));
-                }
+                Numbers[tag, cardIndex[tag]].Text = cp.number + "";
             }
             this.Invoke(new Action(() =>
             {
@@ -396,14 +342,7 @@ namespace Tama_s_BlackJack
             hiddenCard = cp;
             Numbers[0, 1].Visible = false;
             Panels[0, 1].Visible = true;
-            if (reaMode)
-            {
-                Pictures[0, 1].Image = Properties.Resources.card_ura_handmade;
-            }
-            else
-            {
-                Pictures[0, 1].Image = Properties.Resources.card_ura;
-            }
+            Pictures[0, 1].Image = Properties.Resources.card_ura_handmade;
             DealerTotalLabel.Text += " ?";
             cardIndex[0]++;
         }
@@ -510,7 +449,6 @@ namespace Tama_s_BlackJack
         {
             ButtonLock();
             this.totalDeal++;
-            this.mentalBef = this.mental;
             if (overFlg[0] && overFlg[1])
             {
                 InformationLabel.Text = "";
