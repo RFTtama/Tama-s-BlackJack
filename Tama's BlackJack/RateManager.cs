@@ -7,7 +7,9 @@ namespace Tama_s_BlackJack
     class RateManager
     {
         private int _rate;
-        private const int MaxRate = 2699;
+        private const int count = 9;
+        public readonly int interval = 300;
+        private readonly int MaxRate;
         public int rate
         {
             set
@@ -24,6 +26,7 @@ namespace Tama_s_BlackJack
         
         public RateManager()
         {
+            MaxRate = interval * count - 1;
             encrypt.fileName = "rateData.dat";
             try
             {

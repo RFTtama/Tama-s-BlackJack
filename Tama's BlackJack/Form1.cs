@@ -940,7 +940,7 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture1.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "スタンダードモード" + LB + "デッキ数: 3" + LB + "クレジット: 200" + LB +
+            ExplainLabel.Text = "スタンダードモード" + LB + LB + "デッキ数: 3" + LB + "クレジット: 200" + LB +
             "賭けクレジット: 10";
             this.deck = 3;
             this.maxMental = 200;
@@ -965,7 +965,7 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture2.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "カジュアルモード" + LB + "デッキ数: 2" + LB + "クレジット: 100" + LB +
+            ExplainLabel.Text = "カジュアルモード" + LB + LB + "デッキ数: 2" + LB + "クレジット: 100" + LB +
             "賭けクレジット: 10";
             this.deck = 2;
             this.maxMental = 100;
@@ -1015,7 +1015,8 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture3.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "Cat's tower" + LB + "デッキ数: 3";
+            ExplainLabel.Text = "Cat's tower" + LB + LB + "デッキ数: 3" + LB + "クレジット: 200" + LB +
+            "賭けクレジット: 10";
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
@@ -1055,18 +1056,20 @@ namespace Tama_s_BlackJack
             "Abandoned Cat Ⅲ"
         };
 
+        /// <summary>
+        /// ランクモードの戦績適用
+        /// </summary>
         private void SetMemberData()
         {
-            int interval = 300;
             MemberLvLabel.Text = rateMan.rate + "";
-            int upRate = (rateMan.rate / interval) * interval + interval;
+            int upRate = (rateMan.rate / rateMan.interval) * rateMan.interval + rateMan.interval;
             upRate = upRate - rateMan.rate - 1;
             RankUpLabel.Text = upRate + "";
-            int downRate = (rateMan.rate / interval) * interval;
+            int downRate = (rateMan.rate / rateMan.interval) * rateMan.interval;
             downRate = rateMan.rate - downRate;
             RankDownLabel.Text = downRate + "";
-            RankPic.Image = rankResources[rateMan.rate / interval];
-            NameLabel.Text = rankNames[rateMan.rate / interval];
+            RankPic.Image = rankResources[rateMan.rate / rateMan.interval];
+            NameLabel.Text = rankNames[rateMan.rate / rateMan.interval];
         }
 
         private void MemberPicture_Click(object sender, EventArgs e)

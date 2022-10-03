@@ -1389,9 +1389,9 @@ namespace Tama_s_BlackJack
             this.ExplainLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.ExplainLabel.Location = new System.Drawing.Point(3, 7);
             this.ExplainLabel.Name = "ExplainLabel";
-            this.ExplainLabel.Size = new System.Drawing.Size(142, 60);
+            this.ExplainLabel.Size = new System.Drawing.Size(142, 75);
             this.ExplainLabel.TabIndex = 0;
-            this.ExplainLabel.Text = "スタンダードモード\r\nデッキ数: 3\r\nクレジット: 200\r\n賭けクレジット: 10";
+            this.ExplainLabel.Text = "スタンダードモード\r\n\r\nデッキ数: 3\r\nクレジット: 200\r\n賭けクレジット: 10";
             // 
             // HelpPanel
             // 
