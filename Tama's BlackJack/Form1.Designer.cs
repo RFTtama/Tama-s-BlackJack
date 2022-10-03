@@ -66,6 +66,12 @@ namespace Tama_s_BlackJack
             this.AdditionalLabel = new System.Windows.Forms.Label();
             this.BustIcon = new System.Windows.Forms.PictureBox();
             this.MemberPanel = new System.Windows.Forms.Panel();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
+            this.RankDownLabel = new System.Windows.Forms.Label();
+            this.RankUpLabel = new System.Windows.Forms.Label();
             this.RankPic = new System.Windows.Forms.PictureBox();
             this.MemberLvLabel = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
@@ -212,12 +218,6 @@ namespace Tama_s_BlackJack
             this.panel19 = new System.Windows.Forms.Panel();
             this.BustIncreaseTimer = new System.Windows.Forms.Timer(this.components);
             this.BustTimer = new System.Windows.Forms.Timer(this.components);
-            this.RankUpLabel = new System.Windows.Forms.Label();
-            this.RankDownLabel = new System.Windows.Forms.Label();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label68 = new System.Windows.Forms.Label();
-            this.label69 = new System.Windows.Forms.Label();
-            this.NameLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -738,6 +738,69 @@ namespace Tama_s_BlackJack
             this.MemberPanel.Size = new System.Drawing.Size(403, 144);
             this.MemberPanel.TabIndex = 48;
             this.MemberPanel.Visible = false;
+            // 
+            // NameLabel
+            // 
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.NameLabel.Location = new System.Drawing.Point(151, 114);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(80, 16);
+            this.NameLabel.TabIndex = 10;
+            this.NameLabel.Text = "Normal Cat";
+            this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label69.Location = new System.Drawing.Point(289, 77);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(77, 16);
+            this.label69.TabIndex = 9;
+            this.label69.Text = "Downgrade";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label68.Location = new System.Drawing.Point(289, 29);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(72, 16);
+            this.label68.TabIndex = 8;
+            this.label68.Text = "Next skill";
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label67.Location = new System.Drawing.Point(168, 35);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(50, 21);
+            this.label67.TabIndex = 7;
+            this.label67.Text = "Skill";
+            // 
+            // RankDownLabel
+            // 
+            this.RankDownLabel.AutoSize = true;
+            this.RankDownLabel.Font = new System.Drawing.Font("Mistral", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RankDownLabel.ForeColor = System.Drawing.Color.Red;
+            this.RankDownLabel.Location = new System.Drawing.Point(303, 101);
+            this.RankDownLabel.Name = "RankDownLabel";
+            this.RankDownLabel.Size = new System.Drawing.Size(25, 29);
+            this.RankDownLabel.TabIndex = 6;
+            this.RankDownLabel.Text = "0";
+            // 
+            // RankUpLabel
+            // 
+            this.RankUpLabel.AutoSize = true;
+            this.RankUpLabel.Font = new System.Drawing.Font("Mistral", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RankUpLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.RankUpLabel.Location = new System.Drawing.Point(303, 51);
+            this.RankUpLabel.Name = "RankUpLabel";
+            this.RankUpLabel.Size = new System.Drawing.Size(25, 29);
+            this.RankUpLabel.TabIndex = 5;
+            this.RankUpLabel.Text = "0";
             // 
             // RankPic
             // 
@@ -2311,69 +2374,6 @@ namespace Tama_s_BlackJack
             // 
             this.BustTimer.Interval = 80;
             this.BustTimer.Tick += new System.EventHandler(this.BustTimer_Tick);
-            // 
-            // RankUpLabel
-            // 
-            this.RankUpLabel.AutoSize = true;
-            this.RankUpLabel.Font = new System.Drawing.Font("NSimSun", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RankUpLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.RankUpLabel.Location = new System.Drawing.Point(303, 51);
-            this.RankUpLabel.Name = "RankUpLabel";
-            this.RankUpLabel.Size = new System.Drawing.Size(23, 24);
-            this.RankUpLabel.TabIndex = 5;
-            this.RankUpLabel.Text = "0";
-            // 
-            // RankDownLabel
-            // 
-            this.RankDownLabel.AutoSize = true;
-            this.RankDownLabel.Font = new System.Drawing.Font("NSimSun", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RankDownLabel.ForeColor = System.Drawing.Color.Red;
-            this.RankDownLabel.Location = new System.Drawing.Point(303, 101);
-            this.RankDownLabel.Name = "RankDownLabel";
-            this.RankDownLabel.Size = new System.Drawing.Size(23, 24);
-            this.RankDownLabel.TabIndex = 6;
-            this.RankDownLabel.Text = "0";
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label67.Location = new System.Drawing.Point(168, 35);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(50, 21);
-            this.label67.TabIndex = 7;
-            this.label67.Text = "Skill";
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label68.Location = new System.Drawing.Point(289, 29);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(78, 16);
-            this.label68.TabIndex = 8;
-            this.label68.Text = "Next stage";
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label69.Location = new System.Drawing.Point(289, 77);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(77, 16);
-            this.label69.TabIndex = 9;
-            this.label69.Text = "Downgrade";
-            // 
-            // NameLabel
-            // 
-            this.NameLabel.AutoSize = true;
-            this.NameLabel.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.NameLabel.Location = new System.Drawing.Point(151, 114);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(80, 16);
-            this.NameLabel.TabIndex = 10;
-            this.NameLabel.Text = "Normal Cat";
-            this.NameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 

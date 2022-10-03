@@ -954,7 +954,7 @@ namespace Tama_s_BlackJack
             SetTabRed();
             TabPicture3.Image = Properties.Resources.point2;
             ExplainLabel.Text = "Cat's tower" + LB + LB + "デッキ数: 3" + LB + "クレジット: 200" + LB +
-            "賭けクレジット: 10";
+            "賭けクレジット: 10" + LB + "高みを目指せ";
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
@@ -1001,7 +1001,7 @@ namespace Tama_s_BlackJack
         {
             MemberLvLabel.Text = rateMan.rate + "";
             int upRate = (rateMan.rate / rateMan.interval) * rateMan.interval + rateMan.interval;
-            upRate = upRate - rateMan.rate - 1;
+            upRate = upRate - rateMan.rate;
             RankUpLabel.Text = upRate + "";
             int downRate = (rateMan.rate / rateMan.interval) * rateMan.interval;
             downRate = rateMan.rate - downRate;
