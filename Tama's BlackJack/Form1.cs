@@ -60,16 +60,21 @@ namespace Tama_s_BlackJack
             this.Width = 775;
             this.Height = 564;
             encryption.fileName = "encryptedData.dat";
+
+            //パネルを初期値に戻す
             HelpParentPanel.Top = this.Height / 2 - HelpParentPanel.Height / 2;
             HelpParentPanel.Left = this.Width / 2 - HelpParentPanel.Width / 2;
             StatPanel.Top = this.Height / 2 - StatPanel.Height / 2;
             StatPanel.Left = this.Width / 2 - StatPanel.Width / 2;
             MemberPanel.Top = this.Height / 2 - MemberPanel.Height / 2;
             MemberPanel.Left = this.Width / 2 - MemberPanel.Width / 2;
+
             rateMan = new RateManager();
             pData = new PlData();
             pData.SetNowGameMode(1);
             saveData = new List<String>();
+
+            //カード柄の設定
             if (rand.Next(100) >= reaPer)
             {
                 aceCardPattern = Properties.Resources.tamaAce;
@@ -88,6 +93,7 @@ namespace Tama_s_BlackJack
                 queenCardPattern = Properties.Resources.queen_handmade;
                 kingCardPattern = Properties.Resources.king_handmade;
             }
+
             try
             {
                 saveData = encryption.Decrypt();
@@ -1244,6 +1250,11 @@ namespace Tama_s_BlackJack
             bustIconCnt++;
         }
 
+        /// <summary>
+        /// ランクリスト用タイマ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RankPreviewTimer_Tick(object sender, EventArgs e)
         {
             RankListFlowPanel.Left--;
@@ -1253,6 +1264,11 @@ namespace Tama_s_BlackJack
             }
         }
 
+        /// <summary>
+        /// ランクリストの表示位置調整機能
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MemberPanel_VisibleChanged(object sender, EventArgs e)
         {
             if (RankListFlowPanel.Right <= RankPreviewPanel.Right) return;
