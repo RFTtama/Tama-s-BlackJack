@@ -80,7 +80,6 @@ namespace Tama_s_BlackJack
             this.RankUpLabel = new System.Windows.Forms.Label();
             this.RankPic = new System.Windows.Forms.PictureBox();
             this.MemberLvLabel = new System.Windows.Forms.Label();
-            this.label66 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -720,16 +719,15 @@ namespace Tama_s_BlackJack
             this.MemberPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.MemberPanel.Controls.Add(this.RankPreviewPanel);
             this.MemberPanel.Controls.Add(this.pictureBox41);
-            this.MemberPanel.Controls.Add(this.label67);
             this.MemberPanel.Controls.Add(this.RankDownLabel);
             this.MemberPanel.Controls.Add(this.RankUpLabel);
             this.MemberPanel.Controls.Add(this.RankPic);
             this.MemberPanel.Controls.Add(this.MemberLvLabel);
-            this.MemberPanel.Controls.Add(this.label66);
             this.MemberPanel.Controls.Add(this.label64);
+            this.MemberPanel.Controls.Add(this.label67);
             this.MemberPanel.Location = new System.Drawing.Point(762, 53);
             this.MemberPanel.Name = "MemberPanel";
-            this.MemberPanel.Size = new System.Drawing.Size(403, 144);
+            this.MemberPanel.Size = new System.Drawing.Size(298, 144);
             this.MemberPanel.TabIndex = 48;
             this.MemberPanel.Visible = false;
             this.MemberPanel.VisibleChanged += new System.EventHandler(this.MemberPanel_VisibleChanged);
@@ -739,7 +737,7 @@ namespace Tama_s_BlackJack
             this.RankPreviewPanel.Controls.Add(this.RankListFlowPanel);
             this.RankPreviewPanel.Location = new System.Drawing.Point(0, 107);
             this.RankPreviewPanel.Name = "RankPreviewPanel";
-            this.RankPreviewPanel.Size = new System.Drawing.Size(400, 35);
+            this.RankPreviewPanel.Size = new System.Drawing.Size(298, 35);
             this.RankPreviewPanel.TabIndex = 16;
             // 
             // pictureBox50
@@ -835,7 +833,7 @@ namespace Tama_s_BlackJack
             // pictureBox41
             // 
             this.pictureBox41.Image = global::Tama_s_BlackJack.Properties.Resources.barcode;
-            this.pictureBox41.Location = new System.Drawing.Point(313, 0);
+            this.pictureBox41.Location = new System.Drawing.Point(208, 2);
             this.pictureBox41.Name = "pictureBox41";
             this.pictureBox41.Size = new System.Drawing.Size(90, 30);
             this.pictureBox41.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -846,11 +844,11 @@ namespace Tama_s_BlackJack
             // 
             this.label67.AutoSize = true;
             this.label67.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label67.Location = new System.Drawing.Point(6, 69);
+            this.label67.Location = new System.Drawing.Point(34, 57);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(76, 16);
+            this.label67.Size = new System.Drawing.Size(63, 32);
             this.label67.TabIndex = 7;
-            this.label67.Text = "・Position";
+            this.label67.Text = "Skill\r\n position";
             // 
             // RankDownLabel
             // 
@@ -869,7 +867,7 @@ namespace Tama_s_BlackJack
             this.RankUpLabel.AutoSize = true;
             this.RankUpLabel.Font = new System.Drawing.Font("Mistral", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RankUpLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.RankUpLabel.Location = new System.Drawing.Point(329, 90);
+            this.RankUpLabel.Location = new System.Drawing.Point(230, 43);
             this.RankUpLabel.Name = "RankUpLabel";
             this.RankUpLabel.Size = new System.Drawing.Size(16, 19);
             this.RankUpLabel.TabIndex = 5;
@@ -891,22 +889,12 @@ namespace Tama_s_BlackJack
             // 
             this.MemberLvLabel.AutoSize = true;
             this.MemberLvLabel.Font = new System.Drawing.Font("Mistral", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MemberLvLabel.Location = new System.Drawing.Point(270, 75);
+            this.MemberLvLabel.Location = new System.Drawing.Point(211, 60);
             this.MemberLvLabel.Name = "MemberLvLabel";
             this.MemberLvLabel.Size = new System.Drawing.Size(25, 29);
             this.MemberLvLabel.TabIndex = 3;
             this.MemberLvLabel.Text = "0";
             this.MemberLvLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label66
-            // 
-            this.label66.AutoSize = true;
-            this.label66.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label66.Location = new System.Drawing.Point(252, 46);
-            this.label66.Name = "label66";
-            this.label66.Size = new System.Drawing.Size(51, 16);
-            this.label66.TabIndex = 2;
-            this.label66.Text = "Height";
             // 
             // label64
             // 
@@ -2819,7 +2807,6 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox MemberPicture;
         private System.Windows.Forms.Panel MemberPanel;
         private System.Windows.Forms.Label MemberLvLabel;
-        private System.Windows.Forms.Label label66;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label MentalLabel;
         private System.Windows.Forms.Panel panel17;

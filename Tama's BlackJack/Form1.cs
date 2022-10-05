@@ -60,12 +60,12 @@ namespace Tama_s_BlackJack
             this.Width = 775;
             this.Height = 564;
             encryption.fileName = "encryptedData.dat";
-            HelpParentPanel.Top = 37;
-            HelpParentPanel.Left = 49;
-            StatPanel.Top = 66;
-            StatPanel.Left = 175;
-            MemberPanel.Top = 168;
-            MemberPanel.Left = 171;
+            HelpParentPanel.Top = this.Height / 2 - HelpParentPanel.Height / 2;
+            HelpParentPanel.Left = this.Width / 2 - HelpParentPanel.Width / 2;
+            StatPanel.Top = this.Height / 2 - StatPanel.Height / 2;
+            StatPanel.Left = this.Width / 2 - StatPanel.Width / 2;
+            MemberPanel.Top = this.Height / 2 - MemberPanel.Height / 2;
+            MemberPanel.Left = this.Width / 2 - MemberPanel.Width / 2;
             rateMan = new RateManager();
             pData = new PlData();
             pData.SetNowGameMode(1);
@@ -760,6 +760,7 @@ namespace Tama_s_BlackJack
         private void DoublePicture_Click(object sender, EventArgs e)
         {
             this.pointMagn *= 2.0f;
+            this.betMagn *= 2.0f;
             SetCard(1, card.DrawCard(), false);
             SetCard(0, hiddenCard, true);
             HitDealerCard();
