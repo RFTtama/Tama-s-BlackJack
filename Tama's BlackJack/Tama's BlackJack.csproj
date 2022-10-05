@@ -79,7 +79,6 @@
   <ItemGroup>
     <Compile Include="BLM.cs" />
     <Compile Include="CardManager.cs" />
-    <Compile Include="CardMover.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

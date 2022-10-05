@@ -10,6 +10,11 @@ namespace Tama_s_BlackJack
     {
         private CardManager cardManager;
 
+        /// <summary>
+        /// 期待値取得(未実装)
+        /// </summary>
+        /// <param name="firstCard"></param>
+        /// <returns></returns>
         public float GetExpectedValue(int firstCard)
         {
             CardNum card = cardManager.GetCardNum();
