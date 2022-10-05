@@ -8,7 +8,7 @@ namespace Tama_s_BlackJack
     {
         private int _rate;
         private const int count = 9;
-        public readonly int interval = 400;
+        public readonly int interval = 300;
         private readonly int MaxRate;
         public int rate
         {
