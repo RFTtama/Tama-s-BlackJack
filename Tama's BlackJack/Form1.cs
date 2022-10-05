@@ -1012,15 +1012,9 @@ namespace Tama_s_BlackJack
         /// </summary>
         private string[] rankNames =
         {
-            "Normal Cat Ⅰ",
-            "Normal Cat Ⅱ",
-            "Normal Cat Ⅲ",
-            "Stray Cat Ⅰ",
-            "Stray Cat Ⅱ",
-            "Stray Cat Ⅲ",
-            "Abandoned Cat Ⅰ",
-            "Abandoned Cat Ⅱ",
-            "Abandoned Cat Ⅲ"
+            "Normal Cat",
+            "Stray Cat",
+            "Abandoned Cat"
         };
 
         /// <summary>
@@ -1036,7 +1030,6 @@ namespace Tama_s_BlackJack
             downRate = rateMan.rate - downRate;
             RankDownLabel.Text = downRate + "";
             RankPic.Image = rankResources[rateMan.rate / rateMan.interval];
-            NameLabel.Text = rankNames[rateMan.rate / rateMan.interval];
         }
 
         private void MemberPicture_Click(object sender, EventArgs e)
@@ -1248,6 +1241,30 @@ namespace Tama_s_BlackJack
             }
             BustIcon.Image = slashResources[bustIconCnt];
             bustIconCnt++;
+        }
+
+        private void RankPreviewTimer_Tick(object sender, EventArgs e)
+        {
+            RankListFlowPanel.Left--;
+            if(RankListFlowPanel.Right <= 0)
+            {
+                RankListFlowPanel.Left = 0;
+            }
+        }
+
+        private void MemberPanel_VisibleChanged(object sender, EventArgs e)
+        {
+            if (RankListFlowPanel.Right <= RankPreviewPanel.Right) return;
+            if (MemberPanel.Visible)
+            {
+                RankListFlowPanel.Left = 0;
+                RankPreviewTimer.Enabled = true;
+            }
+            else
+            {
+                RankListFlowPanel.Left = 0;
+                RankPreviewTimer.Enabled = false;
+            }
         }
     }
 }
