@@ -45,11 +45,11 @@ namespace Tama_s_BlackJack
         private int winStreak = 0;                              //勢い
         private const int reaPer = 10;                          //レア確率
         private Bitmap aceCardPattern;                          //カードの柄(ace)
-        private Bitmap tenCardPattern;
-        private Bitmap backCardPattern;
-        private Bitmap jackCardPattern;
-        private Bitmap queenCardPattern;
-        private Bitmap kingCardPattern;
+        private Bitmap tenCardPattern;                          //カードの柄(ten)
+        private Bitmap backCardPattern;                         //カードの柄(back)
+        private Bitmap jackCardPattern;                         //カードの柄(jack)
+        private Bitmap queenCardPattern;                        //カードの柄(queen)
+        private Bitmap kingCardPattern;                         //カードの柄(king)
 
         /// <summary>
         /// Formコンストラクタ
@@ -991,6 +991,9 @@ namespace Tama_s_BlackJack
             MentalLabel.Text = this.credits + "";
         }
 
+        /// <summary>
+        /// ランクアイコン
+        /// </summary>
         private Bitmap[] rankResources =
         {
             Properties.Resources.neko1_1,
@@ -1004,6 +1007,9 @@ namespace Tama_s_BlackJack
             Properties.Resources.neko2_3
         };
 
+        /// <summary>
+        /// ランク名
+        /// </summary>
         private string[] rankNames =
         {
             "Normal Cat Ⅰ",
