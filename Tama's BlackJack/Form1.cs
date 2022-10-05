@@ -16,14 +16,14 @@ namespace Tama_s_BlackJack
         private Encryption encryption = new Encryption();       //暗号化クラス
         private RateManager rateMan;                            //レート管理
         private PlData pData;                                   //pDataクラス
-        private Panel[,] Panels;           //パネル管理用配列
-        private Label[,] Numbers;          //数字管理用配列
-        private PictureBox[,] Pictures;    //画像管理用配列
+        private Panel[,] Panels;                                //パネル管理用配列
+        private Label[,] Numbers;                               //数字管理用配列
+        private PictureBox[,] Pictures;                         //画像管理用配列
         private string tip;                                     //チップ情報
-        private List<string> sData;                             //セーブデータ保持リスト
+        private List<string> saveData;                          //セーブデータ保持リスト
         private int[] total;                                    //カードの合計値
-        private int playerMinTotal;                             //プレイヤーカードの最低値
-        private double bustPer;                                  //プレイヤーのバスト確率
+        private int playerTotalMin;                             //プレイヤーカードの最低値
+        private double bustPer;                                 //プレイヤーのバスト確率
         private int deck;                                       //デッキの数
         private const double shafflePer = 0.2;                  //何%になったらシャッフルするか
         private const int maxCards = 8;                         //場に出せるカードの最大数
@@ -31,18 +31,19 @@ namespace Tama_s_BlackJack
         private int mainPoint;                                  //配当
         private bool[] bjFlg;                                   //ブラックジャックかどうか
         private bool[] overFlg;                                 //カードが出せる量を超えているかどうか
-        private float magn;                                     //メンタル賭け倍率
+        private float betMagn;                                  //メンタル賭け倍率
         private float pointMagn;                                //ポイント賭け倍率
         private float defaultMagn;                              //初期倍率
-        private int mental;                                     //メンタル
+        private int credits;                                    //メンタル
         private int point;                                      //ポイント
         private int oldPoint;                                   //1ディール前のポイント
         private int totalDeal;                                  //合計ディール数
         private int[] cardIndex;                                //次のカード置き場所
         private CardProperties hiddenCard;                      //隠されたカード
-        private int helpDefaultTop;                             //ヘルプパネルの初期位置
+        private int helpPanelDefaultTopPosition;                //ヘルプパネルの初期位置
         private int additionalScore = 0;                        //追加t-score
-        private int streak = 0;                                 //勢い
+        private int winStreak = 0;                              //勢い
+        private const int reaPer = 10;                          //レア確率
 
         /// <summary>
         /// Formコンストラクタ
@@ -62,10 +63,14 @@ namespace Tama_s_BlackJack
             rateMan = new RateManager();
             pData = new PlData();
             pData.SetNowGameMode(1);
-            sData = new List<String>();
+            saveData = new List<String>();
+            if(rand.Next(100) < reaPer)
+            {
+                //toDo
+            }
             try
             {
-                sData = encryption.Decrypt();
+                saveData = encryption.Decrypt();
             }
             catch(FileNotFoundException)
             {
@@ -75,22 +80,22 @@ namespace Tama_s_BlackJack
             {
                 MessageBox.Show(ex.Message, ex.GetType() + "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            for(int i = 0; i < sData.Count; i++)
+            for(int i = 0; i < saveData.Count; i++)
             {
-                String[] arr = sData[i].Split(',');
+                String[] arr = saveData[i].Split(',');
                 pData.AddData(int.Parse(arr[0]), int.Parse(arr[1]), int.Parse(arr[2]));
             }
             SetStats();
             ButtonLock();
             this.deck = 3;
-            this.mental = maxMental;
+            this.credits = maxMental;
             this.point = 0;
             this.totalDeal = 1;
-            this.magn = 1.0f;
+            this.betMagn = 1.0f;
             this.pointMagn = 1.0f;
             this.defaultMagn = 1.0f;
             this.mainPoint = 500;
-            this.helpDefaultTop = HelpPanel.Top;
+            this.helpPanelDefaultTopPosition = HelpPanel.Top;
             this.card = new CardManager();
             this.Cards = new CardProperties[2, maxCards];
             this.hiddenCard = new CardProperties();
@@ -115,7 +120,7 @@ namespace Tama_s_BlackJack
             };
             DeckPicture.Image = Properties.Resources.card_ura_handmade;
             SetMemberData();
-            MentalLabel.Text = this.mental + "";
+            MentalLabel.Text = this.credits + "";
             ArrowTimer.Enabled = true;
         }
 
@@ -146,7 +151,7 @@ namespace Tama_s_BlackJack
             }
             PlayerTotalLabel.ForeColor = Color.Black;
             DealerTotalLabel.ForeColor = Color.Black;
-            this.magn = this.defaultMagn;
+            this.betMagn = this.defaultMagn;
             this.pointMagn = 1.0f;
         }
 
@@ -207,23 +212,23 @@ namespace Tama_s_BlackJack
                 Panels[tag, cardIndex[tag]].Visible = true;
             }));
             this.total[tag] = 0;
-            this.playerMinTotal = 0;
+            this.playerTotalMin = 0;
             for (int i = 0; i <= cardIndex[tag]; i++)
             {
                 if (Cards[tag, i].number == 1)
                 {
                     this.total[tag] += 11;
-                    this.playerMinTotal += 1;
+                    this.playerTotalMin += 1;
                 }
                 else if (Cards[tag, i].number > 10)
                 {
                     this.total[tag] += 10;
-                    this.playerMinTotal += 10;
+                    this.playerTotalMin += 10;
                 }
                 else
                 {
                     this.total[tag] += Cards[tag, i].number;
-                    this.playerMinTotal += Cards[tag, i].number;
+                    this.playerTotalMin += Cards[tag, i].number;
                 }
             }
             for (int i = 0; i <= cardIndex[tag]; i++)
@@ -364,7 +369,7 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void MentalCheck()
         {
-            MentalLabel.Text = this.mental + "";
+            MentalLabel.Text = this.credits + "";
             float me = maxMental;
             float avgDmg = me / this.totalDeal;
             float Pt = (float)this.point / 100.0f;
@@ -373,7 +378,7 @@ namespace Tama_s_BlackJack
             if (tScore < 0) tScore = 0;
             tScore += this.additionalScore;
             TscoreLabel.Text = "T-Score: " + (int)tScore;
-            if (this.mental <= 0)
+            if (this.credits <= 0)
             {
                 ButtonLock();
                 DealButton.Enabled = false;
@@ -385,11 +390,11 @@ namespace Tama_s_BlackJack
                     {
                         sw.WriteLine("Coins: " + this.point + " T-Score " + (int)tScore);
                     }
-                    sData.Add(this.point + "," + (int)tScore + "," + pData.GetNowGameMode());
+                    saveData.Add(this.point + "," + (int)tScore + "," + pData.GetNowGameMode());
                     String fullData = String.Empty;
-                    for(int i = 0; i < sData.Count; i++)
+                    for(int i = 0; i < saveData.Count; i++)
                     {
-                        fullData += sData[i] + LB;
+                        fullData += saveData[i] + LB;
                     }
                     encryption.Encrypt(fullData);
                 }
@@ -451,15 +456,15 @@ namespace Tama_s_BlackJack
             {
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Misfortune push";
-               this. streak = 0;
+               this. winStreak = 0;
             }
             else if (overFlg[0])
             {
                 Slash(true);
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer's misfortune";
-                this.mental -= (int)(10 * magn);
-                this.streak = 0;
+                this.credits -= (int)(10 * betMagn);
+                this.winStreak = 0;
             }
             else if (overFlg[1])
             {
@@ -472,11 +477,11 @@ namespace Tama_s_BlackJack
                 {
                     SetAdditionalScore(5, "Smart");
                 }
-                if(streak > 0)
+                if(winStreak > 0)
                 {
-                    SetAdditionalScore(this.streak * 3, "Streak bonus");
+                    SetAdditionalScore(this.winStreak * 3, "Streak bonus");
                 }
-                this.streak++;
+                this.winStreak++;
             }
             else if(total[1] > 21)
             {
@@ -484,8 +489,8 @@ namespace Tama_s_BlackJack
                 BustTimer.Enabled = true;
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Player's bust";
-                this.mental -= (int)(10 * magn);
-                this.streak = 0;
+                this.credits -= (int)(10 * betMagn);
+                this.winStreak = 0;
             }
             else if(total[0] > 21)
             {
@@ -497,24 +502,24 @@ namespace Tama_s_BlackJack
                 {
                     SetAdditionalScore(5, "Smart");
                 }
-                if (streak > 0)
+                if (winStreak > 0)
                 {
-                    SetAdditionalScore(this.streak * 3, "Streak bonus");
+                    SetAdditionalScore(this.winStreak * 3, "Streak bonus");
                 }
-                this.streak++;
+                this.winStreak++;
             }
             else if(bjFlg[0] && bjFlg[1])
             {
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Blackjack push";
-                this.streak = 0;
+                this.winStreak = 0;
             }else if (bjFlg[0])
             {
                 Slash(true);
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer's Blackjack";
-                this.mental -= (int)(10 * magn);
-                this.streak = 0;
+                this.credits -= (int)(10 * betMagn);
+                this.winStreak = 0;
             }
             else if (bjFlg[1])
             {
@@ -522,19 +527,19 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Player's Blackjack";
                 PlusPoint((int)(mainPoint * 1.50));
-                if (streak > 0)
+                if (winStreak > 0)
                 {
-                    SetAdditionalScore(this.streak * 3, "Streak bonus");
+                    SetAdditionalScore(this.winStreak * 3, "Streak bonus");
                 }
-                this.streak++;
+                this.winStreak++;
             }
             else if(total[0] > total[1])
             {
                 Slash(true);
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer wins";
-                this.mental -= (int)(10 * magn);
-                this.streak = 0;
+                this.credits -= (int)(10 * betMagn);
+                this.winStreak = 0;
             }
             else if(total[1] > total[0])
             {
@@ -546,17 +551,17 @@ namespace Tama_s_BlackJack
                 {
                     SetAdditionalScore(5, "Smart");
                 }
-                if (streak > 0)
+                if (winStreak > 0)
                 {
-                    SetAdditionalScore(this.streak * 3, "Streak bonus");
+                    SetAdditionalScore(this.winStreak * 3, "Streak bonus");
                 }
-                this.streak++;
+                this.winStreak++;
             }
             else
             {
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Push";
-                this.streak = 0;
+                this.winStreak = 0;
             }
             MentalCheck();
         }
@@ -696,7 +701,7 @@ namespace Tama_s_BlackJack
             int remainingCard = 0;
             for (int i = 0; i < 9; i++)
             {
-                if (playerMinTotal + (i + 1) > 21)
+                if (playerTotalMin + (i + 1) > 21)
                 {
                     per += card.GetCardDrawPer(i) * 100.0;
                     remainingCard += card.GetRemainingCard(i);
@@ -704,7 +709,7 @@ namespace Tama_s_BlackJack
             }
             for (int i = 9; i < 13; i++)
             {
-                if (playerMinTotal + 10 > 21)
+                if (playerTotalMin + 10 > 21)
                 {
                     per += card.GetCardDrawPer(i) * 100.0;
                     remainingCard += card.GetRemainingCard(i);
@@ -757,7 +762,7 @@ namespace Tama_s_BlackJack
             else
             {
                 InsurancePicture.Visible = false;
-                this.mental -= 5;
+                this.credits -= 5;
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Insurance failure";
                 MentalCheck();
@@ -776,8 +781,8 @@ namespace Tama_s_BlackJack
             SetCard(0, hiddenCard, true);
             InformationLabel.Text = "";
             InformationLabel.Text = "You surrendered";
-            this.mental -= 5;
-            this.streak = 0;
+            this.credits -= 5;
+            this.winStreak = 0;
             SetAdditionalScore(-5, "Nope");
             MentalCheck();
         }
@@ -881,15 +886,15 @@ namespace Tama_s_BlackJack
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
-            this.mental = this.maxMental;
+            this.credits = this.maxMental;
             this.defaultMagn = 1.0f;
-            this.magn = this.defaultMagn;
+            this.betMagn = this.defaultMagn;
             pData.SetNowGameMode(1);
             this.BackgroundImage = Properties.Resources.playmat_green1;
             MemberPicture.Visible = false;
             MemberPanel.Visible = false;
             SetStats();
-            MentalLabel.Text = this.mental + "";
+            MentalLabel.Text = this.credits + "";
         }
 
         /// <summary>
@@ -906,15 +911,15 @@ namespace Tama_s_BlackJack
             this.deck = 2;
             this.maxMental = 100;
             this.mainPoint = 1000;
-            this.mental = this.maxMental;
+            this.credits = this.maxMental;
             this.defaultMagn = 1.0f;
-            this.magn = this.defaultMagn;
+            this.betMagn = this.defaultMagn;
             this.BackgroundImage = Properties.Resources.playmat_green1;
             pData.SetNowGameMode(2);
             MemberPicture.Visible = false;
             MemberPanel.Visible = false;
             SetStats();
-            MentalLabel.Text = this.mental + "";
+            MentalLabel.Text = this.credits + "";
         }
 
         /// <summary>
@@ -944,7 +949,7 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void HelpScrollBar_Scroll_1(object sender, ScrollEventArgs e)
         {
-            HelpPanel.Top = this.helpDefaultTop - HelpScrollBar.Value;
+            HelpPanel.Top = this.helpPanelDefaultTopPosition - HelpScrollBar.Value;
         }
 
         private void TabPicture3_Click(object sender, EventArgs e)
@@ -956,14 +961,14 @@ namespace Tama_s_BlackJack
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
-            this.mental = this.maxMental;
+            this.credits = this.maxMental;
             this.defaultMagn = 1.0f;
-            this.magn = this.defaultMagn;
+            this.betMagn = this.defaultMagn;
             pData.SetNowGameMode(3);
             this.BackgroundImage = Properties.Resources.playmat_green1;
             MemberPicture.Visible = true;
             SetStats();
-            MentalLabel.Text = this.mental + "";
+            MentalLabel.Text = this.credits + "";
         }
 
         private Bitmap[] rankResources =

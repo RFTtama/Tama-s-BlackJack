@@ -26,4 +26,3 @@ C:\Users\rft_k\Source\Repos\Tama-s-BlackJack\Tama's BlackJack\obj\Debug\Tama's B
 C:\Users\rft_k\Source\Repos\Tama-s-BlackJack\Tama's BlackJack\obj\Debug\Tama's BlackJack.application
 C:\Users\rft_k\Source\Repos\Tama-s-BlackJack\Tama's BlackJack\obj\Debug\Tama's BlackJack.exe
 C:\Users\rft_k\Source\Repos\Tama-s-BlackJack\Tama's BlackJack\obj\Debug\Tama's BlackJack.pdb
-C:\Users\rft_k\Source\Repos\Tama-s-BlackJack\Tama's BlackJack\obj\Debug\Tama's BlackJack.csproj.SuggestedBindingRedirects.cache
