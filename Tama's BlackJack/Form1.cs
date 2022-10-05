@@ -44,6 +44,12 @@ namespace Tama_s_BlackJack
         private int additionalScore = 0;                        //追加t-score
         private int winStreak = 0;                              //勢い
         private const int reaPer = 10;                          //レア確率
+        private Bitmap aceCardPattern;                          //カードの柄(ace)
+        private Bitmap tenCardPattern;
+        private Bitmap backCardPattern;
+        private Bitmap jackCardPattern;
+        private Bitmap queenCardPattern;
+        private Bitmap kingCardPattern;
 
         /// <summary>
         /// Formコンストラクタ
@@ -64,9 +70,23 @@ namespace Tama_s_BlackJack
             pData = new PlData();
             pData.SetNowGameMode(1);
             saveData = new List<String>();
-            if(rand.Next(100) < reaPer)
+            if (rand.Next(100) >= reaPer)
             {
-                //toDo
+                aceCardPattern = Properties.Resources.tamaAce;
+                backCardPattern = Properties.Resources.card_ura;
+                tenCardPattern = Properties.Resources.tenrea;
+                jackCardPattern = Properties.Resources.jack;
+                queenCardPattern = Properties.Resources.queen;
+                kingCardPattern = Properties.Resources.king;
+            }
+            else
+            {
+                aceCardPattern = Properties.Resources.tamaAce_handmade;
+                backCardPattern = Properties.Resources.card_ura_handmade;
+                tenCardPattern = Properties.Resources.tenrea;
+                jackCardPattern = Properties.Resources.jack_handmade;
+                queenCardPattern = Properties.Resources.queen_handmade;
+                kingCardPattern = Properties.Resources.king_handmade;
             }
             try
             {
@@ -118,7 +138,7 @@ namespace Tama_s_BlackJack
                 { pictureBox1, pictureBox2, pictureBox3, pictureBox4,pictureBox5, pictureBox6, pictureBox7, pictureBox8 },
                 { pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16 }
             };
-            DeckPicture.Image = Properties.Resources.card_ura_handmade;
+            DeckPicture.Image = backCardPattern;
             SetMemberData();
             MentalLabel.Text = this.credits + "";
             ArrowTimer.Enabled = true;
@@ -180,28 +200,28 @@ namespace Tama_s_BlackJack
                 }
                 else
                 {
-                    Pictures[tag, cardIndex[tag]].Image = Properties.Resources.tamaAce_handmade;
+                    Pictures[tag, cardIndex[tag]].Image = aceCardPattern;
                 }
             }
             else if (cp.number == 11)
             {
                 Numbers[tag, cardIndex[tag]].Visible = false;
-                Pictures[tag, cardIndex[tag]].Image = Properties.Resources.jack_handmade;
+                Pictures[tag, cardIndex[tag]].Image = jackCardPattern;
             }
             else if (cp.number == 12)
             {
                 Numbers[tag, cardIndex[tag]].Visible = false;
-                Pictures[tag, cardIndex[tag]].Image = Properties.Resources.queen_handmade;
+                Pictures[tag, cardIndex[tag]].Image = queenCardPattern;
             }
             else if (cp.number == 13)
             {
                 Numbers[tag, cardIndex[tag]].Visible = false;
-                Pictures[tag, cardIndex[tag]].Image = Properties.Resources.king_handmade;
+                Pictures[tag, cardIndex[tag]].Image = kingCardPattern;
             }
             else if (cp.number == 10 && rand.Next(7) == 0)
             {
                 Numbers[tag, cardIndex[tag]].Visible = false;
-                Pictures[tag, cardIndex[tag]].Image = Properties.Resources.tenrea;
+                Pictures[tag, cardIndex[tag]].Image = tenCardPattern;
             }
             else
             {
@@ -263,7 +283,7 @@ namespace Tama_s_BlackJack
                         }));
                         bjFlg[0] = true;
                         DealerTotalLabel.ForeColor = Color.Red;
-                        if (Pictures[0, 0].Image == Properties.Resources.tenrea)
+                        if (Pictures[0, 0].Image == tenCardPattern)
                         {
                             ColorTimer.Enabled = true;
                         }
@@ -293,7 +313,7 @@ namespace Tama_s_BlackJack
                         }));
                         bjFlg[1] = true;
                         PlayerTotalLabel.ForeColor = Color.Red;
-                        if (Pictures[1, 0].Image == Properties.Resources.tenrea)
+                        if (Pictures[1, 0].Image == tenCardPattern)
                         {
                             ColorTimer.Enabled = true;
                         }
@@ -347,7 +367,7 @@ namespace Tama_s_BlackJack
             hiddenCard = cp;
             Numbers[0, 1].Visible = false;
             Panels[0, 1].Visible = true;
-            Pictures[0, 1].Image = Properties.Resources.card_ura_handmade;
+            Pictures[0, 1].Image = backCardPattern;
             DealerTotalLabel.Text += " ?";
             cardIndex[0]++;
         }
