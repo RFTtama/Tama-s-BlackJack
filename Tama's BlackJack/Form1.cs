@@ -602,7 +602,7 @@ namespace Tama_s_BlackJack
         {
             this.oldPoint = this.point;
             this.point += (int)(value * this.pointMagn);
-            this.point += (int)(total[1] * mainPoint / 50);
+            if(pData.GetNowGameMode() == 3)this.point += (int)(total[1] * mainPoint / 50);
             this.PointLabel.ForeColor = Color.Red;
             PointTimer.Enabled = true;
         }
@@ -986,8 +986,7 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture3.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "Cat's tower " + LB + "- placement" + LB + LB + "Decks: 3" + LB + "Credits: 200" + LB +
-            "Bets: 10";
+            ExplainLabel.Text = "Cat's tower " + LB + LB + "勝った際に手札が強いほど" + LB + "もらえるポイントが増額";
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
