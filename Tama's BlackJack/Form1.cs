@@ -986,7 +986,7 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture3.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "Cat's tower " + LB + LB + "勝った際に手札が強いほど" + LB + "もらえるポイントが増額";
+            ExplainLabel.Text = "Cat's tower " + LB + LB + "勝った際に手札が強いほど" + LB + "もらえるコインが増額";
             this.deck = 3;
             this.maxMental = 200;
             this.mainPoint = 500;
