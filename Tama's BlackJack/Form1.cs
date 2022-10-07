@@ -50,6 +50,7 @@ namespace Tama_s_BlackJack
         private Bitmap jackCardPattern;                         //カードの柄(jack)
         private Bitmap queenCardPattern;                        //カードの柄(queen)
         private Bitmap kingCardPattern;                         //カードの柄(king)
+        private int totalSurrender = 0;                             //サレンダー回数
 
         /// <summary>
         /// Formコンストラクタ
@@ -601,6 +602,7 @@ namespace Tama_s_BlackJack
         {
             this.oldPoint = this.point;
             this.point += (int)(value * this.pointMagn);
+            this.point += (int)(total[1] * mainPoint / 50);
             this.PointLabel.ForeColor = Color.Red;
             PointTimer.Enabled = true;
         }
@@ -810,7 +812,8 @@ namespace Tama_s_BlackJack
             InformationLabel.Text = "You surrendered";
             this.credits -= 5;
             this.winStreak = 0;
-            SetAdditionalScore(-5, "Nope");
+            SetAdditionalScore(totalSurrender * -5, "Nope");
+            totalSurrender++;
             MentalCheck();
         }
 
@@ -1169,6 +1172,7 @@ namespace Tama_s_BlackJack
         /// <param name="text">テキスト</param>
         private void SetAdditionalScore(int score, string text)
         {
+            if (score == 0) return;
             if(score > 0)
             {
                 this.AdditionalLabel.Text = "+" + score + " " + text;
