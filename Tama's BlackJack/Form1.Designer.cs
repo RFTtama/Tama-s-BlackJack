@@ -221,12 +221,10 @@ namespace Tama_s_BlackJack
             this.BustPerLabel = new System.Windows.Forms.Label();
             this.SlashPlPic = new System.Windows.Forms.PictureBox();
             this.SlashRevPlPic = new System.Windows.Forms.PictureBox();
-            this.panel19 = new System.Windows.Forms.Panel();
             this.BustIncreaseTimer = new System.Windows.Forms.Timer(this.components);
             this.BustTimer = new System.Windows.Forms.Timer(this.components);
             this.RankPreviewTimer = new System.Windows.Forms.Timer(this.components);
             this.ImportantNoticeLabel = new System.Windows.Forms.Label();
-            this.ImportantNoticeTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -2306,7 +2304,7 @@ namespace Tama_s_BlackJack
             // 
             // ArrowPicture
             // 
-            this.ArrowPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.ArrowPicture.BackColor = System.Drawing.Color.Transparent;
             this.ArrowPicture.Image = ((System.Drawing.Image)(resources.GetObject("ArrowPicture.Image")));
             this.ArrowPicture.Location = new System.Drawing.Point(679, 182);
             this.ArrowPicture.Name = "ArrowPicture";
@@ -2437,14 +2435,6 @@ namespace Tama_s_BlackJack
             this.SlashRevPlPic.TabStop = false;
             this.SlashRevPlPic.Visible = false;
             // 
-            // panel19
-            // 
-            this.panel19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.panel19.Location = new System.Drawing.Point(524, 175);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(221, 325);
-            this.panel19.TabIndex = 60;
-            // 
             // BustIncreaseTimer
             // 
             this.BustIncreaseTimer.Interval = 5;
@@ -2461,20 +2451,15 @@ namespace Tama_s_BlackJack
             // 
             // ImportantNoticeLabel
             // 
-            this.ImportantNoticeLabel.AutoSize = true;
             this.ImportantNoticeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ImportantNoticeLabel.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImportantNoticeLabel.Font = new System.Drawing.Font("Mistral", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ImportantNoticeLabel.ForeColor = System.Drawing.Color.Red;
             this.ImportantNoticeLabel.Location = new System.Drawing.Point(940, 8);
             this.ImportantNoticeLabel.Name = "ImportantNoticeLabel";
-            this.ImportantNoticeLabel.Size = new System.Drawing.Size(124, 57);
+            this.ImportantNoticeLabel.Size = new System.Drawing.Size(250, 114);
             this.ImportantNoticeLabel.TabIndex = 61;
             this.ImportantNoticeLabel.Text = "notice";
-            // 
-            // ImportantNoticeTimer
-            // 
-            this.ImportantNoticeTimer.Interval = 50;
-            this.ImportantNoticeTimer.Tick += new System.EventHandler(this.ImportantNoticeTimer_Tick);
+            this.ImportantNoticeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
@@ -2533,7 +2518,6 @@ namespace Tama_s_BlackJack
             this.Controls.Add(this.AdditionalLabel);
             this.Controls.Add(this.TscoreLabel);
             this.Controls.Add(this.pictureBox17);
-            this.Controls.Add(this.panel19);
             this.Controls.Add(this.BustIcon);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -2841,7 +2825,6 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox BustIcon;
         private System.Windows.Forms.PictureBox SlashPlPic;
         private System.Windows.Forms.PictureBox SlashRevPlPic;
-        private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Timer BustIncreaseTimer;
         private System.Windows.Forms.Timer BustTimer;
         private System.Windows.Forms.PictureBox RankPic;
@@ -2862,7 +2845,6 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.Timer RankPreviewTimer;
         private System.Windows.Forms.FlowLayoutPanel RankListFlowPanel;
         private System.Windows.Forms.Label ImportantNoticeLabel;
-        private System.Windows.Forms.Timer ImportantNoticeTimer;
     }
 }
 

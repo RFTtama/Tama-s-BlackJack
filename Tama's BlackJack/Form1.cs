@@ -545,7 +545,6 @@ namespace Tama_s_BlackJack
                 Slash(true);
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer's Blackjack";
-                SetImportantNotice("Black Jack!");
                 this.credits -= (int)(10 * betMagn);
                 this.winStreak = 0;
             }
@@ -554,7 +553,6 @@ namespace Tama_s_BlackJack
                 Slash(false);
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Player's Blackjack";
-                SetImportantNotice("Black Jack!");
                 PlusPoint((int)(mainPoint * 1.50));
                 if (winStreak > 0)
                 {
@@ -1287,35 +1285,6 @@ namespace Tama_s_BlackJack
                 RankListFlowPanel.Left = 0;
                 RankPreviewTimer.Enabled = false;
             }
-        }
-
-        private string noticePlaneText = string.Empty;
-
-        private void SetImportantNotice(string notice)
-        {
-            ImportantNoticeLabel.Top = this.Height / 2 - ImportantNoticeLabel.Height / 2;
-            noticeCnt = 0;
-            ImportantNoticeLabel.Text = string.Empty;
-            noticePlaneText = notice;
-            ImportantNoticeTimer.Enabled = true;
-        }
-
-        private int noticeCnt = 0;
-        private void ImportantNoticeTimer_Tick(object sender, EventArgs e)
-        {
-            if(noticeCnt >= noticePlaneText.Length + 20)
-            {
-                ImportantNoticeTimer.Enabled = false;
-                ImportantNoticeLabel.Text = string.Empty;
-                return;
-            }
-            else if (noticeCnt >= noticePlaneText.Length)
-            {
-                return;
-            }
-            ImportantNoticeLabel.Left = this.Width / 2 - ImportantNoticeLabel.Width / 2;
-            ImportantNoticeLabel.Text += noticePlaneText[noticeCnt];
-            noticeCnt++;
         }
     }
 }
