@@ -65,22 +65,23 @@ namespace Tama_s_BlackJack
             this.TabPicture1 = new System.Windows.Forms.PictureBox();
             this.MemberPanel = new System.Windows.Forms.Panel();
             this.RankPreviewPanel = new System.Windows.Forms.Panel();
-            this.pictureBox50 = new System.Windows.Forms.PictureBox();
-            this.pictureBox49 = new System.Windows.Forms.PictureBox();
-            this.pictureBox48 = new System.Windows.Forms.PictureBox();
-            this.pictureBox47 = new System.Windows.Forms.PictureBox();
-            this.pictureBox46 = new System.Windows.Forms.PictureBox();
-            this.pictureBox45 = new System.Windows.Forms.PictureBox();
+            this.RankListFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox42 = new System.Windows.Forms.PictureBox();
-            this.pictureBox44 = new System.Windows.Forms.PictureBox();
             this.pictureBox43 = new System.Windows.Forms.PictureBox();
+            this.pictureBox44 = new System.Windows.Forms.PictureBox();
+            this.pictureBox45 = new System.Windows.Forms.PictureBox();
+            this.pictureBox46 = new System.Windows.Forms.PictureBox();
+            this.pictureBox47 = new System.Windows.Forms.PictureBox();
+            this.pictureBox48 = new System.Windows.Forms.PictureBox();
+            this.pictureBox49 = new System.Windows.Forms.PictureBox();
+            this.pictureBox50 = new System.Windows.Forms.PictureBox();
             this.pictureBox41 = new System.Windows.Forms.PictureBox();
-            this.label67 = new System.Windows.Forms.Label();
             this.RankDownLabel = new System.Windows.Forms.Label();
             this.RankUpLabel = new System.Windows.Forms.Label();
             this.RankPic = new System.Windows.Forms.PictureBox();
             this.MemberLvLabel = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
+            this.label67 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -224,7 +225,8 @@ namespace Tama_s_BlackJack
             this.BustIncreaseTimer = new System.Windows.Forms.Timer(this.components);
             this.BustTimer = new System.Windows.Forms.Timer(this.components);
             this.RankPreviewTimer = new System.Windows.Forms.Timer(this.components);
-            this.RankListFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.ImportantNoticeLabel = new System.Windows.Forms.Label();
+            this.ImportantNoticeTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -240,15 +242,16 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture1)).BeginInit();
             this.MemberPanel.SuspendLayout();
             this.RankPreviewPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).BeginInit();
+            this.RankListFlowPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RankPic)).BeginInit();
             this.panel1.SuspendLayout();
@@ -319,7 +322,6 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPlPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPlPic)).BeginInit();
-            this.RankListFlowPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // DealButton
@@ -740,65 +742,22 @@ namespace Tama_s_BlackJack
             this.RankPreviewPanel.Size = new System.Drawing.Size(298, 35);
             this.RankPreviewPanel.TabIndex = 16;
             // 
-            // pictureBox50
+            // RankListFlowPanel
             // 
-            this.pictureBox50.Image = global::Tama_s_BlackJack.Properties.Resources.neko2_3;
-            this.pictureBox50.Location = new System.Drawing.Point(251, 3);
-            this.pictureBox50.Name = "pictureBox50";
-            this.pictureBox50.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox50.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox50.TabIndex = 17;
-            this.pictureBox50.TabStop = false;
-            // 
-            // pictureBox49
-            // 
-            this.pictureBox49.Image = global::Tama_s_BlackJack.Properties.Resources.neko2_2;
-            this.pictureBox49.Location = new System.Drawing.Point(220, 3);
-            this.pictureBox49.Name = "pictureBox49";
-            this.pictureBox49.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox49.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox49.TabIndex = 17;
-            this.pictureBox49.TabStop = false;
-            // 
-            // pictureBox48
-            // 
-            this.pictureBox48.Image = global::Tama_s_BlackJack.Properties.Resources.neko2_1;
-            this.pictureBox48.Location = new System.Drawing.Point(189, 3);
-            this.pictureBox48.Name = "pictureBox48";
-            this.pictureBox48.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox48.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox48.TabIndex = 17;
-            this.pictureBox48.TabStop = false;
-            // 
-            // pictureBox47
-            // 
-            this.pictureBox47.Image = global::Tama_s_BlackJack.Properties.Resources.neko3_3;
-            this.pictureBox47.Location = new System.Drawing.Point(158, 3);
-            this.pictureBox47.Name = "pictureBox47";
-            this.pictureBox47.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox47.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox47.TabIndex = 16;
-            this.pictureBox47.TabStop = false;
-            // 
-            // pictureBox46
-            // 
-            this.pictureBox46.Image = global::Tama_s_BlackJack.Properties.Resources.neko3_2;
-            this.pictureBox46.Location = new System.Drawing.Point(127, 3);
-            this.pictureBox46.Name = "pictureBox46";
-            this.pictureBox46.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox46.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox46.TabIndex = 16;
-            this.pictureBox46.TabStop = false;
-            // 
-            // pictureBox45
-            // 
-            this.pictureBox45.Image = global::Tama_s_BlackJack.Properties.Resources.neko3_1;
-            this.pictureBox45.Location = new System.Drawing.Point(96, 3);
-            this.pictureBox45.Name = "pictureBox45";
-            this.pictureBox45.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox45.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox45.TabIndex = 15;
-            this.pictureBox45.TabStop = false;
+            this.RankListFlowPanel.BackColor = System.Drawing.Color.Transparent;
+            this.RankListFlowPanel.Controls.Add(this.pictureBox42);
+            this.RankListFlowPanel.Controls.Add(this.pictureBox43);
+            this.RankListFlowPanel.Controls.Add(this.pictureBox44);
+            this.RankListFlowPanel.Controls.Add(this.pictureBox45);
+            this.RankListFlowPanel.Controls.Add(this.pictureBox46);
+            this.RankListFlowPanel.Controls.Add(this.pictureBox47);
+            this.RankListFlowPanel.Controls.Add(this.pictureBox48);
+            this.RankListFlowPanel.Controls.Add(this.pictureBox49);
+            this.RankListFlowPanel.Controls.Add(this.pictureBox50);
+            this.RankListFlowPanel.Location = new System.Drawing.Point(0, 4);
+            this.RankListFlowPanel.Name = "RankListFlowPanel";
+            this.RankListFlowPanel.Size = new System.Drawing.Size(279, 27);
+            this.RankListFlowPanel.TabIndex = 61;
             // 
             // pictureBox42
             // 
@@ -810,16 +769,6 @@ namespace Tama_s_BlackJack
             this.pictureBox42.TabIndex = 12;
             this.pictureBox42.TabStop = false;
             // 
-            // pictureBox44
-            // 
-            this.pictureBox44.Image = global::Tama_s_BlackJack.Properties.Resources.neko1_3;
-            this.pictureBox44.Location = new System.Drawing.Point(65, 3);
-            this.pictureBox44.Name = "pictureBox44";
-            this.pictureBox44.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox44.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox44.TabIndex = 14;
-            this.pictureBox44.TabStop = false;
-            // 
             // pictureBox43
             // 
             this.pictureBox43.Image = global::Tama_s_BlackJack.Properties.Resources.neko1_2;
@@ -830,6 +779,76 @@ namespace Tama_s_BlackJack
             this.pictureBox43.TabIndex = 13;
             this.pictureBox43.TabStop = false;
             // 
+            // pictureBox44
+            // 
+            this.pictureBox44.Image = global::Tama_s_BlackJack.Properties.Resources.neko1_3;
+            this.pictureBox44.Location = new System.Drawing.Point(65, 3);
+            this.pictureBox44.Name = "pictureBox44";
+            this.pictureBox44.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox44.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox44.TabIndex = 14;
+            this.pictureBox44.TabStop = false;
+            // 
+            // pictureBox45
+            // 
+            this.pictureBox45.Image = global::Tama_s_BlackJack.Properties.Resources.neko3_1;
+            this.pictureBox45.Location = new System.Drawing.Point(96, 3);
+            this.pictureBox45.Name = "pictureBox45";
+            this.pictureBox45.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox45.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox45.TabIndex = 15;
+            this.pictureBox45.TabStop = false;
+            // 
+            // pictureBox46
+            // 
+            this.pictureBox46.Image = global::Tama_s_BlackJack.Properties.Resources.neko3_2;
+            this.pictureBox46.Location = new System.Drawing.Point(127, 3);
+            this.pictureBox46.Name = "pictureBox46";
+            this.pictureBox46.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox46.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox46.TabIndex = 16;
+            this.pictureBox46.TabStop = false;
+            // 
+            // pictureBox47
+            // 
+            this.pictureBox47.Image = global::Tama_s_BlackJack.Properties.Resources.neko3_3;
+            this.pictureBox47.Location = new System.Drawing.Point(158, 3);
+            this.pictureBox47.Name = "pictureBox47";
+            this.pictureBox47.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox47.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox47.TabIndex = 16;
+            this.pictureBox47.TabStop = false;
+            // 
+            // pictureBox48
+            // 
+            this.pictureBox48.Image = global::Tama_s_BlackJack.Properties.Resources.neko2_1;
+            this.pictureBox48.Location = new System.Drawing.Point(189, 3);
+            this.pictureBox48.Name = "pictureBox48";
+            this.pictureBox48.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox48.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox48.TabIndex = 17;
+            this.pictureBox48.TabStop = false;
+            // 
+            // pictureBox49
+            // 
+            this.pictureBox49.Image = global::Tama_s_BlackJack.Properties.Resources.neko2_2;
+            this.pictureBox49.Location = new System.Drawing.Point(220, 3);
+            this.pictureBox49.Name = "pictureBox49";
+            this.pictureBox49.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox49.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox49.TabIndex = 17;
+            this.pictureBox49.TabStop = false;
+            // 
+            // pictureBox50
+            // 
+            this.pictureBox50.Image = global::Tama_s_BlackJack.Properties.Resources.neko2_3;
+            this.pictureBox50.Location = new System.Drawing.Point(251, 3);
+            this.pictureBox50.Name = "pictureBox50";
+            this.pictureBox50.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox50.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox50.TabIndex = 17;
+            this.pictureBox50.TabStop = false;
+            // 
             // pictureBox41
             // 
             this.pictureBox41.Image = global::Tama_s_BlackJack.Properties.Resources.barcode;
@@ -839,16 +858,6 @@ namespace Tama_s_BlackJack
             this.pictureBox41.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox41.TabIndex = 11;
             this.pictureBox41.TabStop = false;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label67.Location = new System.Drawing.Point(34, 57);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(63, 32);
-            this.label67.TabIndex = 7;
-            this.label67.Text = "Skill\r\n position";
             // 
             // RankDownLabel
             // 
@@ -905,6 +914,16 @@ namespace Tama_s_BlackJack
             this.label64.Size = new System.Drawing.Size(97, 19);
             this.label64.TabIndex = 0;
             this.label64.Text = "Cat\'s tower";
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label67.Location = new System.Drawing.Point(34, 57);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(62, 32);
+            this.label67.TabIndex = 7;
+            this.label67.Text = "Skill\r\n position";
             // 
             // panel1
             // 
@@ -1425,7 +1444,7 @@ namespace Tama_s_BlackJack
             this.InformationLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.InformationLabel.Location = new System.Drawing.Point(54, 2);
             this.InformationLabel.Name = "InformationLabel";
-            this.InformationLabel.Size = new System.Drawing.Size(34, 16);
+            this.InformationLabel.Size = new System.Drawing.Size(33, 16);
             this.InformationLabel.TabIndex = 34;
             this.InformationLabel.Text = "Info";
             this.InformationLabel.Visible = false;
@@ -1513,7 +1532,7 @@ namespace Tama_s_BlackJack
             this.ExplainLabel.Font = new System.Drawing.Font("OCRB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExplainLabel.Location = new System.Drawing.Point(3, 7);
             this.ExplainLabel.Name = "ExplainLabel";
-            this.ExplainLabel.Size = new System.Drawing.Size(140, 80);
+            this.ExplainLabel.Size = new System.Drawing.Size(139, 80);
             this.ExplainLabel.TabIndex = 0;
             this.ExplainLabel.Text = "Standard\r\n\r\nDecks: 3\r\nCredits: 200\r\nBets: 10";
             // 
@@ -2440,22 +2459,22 @@ namespace Tama_s_BlackJack
             // 
             this.RankPreviewTimer.Tick += new System.EventHandler(this.RankPreviewTimer_Tick);
             // 
-            // RankListFlowPanel
+            // ImportantNoticeLabel
             // 
-            this.RankListFlowPanel.BackColor = System.Drawing.Color.Transparent;
-            this.RankListFlowPanel.Controls.Add(this.pictureBox42);
-            this.RankListFlowPanel.Controls.Add(this.pictureBox43);
-            this.RankListFlowPanel.Controls.Add(this.pictureBox44);
-            this.RankListFlowPanel.Controls.Add(this.pictureBox45);
-            this.RankListFlowPanel.Controls.Add(this.pictureBox46);
-            this.RankListFlowPanel.Controls.Add(this.pictureBox47);
-            this.RankListFlowPanel.Controls.Add(this.pictureBox48);
-            this.RankListFlowPanel.Controls.Add(this.pictureBox49);
-            this.RankListFlowPanel.Controls.Add(this.pictureBox50);
-            this.RankListFlowPanel.Location = new System.Drawing.Point(0, 4);
-            this.RankListFlowPanel.Name = "RankListFlowPanel";
-            this.RankListFlowPanel.Size = new System.Drawing.Size(279, 27);
-            this.RankListFlowPanel.TabIndex = 61;
+            this.ImportantNoticeLabel.AutoSize = true;
+            this.ImportantNoticeLabel.BackColor = System.Drawing.Color.Transparent;
+            this.ImportantNoticeLabel.Font = new System.Drawing.Font("Mistral", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImportantNoticeLabel.ForeColor = System.Drawing.Color.Red;
+            this.ImportantNoticeLabel.Location = new System.Drawing.Point(940, 8);
+            this.ImportantNoticeLabel.Name = "ImportantNoticeLabel";
+            this.ImportantNoticeLabel.Size = new System.Drawing.Size(124, 57);
+            this.ImportantNoticeLabel.TabIndex = 61;
+            this.ImportantNoticeLabel.Text = "notice";
+            // 
+            // ImportantNoticeTimer
+            // 
+            this.ImportantNoticeTimer.Interval = 50;
+            this.ImportantNoticeTimer.Tick += new System.EventHandler(this.ImportantNoticeTimer_Tick);
             // 
             // Form1
             // 
@@ -2464,6 +2483,7 @@ namespace Tama_s_BlackJack
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
             this.ClientSize = new System.Drawing.Size(1284, 781);
+            this.Controls.Add(this.ImportantNoticeLabel);
             this.Controls.Add(this.MemberPanel);
             this.Controls.Add(this.HelpParentPanel);
             this.Controls.Add(this.StatPanel);
@@ -2540,15 +2560,16 @@ namespace Tama_s_BlackJack
             this.MemberPanel.ResumeLayout(false);
             this.MemberPanel.PerformLayout();
             this.RankPreviewPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).EndInit();
+            this.RankListFlowPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox42)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox43)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox46)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox47)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox48)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox49)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox50)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox41)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RankPic)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -2640,7 +2661,6 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPlPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPlPic)).EndInit();
-            this.RankListFlowPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2841,6 +2861,8 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox pictureBox43;
         private System.Windows.Forms.Timer RankPreviewTimer;
         private System.Windows.Forms.FlowLayoutPanel RankListFlowPanel;
+        private System.Windows.Forms.Label ImportantNoticeLabel;
+        private System.Windows.Forms.Timer ImportantNoticeTimer;
     }
 }
 
