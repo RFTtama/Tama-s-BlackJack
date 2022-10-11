@@ -200,6 +200,11 @@ namespace Tama_s_BlackJack
             return max;
         }
 
+        /// <summary>
+        /// 指定したゲームモードの最大ポイントを取得する
+        /// </summary>
+        /// <param name="mode">ゲームモード</param>
+        /// <returns>最大ポイント</returns>
         public int GetMaxOfPoint(int mode)
         {
             if (mode > modeNum || mode < 1)
@@ -217,6 +222,10 @@ namespace Tama_s_BlackJack
             return max;
         }
 
+        /// <summary>
+        /// 合計のtスコアを取得する
+        /// </summary>
+        /// <returns>合計tスコア</returns>
         public int GetTotalOftScore()
         {
             int total = 0;
@@ -230,6 +239,11 @@ namespace Tama_s_BlackJack
             return total;
         }
 
+        /// <summary>
+        /// 指定したゲームモードの合計tスコアを取得する
+        /// </summary>
+        /// <param name="mode">ゲームモード</param>
+        /// <returns>合計tスコア</returns>
         public int GetTotalOftScore(int mode)
         {
             if (mode > modeNum || mode < 1)
@@ -247,6 +261,10 @@ namespace Tama_s_BlackJack
             return total;
         }
 
+        /// <summary>
+        /// 最大tスコアを取得する
+        /// </summary>
+        /// <returns>最大tスコア</returns>
         public int GetMaxOftScore()
         {
             int max = 0;
@@ -260,6 +278,11 @@ namespace Tama_s_BlackJack
             return max;
         }
 
+        /// <summary>
+        /// 指定したゲームモードの最大tスコアを取得する
+        /// </summary>
+        /// <param name="mode">ゲームモード</param>
+        /// <returns>最大tスコア</returns>
         public int GetMaxOftScore(int mode)
         {
             if (mode > modeNum || mode < 1)
@@ -277,6 +300,10 @@ namespace Tama_s_BlackJack
             return max;
         }
 
+        /// <summary>
+        /// 平均のtスコアを取得する
+        /// </summary>
+        /// <returns>平均tスコア</returns>
         public float GetAvgOftScore()
         {
             float avg = 0.0f;
@@ -290,6 +317,11 @@ namespace Tama_s_BlackJack
             return avg;
         }
 
+        /// <summary>
+        /// 指定したゲームモードのの平均tスコアを取得する
+        /// </summary>
+        /// <param name="mode">ゲームモード</param>
+        /// <returns>平均tスコア</returns>
         public float GetAvgOftScore(int mode)
         {
             if (mode > modeNum || mode < 1)
@@ -307,12 +339,20 @@ namespace Tama_s_BlackJack
             return avg;
         }
 
-
+        /// <summary>
+        /// 合計プレイ数を取得する
+        /// </summary>
+        /// <returns>合計プレイ数</returns>
         public int GetPlayTimes()
         {
             return dataNum[this.GetNowGameMode() - 1];
         }
 
+        /// <summary>
+        /// 指定したゲームモードの合計プレイ数を取得する
+        /// </summary>
+        /// <param name="mode">ゲームモード</param>
+        /// <returns>合計プレイ数</returns>
         public int GetPlayTimes(int mode)
         {
             if (mode > modeNum || mode < 1)
@@ -322,6 +362,9 @@ namespace Tama_s_BlackJack
             return dataNum[mode - 1];
         }
 
+        /// <summary>
+        /// 引数が範囲外の例外
+        /// </summary>
         public class IndexOutOfRangeException: Exception
         {
             public IndexOutOfRangeException()

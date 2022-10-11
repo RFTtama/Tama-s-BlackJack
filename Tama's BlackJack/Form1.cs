@@ -435,6 +435,7 @@ namespace Tama_s_BlackJack
                 {
                     rateMan.CalcRate(tScore);
                     SetMemberData();
+                    SetGameEndStats();
                 }
             }
         }
@@ -1285,6 +1286,14 @@ namespace Tama_s_BlackJack
                 RankListFlowPanel.Left = 0;
                 RankPreviewTimer.Enabled = false;
             }
+        }
+
+        /// <summary>
+        /// ゲーム終了後のスタッツを設定する
+        /// </summary>
+        private void SetGameEndStats()
+        {
+
         }
     }
 }
