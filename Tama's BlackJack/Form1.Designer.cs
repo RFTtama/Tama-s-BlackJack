@@ -224,7 +224,6 @@ namespace Tama_s_BlackJack
             this.BustIncreaseTimer = new System.Windows.Forms.Timer(this.components);
             this.BustTimer = new System.Windows.Forms.Timer(this.components);
             this.RankPreviewTimer = new System.Windows.Forms.Timer(this.components);
-            this.ImportantNoticeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -919,7 +918,7 @@ namespace Tama_s_BlackJack
             this.label67.Font = new System.Drawing.Font("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label67.Location = new System.Drawing.Point(34, 57);
             this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(62, 32);
+            this.label67.Size = new System.Drawing.Size(63, 32);
             this.label67.TabIndex = 7;
             this.label67.Text = "Skill\r\n position";
             // 
@@ -1442,7 +1441,7 @@ namespace Tama_s_BlackJack
             this.InformationLabel.Font = new System.Drawing.Font("HGSｺﾞｼｯｸE", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.InformationLabel.Location = new System.Drawing.Point(54, 2);
             this.InformationLabel.Name = "InformationLabel";
-            this.InformationLabel.Size = new System.Drawing.Size(33, 16);
+            this.InformationLabel.Size = new System.Drawing.Size(34, 16);
             this.InformationLabel.TabIndex = 34;
             this.InformationLabel.Text = "Info";
             this.InformationLabel.Visible = false;
@@ -1530,7 +1529,7 @@ namespace Tama_s_BlackJack
             this.ExplainLabel.Font = new System.Drawing.Font("OCRB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExplainLabel.Location = new System.Drawing.Point(3, 7);
             this.ExplainLabel.Name = "ExplainLabel";
-            this.ExplainLabel.Size = new System.Drawing.Size(139, 80);
+            this.ExplainLabel.Size = new System.Drawing.Size(140, 80);
             this.ExplainLabel.TabIndex = 0;
             this.ExplainLabel.Text = "Standard\r\n\r\nDecks: 3\r\nCredits: 200\r\nBets: 10";
             // 
@@ -2449,18 +2448,6 @@ namespace Tama_s_BlackJack
             // 
             this.RankPreviewTimer.Tick += new System.EventHandler(this.RankPreviewTimer_Tick);
             // 
-            // ImportantNoticeLabel
-            // 
-            this.ImportantNoticeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.ImportantNoticeLabel.Font = new System.Drawing.Font("Mistral", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImportantNoticeLabel.ForeColor = System.Drawing.Color.Red;
-            this.ImportantNoticeLabel.Location = new System.Drawing.Point(940, 8);
-            this.ImportantNoticeLabel.Name = "ImportantNoticeLabel";
-            this.ImportantNoticeLabel.Size = new System.Drawing.Size(250, 114);
-            this.ImportantNoticeLabel.TabIndex = 61;
-            this.ImportantNoticeLabel.Text = "notice";
-            this.ImportantNoticeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2468,7 +2455,6 @@ namespace Tama_s_BlackJack
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
             this.ClientSize = new System.Drawing.Size(1284, 781);
-            this.Controls.Add(this.ImportantNoticeLabel);
             this.Controls.Add(this.MemberPanel);
             this.Controls.Add(this.HelpParentPanel);
             this.Controls.Add(this.StatPanel);
@@ -2844,7 +2830,6 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox pictureBox43;
         private System.Windows.Forms.Timer RankPreviewTimer;
         private System.Windows.Forms.FlowLayoutPanel RankListFlowPanel;
-        private System.Windows.Forms.Label ImportantNoticeLabel;
     }
 }
 
