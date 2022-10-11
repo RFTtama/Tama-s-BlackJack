@@ -1309,13 +1309,17 @@ namespace Tama_s_BlackJack
             RankPic.Image = rankResources[rateIncreasing / rateMan.interval];
             if(rateIncreasing > rateMan.rate)
             {
+                MemberLvLabel.ForeColor = Color.Blue;
                 rateIncreasing--;
-            }else if(rateIncreasing < rateMan.rate)
+            }
+            else if(rateIncreasing < rateMan.rate)
             {
+                MemberLvLabel.ForeColor = Color.Red;
                 rateIncreasing++;
             }
             else
             {
+                MemberLvLabel.ForeColor = Color.Black;
                 RankedAnimationTimer.Enabled = false;
                 SetMemberData();
             }
