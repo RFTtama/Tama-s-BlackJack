@@ -20,3 +20,5 @@ Coins: 9000 T-Score 1363
 Coins: 20000 T-Score 3460
 Coins: 16770 T-Score 2725
 Coins: 9920 T-Score 1482
+Coins: 7210 T-Score 858
+Coins: 8270 T-Score 821

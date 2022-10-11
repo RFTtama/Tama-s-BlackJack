@@ -434,8 +434,8 @@ namespace Tama_s_BlackJack
                 if (pData.GetNowGameMode() == 3)
                 {
                     rateMan.CalcRate(tScore);
-                    SetMemberData();
-                    SetGameEndStats();
+                    EnableRankedGameEndAnimation();
+                    //SetMemberData();
                 }
             }
         }
@@ -1288,12 +1288,37 @@ namespace Tama_s_BlackJack
             }
         }
 
-        /// <summary>
-        /// ゲーム終了後のスタッツを設定する
-        /// </summary>
-        private void SetGameEndStats()
+        private void EnableRankedGameEndAnimation()
         {
+            rateIncreasing = rateMan.rateBef;
+            RankedAnimationTimer.Enabled = true;
+            MemberPanel.Visible = true;
+        }
 
+        private int rateIncreasing = 0;
+
+        private void RankedAnimationTimer_Tick(object sender, EventArgs e)
+        {
+            MemberLvLabel.Text = rateIncreasing + "";
+            int upRate = (rateIncreasing / rateMan.interval) * rateMan.interval + rateMan.interval;
+            upRate = upRate - rateIncreasing;
+            RankUpLabel.Text = upRate + "";
+            int downRate = (rateIncreasing / rateMan.interval) * rateMan.interval;
+            downRate = rateIncreasing - downRate;
+            RankDownLabel.Text = downRate + "";
+            RankPic.Image = rankResources[rateIncreasing / rateMan.interval];
+            if(rateIncreasing > rateMan.rate)
+            {
+                rateIncreasing--;
+            }else if(rateIncreasing < rateMan.rate)
+            {
+                rateIncreasing++;
+            }
+            else
+            {
+                RankedAnimationTimer.Enabled = false;
+                SetMemberData();
+            }
         }
     }
 }

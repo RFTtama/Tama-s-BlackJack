@@ -12,13 +12,17 @@ namespace Tama_s_BlackJack
         private readonly int MaxRate;
         public int rate
         {
-            set
-            {
-
-            }
             get
             {
                 return this._rate;
+            }
+        }
+        private int _rateBef;
+        public int rateBef
+        {
+            get
+            {
+                return _rateBef;
             }
         }
 
@@ -26,6 +30,7 @@ namespace Tama_s_BlackJack
         
         public RateManager()
         {
+            _rateBef = 0;
             MaxRate = interval * count - 1;
             encrypt.fileName = "rateData.dat";
             try
@@ -41,6 +46,7 @@ namespace Tama_s_BlackJack
 
         public void CalcRate(float tScore)
         {
+            _rateBef = rate;
             _rate += (int)(tScore - _rate) / 3;
             if(_rate > MaxRate)_rate = MaxRate;
             encrypt.Encrypt(this._rate.ToString());

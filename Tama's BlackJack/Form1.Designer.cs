@@ -224,6 +224,7 @@ namespace Tama_s_BlackJack
             this.BustIncreaseTimer = new System.Windows.Forms.Timer(this.components);
             this.BustTimer = new System.Windows.Forms.Timer(this.components);
             this.RankPreviewTimer = new System.Windows.Forms.Timer(this.components);
+            this.RankedAnimationTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -2448,6 +2449,11 @@ namespace Tama_s_BlackJack
             // 
             this.RankPreviewTimer.Tick += new System.EventHandler(this.RankPreviewTimer_Tick);
             // 
+            // RankedAnimationTimer
+            // 
+            this.RankedAnimationTimer.Interval = 5;
+            this.RankedAnimationTimer.Tick += new System.EventHandler(this.RankedAnimationTimer_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2830,6 +2836,7 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.PictureBox pictureBox43;
         private System.Windows.Forms.Timer RankPreviewTimer;
         private System.Windows.Forms.FlowLayoutPanel RankListFlowPanel;
+        private System.Windows.Forms.Timer RankedAnimationTimer;
     }
 }
 
