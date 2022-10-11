@@ -1288,6 +1288,9 @@ namespace Tama_s_BlackJack
             }
         }
 
+        /// <summary>
+        /// ランクのレート変動アニメーションを有効にする
+        /// </summary>
         private void EnableRankedGameEndAnimation()
         {
             rateIncreasing = rateMan.rateBef;
@@ -1295,8 +1298,16 @@ namespace Tama_s_BlackJack
             MemberPanel.Visible = true;
         }
 
+        /// <summary>
+        /// 増加中のレート値
+        /// </summary>
         private int rateIncreasing = 0;
 
+        /// <summary>
+        /// レート増加アニメーション処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RankedAnimationTimer_Tick(object sender, EventArgs e)
         {
             MemberLvLabel.Text = rateIncreasing + "";
