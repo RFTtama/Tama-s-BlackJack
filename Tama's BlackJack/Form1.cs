@@ -392,9 +392,9 @@ namespace Tama_s_BlackJack
         }
 
         /// <summary>
-        /// メンタルをチェックする
+        /// クレジットをチェックする
         /// </summary>
-        private void MentalCheck()
+        private void CheckCredits()
         {
             MentalLabel.Text = this.credits + "";
             float me = maxMental;
@@ -590,7 +590,7 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "Push";
                 this.winStreak = 0;
             }
-            MentalCheck();
+            CheckCredits();
         }
 
         /// <summary>
@@ -794,7 +794,7 @@ namespace Tama_s_BlackJack
                 this.credits -= 5;
                 InformationLabel.Text = "";
                 InformationLabel.Text = "Insurance failure";
-                MentalCheck();
+                CheckCredits();
             }
         }
 
@@ -814,7 +814,7 @@ namespace Tama_s_BlackJack
             this.winStreak = 0;
             SetAdditionalScore(totalSurrender * -5, "Nope");
             totalSurrender++;
-            MentalCheck();
+            CheckCredits();
         }
 
         /// <summary>
