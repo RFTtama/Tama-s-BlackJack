@@ -430,10 +430,12 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "Coins" + this.point + "、T-Score" + (int)tScore + " +" + additionalScore;
                 try
                 {
+                    /*
                     using (StreamWriter sw = new StreamWriter("History.txt", true))
                     {
                         sw.WriteLine("Coins: " + this.point + " T-Score " + (int)tScore);
                     }
+                    */
                     saveData.Add(this.point + "," + (int)tScore + "," + pData.GetNowGameMode());
                     String fullData = String.Empty;
                     for(int i = 0; i < saveData.Count; i++)
