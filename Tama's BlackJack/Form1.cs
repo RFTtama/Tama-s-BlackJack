@@ -156,6 +156,8 @@ namespace Tama_s_BlackJack
             ArrowTimer.Enabled = true;
 
             ClearCards();
+            DealerTotalLabel.Text = "0";
+            PlayerTotalLabel.Text = "0";
             ArrowPicture.Visible = true;
             PointLabel.Text = "0";
             TscoreLabel.Text = "T-Score:";
