@@ -1345,14 +1345,17 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void RankedAnimationTimer_Tick(object sender, EventArgs e)
         {
-            if (rateMan.rate - rateIncreasing > 0)
+            if (rateMan.rate - rateIncreasing > 0)//+の際のアニメーション
             {
-                RatePlusLabel.Text = "+" + (rateMan.rate - rateIncreasing);
+                RatePlusLabel.ForeColor = Color.Red;//文字色を赤に
+                RatePlusLabel.Text = "+" + (rateMan.rate - rateIncreasing);//+の変動値を出力
             }
-            else
+            else//-の際のアニメーション
             {
-                RatePlusLabel.Text = rateMan.rate - rateIncreasing + "";
+                RatePlusLabel.ForeColor = Color.Blue;//文字色を青に
+                RatePlusLabel.Text = rateMan.rate - rateIncreasing + "";//-の変動値を出力
             }
+
             MemberLvLabel.Text = rateIncreasing + "";
             int upRate = (rateIncreasing / rateMan.interval) * rateMan.interval + rateMan.interval;
             upRate = upRate - rateIncreasing;
@@ -1371,7 +1374,7 @@ namespace Tama_s_BlackJack
                 MemberLvLabel.ForeColor = Color.Red;
                 rateIncreasing++;
             }
-            else
+            else//アニメーション終了
             {
                 MemberLvLabel.ForeColor = Color.Black;
                 RankedAnimationTimer.Enabled = false;
