@@ -1345,7 +1345,14 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void RankedAnimationTimer_Tick(object sender, EventArgs e)
         {
-            RatePlusLabel.Text = rateMan.rate - rateIncreasing + "";
+            if (rateMan.rate - rateIncreasing > 0)
+            {
+                RatePlusLabel.Text = "+" + (rateMan.rate - rateIncreasing);
+            }
+            else
+            {
+                RatePlusLabel.Text = rateMan.rate - rateIncreasing + "";
+            }
             MemberLvLabel.Text = rateIncreasing + "";
             int upRate = (rateIncreasing / rateMan.interval) * rateMan.interval + rateMan.interval;
             upRate = upRate - rateIncreasing;

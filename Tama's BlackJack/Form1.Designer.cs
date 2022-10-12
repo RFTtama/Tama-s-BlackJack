@@ -2459,7 +2459,7 @@ namespace Tama_s_BlackJack
             // 
             this.RatePlusLabel.AutoSize = true;
             this.RatePlusLabel.Font = new System.Drawing.Font("Mistral", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RatePlusLabel.Location = new System.Drawing.Point(254, 60);
+            this.RatePlusLabel.Location = new System.Drawing.Point(254, 62);
             this.RatePlusLabel.Name = "RatePlusLabel";
             this.RatePlusLabel.Size = new System.Drawing.Size(0, 22);
             this.RatePlusLabel.TabIndex = 17;
