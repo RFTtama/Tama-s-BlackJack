@@ -164,6 +164,7 @@ namespace Tama_s_BlackJack
             StatPanel.Visible = false;
             MemberPanel.Visible = false;
             HelpPanel.Visible = false;
+            ExplainPanel.Visible = true;
             BustPerLabel.Text = string.Empty;
         }
 
