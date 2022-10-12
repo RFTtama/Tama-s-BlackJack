@@ -434,7 +434,6 @@ namespace Tama_s_BlackJack
             {
                 ButtonLock();
                 DealButton.Enabled = false;
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Coins" + this.point + "、T-Score" + (int)tScore + " +" + additionalScore;
                 try
                 {
@@ -511,14 +510,12 @@ namespace Tama_s_BlackJack
             this.totalDeal++;
             if (overFlg[0] && overFlg[1])
             {
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Misfortune push";
                this. winStreak = 0;
             }
             else if (overFlg[0])
             {
                 Slash(true);
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer's misfortune";
                 this.credits -= (int)(10 * betMagn);
                 this.winStreak = 0;
@@ -526,7 +523,6 @@ namespace Tama_s_BlackJack
             else if (overFlg[1])
             {
                 Slash(false);
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Player's misfortune";
                 SetAdditionalScore(20, "Super Luck");
                 PlusPoint((int)(mainPoint * 2.0));
@@ -544,7 +540,6 @@ namespace Tama_s_BlackJack
             {
                 Slash(true);
                 BustTimer.Enabled = true;
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Player's bust";
                 this.credits -= (int)(10 * betMagn);
                 this.winStreak = 0;
@@ -552,7 +547,6 @@ namespace Tama_s_BlackJack
             else if(total[0] > 21)
             {
                 Slash(false);
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer's bust";
                 PlusPoint(mainPoint);
                 if (pointMagn == 2.0)
@@ -567,13 +561,11 @@ namespace Tama_s_BlackJack
             }
             else if(bjFlg[0] && bjFlg[1])
             {
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Blackjack push";
                 this.winStreak = 0;
             }else if (bjFlg[0])
             {
                 Slash(true);
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer's Blackjack";
                 this.credits -= (int)(10 * betMagn);
                 this.winStreak = 0;
@@ -581,7 +573,6 @@ namespace Tama_s_BlackJack
             else if (bjFlg[1])
             {
                 Slash(false);
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Player's Blackjack";
                 PlusPoint((int)(mainPoint * 1.50));
                 if (winStreak > 0)
@@ -593,7 +584,6 @@ namespace Tama_s_BlackJack
             else if(total[0] > total[1])
             {
                 Slash(true);
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Dealer wins";
                 this.credits -= (int)(10 * betMagn);
                 this.winStreak = 0;
@@ -601,7 +591,6 @@ namespace Tama_s_BlackJack
             else if(total[1] > total[0])
             {
                 Slash(false);
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Player wins";
                 PlusPoint(mainPoint);
                 if (pointMagn == 2.0)
@@ -616,7 +605,6 @@ namespace Tama_s_BlackJack
             }
             else
             {
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Push";
                 this.winStreak = 0;
             }
@@ -696,7 +684,7 @@ namespace Tama_s_BlackJack
                         card.SetDeckNum(deck);
                         card.CreateDeck();
                         card.ShaffleDeck();
-                        InformationLabel.Text = "";
+                        InformationLabel.Text = string.Empty;
                         InformationLabel.Text = "Shuffled decks";
                     }
                     catch (Exception ex)
@@ -714,7 +702,7 @@ namespace Tama_s_BlackJack
                     card.SetDeckNum(deck);
                     card.CreateDeck();
                     card.ShaffleDeck();
-                    InformationLabel.Text = "";
+                    InformationLabel.Text = string.Empty;
                     InformationLabel.Text = "Place your bets";
                 }
                 catch (Exception ex)
@@ -821,14 +809,12 @@ namespace Tama_s_BlackJack
             {
                 ButtonLock();
                 SetCard(0, hiddenCard, true);
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Insurance success";
             }
             else
             {
                 InsurancePicture.Visible = false;
                 this.credits -= 5;
-                InformationLabel.Text = "";
                 InformationLabel.Text = "Insurance failure";
                 CheckCredits();
             }
@@ -844,7 +830,6 @@ namespace Tama_s_BlackJack
             Slash(true);
             ButtonLock();
             SetCard(0, hiddenCard, true);
-            InformationLabel.Text = "";
             InformationLabel.Text = "You surrendered";
             this.credits -= 5;
             this.winStreak = 0;
@@ -860,7 +845,7 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void InformationLabel_TextChanged(object sender, EventArgs e)
         {
-            if (InformationLabel.Text != "")
+            if (InformationLabel.Text != string.Empty)
             {
                 InformationLabel.Visible = true;
             }
@@ -1122,7 +1107,7 @@ namespace Tama_s_BlackJack
 
         private void HitPicture_MouseLeave(object sender, EventArgs e)
         {
-            MinusLabel.Text = "";
+            MinusLabel.Text = string.Empty;
         }
 
         /// <summary>
@@ -1225,7 +1210,7 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void ClearAdditionalText()
         {
-            this.AdditionalLabel.Text = "";
+            this.AdditionalLabel.Text = string.Empty;
         }
 
         /// <summary>
