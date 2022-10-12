@@ -70,6 +70,11 @@ namespace Tama_s_BlackJack
             MemberPanel.Top = this.Height / 2 - MemberPanel.Height / 2;
             MemberPanel.Left = this.Width / 2 - MemberPanel.Width / 2;
 
+            Init();
+        }
+
+        private void Init()
+        {
             rateMan = new RateManager();
             pData = new PlData();
             pData.SetNowGameMode(1);
@@ -99,15 +104,15 @@ namespace Tama_s_BlackJack
             {
                 saveData = encryption.Decrypt();
             }
-            catch(FileNotFoundException)
+            catch (FileNotFoundException)
             {
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, ex.GetType() + "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            for(int i = 0; i < saveData.Count; i++)
+            for (int i = 0; i < saveData.Count; i++)
             {
                 String[] arr = saveData[i].Split(',');
                 pData.AddData(int.Parse(arr[0]), int.Parse(arr[1]), int.Parse(arr[2]));
@@ -149,6 +154,15 @@ namespace Tama_s_BlackJack
             SetMemberData();
             MentalLabel.Text = this.credits + "";
             ArrowTimer.Enabled = true;
+
+            ClearCards();
+            ArrowPicture.Visible = true;
+            PointLabel.Text = "0";
+            TscoreLabel.Text = "T-Score:";
+            StatPanel.Visible = false;
+            MemberPanel.Visible = false;
+            HelpPanel.Visible = false;
+            BustPerLabel.Text = string.Empty;
         }
 
         /// <summary>
@@ -437,6 +451,8 @@ namespace Tama_s_BlackJack
                     EnableRankedGameEndAnimation();
                     //SetMemberData();
                 }
+                DealButton.Text = "Replay";
+                DealButton.Enabled = true;
             }
         }
 
@@ -640,6 +656,12 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            if(DealButton.Text == "Replay")
+            {
+                Init();
+                DealButton.Text = "Deal";
+                return;
+            }
             ResetSlash();
             BustIcon.Visible = true;
             BustIcon.Image = slashResources[0];
