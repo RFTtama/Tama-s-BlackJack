@@ -70,9 +70,17 @@ namespace Tama_s_BlackJack
             MemberPanel.Top = this.Height / 2 - MemberPanel.Height / 2;
             MemberPanel.Left = this.Width / 2 - MemberPanel.Width / 2;
 
+            HelpPanel.Parent = HelpParentPanel;
+
+            HelpPanel.Left = 0;
+            HelpPanel.Top = 0;
+
             Init();
         }
 
+        /// <summary>
+        /// 初期化
+        /// </summary>
         private void Init()
         {
             rateMan = new RateManager();
@@ -163,7 +171,7 @@ namespace Tama_s_BlackJack
             TscoreLabel.Text = "T-Score:";
             StatPanel.Visible = false;
             MemberPanel.Visible = false;
-            HelpPanel.Visible = false;
+            HelpParentPanel.Visible = false;
             ExplainPanel.Visible = true;
             BustPerLabel.Text = string.Empty;
         }
@@ -1337,6 +1345,7 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void RankedAnimationTimer_Tick(object sender, EventArgs e)
         {
+            RatePlusLabel.Text = rateMan.rate - rateMan.rateBef + "";
             MemberLvLabel.Text = rateIncreasing + "";
             int upRate = (rateIncreasing / rateMan.interval) * rateMan.interval + rateMan.interval;
             upRate = upRate - rateIncreasing;
@@ -1359,6 +1368,7 @@ namespace Tama_s_BlackJack
             {
                 MemberLvLabel.ForeColor = Color.Black;
                 RankedAnimationTimer.Enabled = false;
+                RatePlusLabel.Text = string.Empty;
                 SetMemberData();
             }
         }

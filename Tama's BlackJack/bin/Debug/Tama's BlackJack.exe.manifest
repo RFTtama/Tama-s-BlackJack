@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Tama's BlackJack.exe" size="341464">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Tama's BlackJack.exe" size="341976">
       <assemblyIdentity name="Tama's BlackJack" version="1.1.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fzPTTPn2zekrbikov5jH3+yCS0OLTFqF9QmUnqw9QIA=</dsig:DigestValue>
+        <dsig:DigestValue>Pizpaj7ourB0Uj56yDhXG7+u1O7XjSVPE1VLU6sjyz4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

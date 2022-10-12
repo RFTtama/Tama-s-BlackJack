@@ -225,6 +225,7 @@ namespace Tama_s_BlackJack
             this.BustTimer = new System.Windows.Forms.Timer(this.components);
             this.RankPreviewTimer = new System.Windows.Forms.Timer(this.components);
             this.RankedAnimationTimer = new System.Windows.Forms.Timer(this.components);
+            this.RatePlusLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -717,6 +718,7 @@ namespace Tama_s_BlackJack
             // MemberPanel
             // 
             this.MemberPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.MemberPanel.Controls.Add(this.RatePlusLabel);
             this.MemberPanel.Controls.Add(this.RankPreviewPanel);
             this.MemberPanel.Controls.Add(this.pictureBox41);
             this.MemberPanel.Controls.Add(this.RankDownLabel);
@@ -862,7 +864,7 @@ namespace Tama_s_BlackJack
             this.RankDownLabel.AutoSize = true;
             this.RankDownLabel.Font = new System.Drawing.Font("Mistral", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RankDownLabel.ForeColor = System.Drawing.Color.Red;
-            this.RankDownLabel.Location = new System.Drawing.Point(230, 90);
+            this.RankDownLabel.Location = new System.Drawing.Point(225, 90);
             this.RankDownLabel.Name = "RankDownLabel";
             this.RankDownLabel.Size = new System.Drawing.Size(16, 19);
             this.RankDownLabel.TabIndex = 6;
@@ -874,7 +876,7 @@ namespace Tama_s_BlackJack
             this.RankUpLabel.AutoSize = true;
             this.RankUpLabel.Font = new System.Drawing.Font("Mistral", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RankUpLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.RankUpLabel.Location = new System.Drawing.Point(230, 43);
+            this.RankUpLabel.Location = new System.Drawing.Point(225, 43);
             this.RankUpLabel.Name = "RankUpLabel";
             this.RankUpLabel.Size = new System.Drawing.Size(16, 19);
             this.RankUpLabel.TabIndex = 5;
@@ -896,7 +898,7 @@ namespace Tama_s_BlackJack
             // 
             this.MemberLvLabel.AutoSize = true;
             this.MemberLvLabel.Font = new System.Drawing.Font("Mistral", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MemberLvLabel.Location = new System.Drawing.Point(211, 60);
+            this.MemberLvLabel.Location = new System.Drawing.Point(206, 60);
             this.MemberLvLabel.Name = "MemberLvLabel";
             this.MemberLvLabel.Size = new System.Drawing.Size(25, 29);
             this.MemberLvLabel.TabIndex = 3;
@@ -1602,7 +1604,7 @@ namespace Tama_s_BlackJack
             this.HelpPanel.Controls.Add(this.pictureBox20);
             this.HelpPanel.Controls.Add(this.pictureBox19);
             this.HelpPanel.Controls.Add(this.label21);
-            this.HelpPanel.Location = new System.Drawing.Point(0, 0);
+            this.HelpPanel.Location = new System.Drawing.Point(1105, 12);
             this.HelpPanel.Name = "HelpPanel";
             this.HelpPanel.Size = new System.Drawing.Size(645, 1297);
             this.HelpPanel.TabIndex = 44;
@@ -2294,7 +2296,6 @@ namespace Tama_s_BlackJack
             // HelpParentPanel
             // 
             this.HelpParentPanel.BackColor = System.Drawing.Color.Transparent;
-            this.HelpParentPanel.Controls.Add(this.HelpPanel);
             this.HelpParentPanel.Controls.Add(this.HelpScrollBar);
             this.HelpParentPanel.Location = new System.Drawing.Point(769, 55);
             this.HelpParentPanel.Name = "HelpParentPanel";
@@ -2454,6 +2455,16 @@ namespace Tama_s_BlackJack
             this.RankedAnimationTimer.Interval = 5;
             this.RankedAnimationTimer.Tick += new System.EventHandler(this.RankedAnimationTimer_Tick);
             // 
+            // RatePlusLabel
+            // 
+            this.RatePlusLabel.AutoSize = true;
+            this.RatePlusLabel.Font = new System.Drawing.Font("Mistral", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RatePlusLabel.Location = new System.Drawing.Point(254, 60);
+            this.RatePlusLabel.Name = "RatePlusLabel";
+            this.RatePlusLabel.Size = new System.Drawing.Size(0, 29);
+            this.RatePlusLabel.TabIndex = 17;
+            this.RatePlusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2461,6 +2472,7 @@ namespace Tama_s_BlackJack
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
             this.ClientSize = new System.Drawing.Size(1284, 781);
+            this.Controls.Add(this.HelpPanel);
             this.Controls.Add(this.MemberPanel);
             this.Controls.Add(this.HelpParentPanel);
             this.Controls.Add(this.StatPanel);
@@ -2837,6 +2849,7 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.Timer RankPreviewTimer;
         private System.Windows.Forms.FlowLayoutPanel RankListFlowPanel;
         private System.Windows.Forms.Timer RankedAnimationTimer;
+        private System.Windows.Forms.Label RatePlusLabel;
     }
 }
 
