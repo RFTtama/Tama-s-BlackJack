@@ -77,7 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLM.cs" />
+    <Compile Include="BlackjackExpectedValueCalculator.cs" />
     <Compile Include="CardManager.cs" />
     <Compile Include="Encryption.cs" />
     <Compile Include="Form1.cs">
