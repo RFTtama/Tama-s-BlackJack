@@ -172,6 +172,7 @@ public class CardManager
         {
             throw new CardArgOutOfRangeException();
         }
+        //AとBのカードを入れ替え
         int mem;
         mem = cards[cardA];
         cards[cardA] = cards[cardB];
@@ -220,28 +221,43 @@ public class CardManager
     /// <returns>確率(double)</returns>
     public double GetCardDrawPer(int index)
     {
-        int remainingCards = 0;
-        int remainingCard;
+        //デッキに存在している残りのカード総数
+        int remainingCardsInDeck = 0;
+        //指定したカードの残りカード数
+        int remainingCards;
+
         //デッキにカードが存在しない
         if (cardsInDeck == false)
         {
             throw new CardNotInDeckException();
         }
+
         //引数がカードの種類総数を超えている
         if (index >= 13)
         {
             throw new CardArgOutOfRangeException();
         }
+
+        //デッキに入っているカードの総数を計算
         for (int i = 0; i < 13; i++)
         {
-            remainingCards += (4 * deckNum) - this.cardHistory[i];
+            //デッキのカード総数からひいたカード総数を引く
+            remainingCardsInDeck += (4 * deckNum) - this.cardHistory[i];
         }
-        if (remainingCards <= 0)
+
+        //カード総数が0なら
+        if (remainingCardsInDeck <= 0)
         {
+            //指定したカードを引く確率は0
             return 0.0;
         }
-        remainingCard = (4 * deckNum) - this.cardHistory[index];
-        double per = (double)remainingCard / remainingCards;
+
+        //指定したカードの残り総数を計算する
+        remainingCards = (4 * deckNum) - this.cardHistory[index];
+
+        //次に指定したカードを引く確率を計算する
+        double per = (double)remainingCards / remainingCardsInDeck;
+
         return per;
     }
 
@@ -256,7 +272,11 @@ public class CardManager
         {
             throw new CardNotInDeckException();
         }
+
+        //デッキの初期カード総数を計算する
         int total = deckNum * cardNum;
+
+        //デッキの残っているカード総数を算出し、割合を計算する
         return (double)(total - nextCard) / total;
     }
 
@@ -271,7 +291,11 @@ public class CardManager
         {
             throw new CardNotInDeckException();
         }
+
+        //デッキの初期カード総数を計算する
         int total = deckNum * cardNum;
+
+        //残りのカード総数を算出する
         return total - nextCard;
     }
 
