@@ -35,6 +35,8 @@ public class CardManager
         {
             throw new CardsInDeckException();
         }
+
+        //deckNumにデッキ数を設定
         this.deckNum = deck;
     }
 
@@ -54,18 +56,31 @@ public class CardManager
         {
             throw new CardsInDeckException();
         }
+
+        //カードをクリア
         cards.Clear();
+
+        //カードパターンをクリア
         cardsPattern.Clear();
+
         for (int i = 0; i < cardNum * deckNum; i++)
         {
             cards.Add(i % 13 + 1);
-            cardsPattern.Add(i % 4);
+            cardsPattern.Add((int)(i / 13) % 4);
+            //デッキにカードを1～13の順に挿入
+            //13枚ごとにカードの柄を変える
         }
+
+        //次のカードをデッキの一番上に指定
         this.nextCard = 0;
+
+        //カードを引いた履歴をクリア
         for (int i = 0; i < 13; i++)
         {
             this.cardHistory[i] = 0;
         }
+
+        //デッキにカードが入ってる
         this.cardsInDeck = true;
     }
 
@@ -79,11 +94,17 @@ public class CardManager
         {
             throw new CardNotInDeckException();
         }
+
+        //念のため2回行う
         for (int cnt = 0; cnt < 2; cnt++)
         {
+            //現在の残りデッキ位置を設定
             int startCard = this.nextCard;
+
+            //最初のカードから最後のカードまで行う
             for (int i = startCard; i < cards.Count; i++)
             {
+                //最初のカードから順番にランダムなカードと入れ替える
                 this.Change(i, rand.Next(startCard, cards.Count));
             }
         }
@@ -94,14 +115,20 @@ public class CardManager
     /// </summary>
     public void DumpDeck()
     {
+        //デッキ数を0に
         this.deckNum = 0;
+        //カードを削除
         cards.Clear();
+        //カードの柄を削除
         cardsPattern.Clear();
+        //次のカードは最初からに
         this.nextCard = 0;
+        //カード履歴をリセット
         for (int i = 0; i < 13; i++)
         {
             this.cardHistory[i] = 0;
         }
+        //デッキにカードが入っていない
         this.cardsInDeck = false;
     }
 
@@ -118,10 +145,15 @@ public class CardManager
             cardsInDeck = false;
             return null;
         }
+        //カード情報インスタンスを生成
         CardProperties cp = new CardProperties();
+        //出たカードを引いた枚数を足す
         this.cardHistory[this.cards[this.nextCard] - 1]++;
+        //次のカード指定を1つずらす
         this.nextCard++;
+        //カード情報にカードの数字を指定する
         cp.number = this.cards[this.nextCard - 1];
+        //カード情報にカードの柄を指定する
         cp.pattern = this.cardsPattern[this.nextCard - 1];
 
         return cp;
@@ -176,6 +208,7 @@ public class CardManager
         {
             throw new CardArgOutOfRangeException();
         }
+        //最大カード数に引いたカード数を引く
         int remain = this.deckNum * 4 - this.cardHistory[index];
         return remain;
     }
