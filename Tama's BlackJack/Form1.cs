@@ -27,7 +27,8 @@ namespace Tama_s_BlackJack
         private int deck;                                       //デッキの数
         private const double shafflePer = 0.2;                  //何%になったらシャッフルするか
         private const int MaxCards = 8;                         //場に出せるカードの最大数
-        private const int MaxCredits = 200;                     //最大クレジット
+        private const int MaxCredits = 2000;                    //最大クレジット
+        private const int Bet = 100;                            //ベット額
         private bool[] bjFlg;                                   //ブラックジャックかどうか
         private bool[] overFlg;                                 //カードが出せる量を超えているかどうか
         private float betMagn;                                  //メンタル賭け倍率
@@ -50,7 +51,6 @@ namespace Tama_s_BlackJack
         private Bitmap queenCardPattern;                        //カードの柄(queen)
         private Bitmap kingCardPattern;                         //カードの柄(king)
         private int totalSurrender = 0;                         //サレンダー回数
-        private const int Bet = 10;                            //ベット額
 
         /// <summary>
         /// Formコンストラクタ
@@ -458,7 +458,7 @@ namespace Tama_s_BlackJack
                 }
                 pData.AddData(this.point, (int)tScore);
                 SetStats();
-                if (pData.GetNowGameMode() == 3)
+                if (pData.GetNowGameMode() == 2)
                 {
                     rateMan.CalcRate(tScore);
                     EnableRankedGameEndAnimation();
@@ -621,7 +621,7 @@ namespace Tama_s_BlackJack
         {
             this.oldPoint = this.point;
             this.point += (int)(value * this.pointMagn);
-            if(pData.GetNowGameMode() == 3)this.point += (int)(total[1] * Bet / 50);
+            //if(pData.GetNowGameMode() ==2)this.point += (int)(total[1] * Bet / 50);
             this.PointLabel.ForeColor = Color.Red;
             PointTimer.Enabled = true;
         }
@@ -868,7 +868,7 @@ namespace Tama_s_BlackJack
             {
                 if (oldPoint < this.point)
                 {
-                    this.oldPoint += 10;
+                    this.oldPoint += 1;
                 }
                 else
                 {
@@ -938,8 +938,7 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture1.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "Standard" + LB + LB + "Decks: 3" + LB + "Credits: " + MaxCredits + LB +
-            "Bets: " + Bet;
+            ExplainLabel.Text = "Standard" + LB + LB + "スキルが変動しません";
             this.deck = 5;
             this.defaultMagn = 1.0f;
             this.betMagn = this.defaultMagn;
@@ -960,7 +959,7 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture2.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "Cat's tower " + LB + LB + "勝った際に手札が強いほど" + LB + "もらえるコインが増額";
+            ExplainLabel.Text = "Cat's tower " + LB + LB + "BJのスキルを測定します";
             this.deck = 5;
             this.defaultMagn = 1.0f;
             this.betMagn = this.defaultMagn;
