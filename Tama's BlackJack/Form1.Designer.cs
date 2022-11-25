@@ -60,6 +60,9 @@ namespace Tama_s_BlackJack
             this.MemberPicture = new System.Windows.Forms.PictureBox();
             this.AdditionalLabel = new System.Windows.Forms.Label();
             this.BustIcon = new System.Windows.Forms.PictureBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.MentalLabel = new System.Windows.Forms.Label();
             this.TabPicture1 = new System.Windows.Forms.PictureBox();
             this.MemberPanel = new System.Windows.Forms.Panel();
             this.RatePlusLabel = new System.Windows.Forms.Label();
@@ -128,7 +131,6 @@ namespace Tama_s_BlackJack
             this.panel16 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.InformationLabel = new System.Windows.Forms.Label();
             this.PointTimer = new System.Windows.Forms.Timer(this.components);
             this.ColorTimer = new System.Windows.Forms.Timer(this.components);
@@ -210,10 +212,8 @@ namespace Tama_s_BlackJack
             this.HelpParentPanel = new System.Windows.Forms.Panel();
             this.ArrowPicture = new System.Windows.Forms.PictureBox();
             this.DeckPicture = new System.Windows.Forms.PictureBox();
-            this.MentalLabel = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.label65 = new System.Windows.Forms.Label();
-            this.panel18 = new System.Windows.Forms.Panel();
             this.MinusLabel = new System.Windows.Forms.Label();
             this.SlashPic = new System.Windows.Forms.PictureBox();
             this.SlashTimer = new System.Windows.Forms.Timer(this.components);
@@ -225,6 +225,7 @@ namespace Tama_s_BlackJack
             this.BustTimer = new System.Windows.Forms.Timer(this.components);
             this.RankPreviewTimer = new System.Windows.Forms.Timer(this.components);
             this.RankedAnimationTimer = new System.Windows.Forms.Timer(this.components);
+            this.GainLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -235,6 +236,7 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BustIcon)).BeginInit();
+            this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture1)).BeginInit();
             this.MemberPanel.SuspendLayout();
             this.RankPreviewPanel.SuspendLayout();
@@ -314,7 +316,6 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.ArrowPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DeckPicture)).BeginInit();
             this.panel17.SuspendLayout();
-            this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPlPic)).BeginInit();
@@ -679,6 +680,41 @@ namespace Tama_s_BlackJack
             this.BustIcon.TabStop = false;
             this.toolTip1.SetToolTip(this.BustIcon, "次のカードを引いた際にプレイヤーがバストする確率です");
             this.BustIcon.Visible = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(513, 110);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(73, 25);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Credits";
+            this.toolTip1.SetToolTip(this.label17, "元手のコインです");
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.Gold;
+            this.panel18.Controls.Add(this.MentalLabel);
+            this.panel18.Location = new System.Drawing.Point(527, 132);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(69, 37);
+            this.panel18.TabIndex = 51;
+            this.toolTip1.SetToolTip(this.panel18, "元手のコインです");
+            // 
+            // MentalLabel
+            // 
+            this.MentalLabel.AutoSize = true;
+            this.MentalLabel.BackColor = System.Drawing.Color.Transparent;
+            this.MentalLabel.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MentalLabel.ForeColor = System.Drawing.Color.Black;
+            this.MentalLabel.Location = new System.Drawing.Point(3, 7);
+            this.MentalLabel.Name = "MentalLabel";
+            this.MentalLabel.Size = new System.Drawing.Size(25, 25);
+            this.MentalLabel.TabIndex = 49;
+            this.MentalLabel.Text = "0";
+            this.MentalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // TabPicture1
             // 
@@ -1411,18 +1447,6 @@ namespace Tama_s_BlackJack
             this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox16.TabIndex = 7;
             this.pictureBox16.TabStop = false;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(513, 110);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(73, 25);
-            this.label17.TabIndex = 33;
-            this.label17.Text = "Credits";
-            this.toolTip1.SetToolTip(this.label17, "元手のコインです");
             // 
             // InformationLabel
             // 
@@ -2321,19 +2345,6 @@ namespace Tama_s_BlackJack
             this.DeckPicture.TabIndex = 6;
             this.DeckPicture.TabStop = false;
             // 
-            // MentalLabel
-            // 
-            this.MentalLabel.AutoSize = true;
-            this.MentalLabel.BackColor = System.Drawing.Color.Transparent;
-            this.MentalLabel.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MentalLabel.ForeColor = System.Drawing.Color.Black;
-            this.MentalLabel.Location = new System.Drawing.Point(3, 7);
-            this.MentalLabel.Name = "MentalLabel";
-            this.MentalLabel.Size = new System.Drawing.Size(25, 25);
-            this.MentalLabel.TabIndex = 49;
-            this.MentalLabel.Text = "0";
-            this.MentalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -2353,16 +2364,6 @@ namespace Tama_s_BlackJack
             this.label65.Size = new System.Drawing.Size(45, 15);
             this.label65.TabIndex = 51;
             this.label65.Text = "INFO: ";
-            // 
-            // panel18
-            // 
-            this.panel18.BackColor = System.Drawing.Color.Gold;
-            this.panel18.Controls.Add(this.MentalLabel);
-            this.panel18.Location = new System.Drawing.Point(527, 132);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(69, 37);
-            this.panel18.TabIndex = 51;
-            this.toolTip1.SetToolTip(this.panel18, "元手のコインです");
             // 
             // MinusLabel
             // 
@@ -2452,6 +2453,16 @@ namespace Tama_s_BlackJack
             this.RankedAnimationTimer.Interval = 5;
             this.RankedAnimationTimer.Tick += new System.EventHandler(this.RankedAnimationTimer_Tick);
             // 
+            // GainLabel
+            // 
+            this.GainLabel.AutoSize = true;
+            this.GainLabel.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GainLabel.Location = new System.Drawing.Point(473, 130);
+            this.GainLabel.Name = "GainLabel";
+            this.GainLabel.Size = new System.Drawing.Size(18, 19);
+            this.GainLabel.TabIndex = 60;
+            this.GainLabel.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2459,6 +2470,7 @@ namespace Tama_s_BlackJack
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
             this.ClientSize = new System.Drawing.Size(1284, 781);
+            this.Controls.Add(this.GainLabel);
             this.Controls.Add(this.HelpPanel);
             this.Controls.Add(this.MemberPanel);
             this.Controls.Add(this.HelpParentPanel);
@@ -2529,6 +2541,8 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BustIcon)).EndInit();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture1)).EndInit();
             this.MemberPanel.ResumeLayout(false);
             this.MemberPanel.PerformLayout();
@@ -2629,8 +2643,6 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.DeckPicture)).EndInit();
             this.panel17.ResumeLayout(false);
             this.panel17.PerformLayout();
-            this.panel18.ResumeLayout(false);
-            this.panel18.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashRevPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SlashPlPic)).EndInit();
@@ -2835,6 +2847,7 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.Timer RankedAnimationTimer;
         private System.Windows.Forms.Label RatePlusLabel;
         private System.Windows.Forms.PictureBox TabPicture2;
+        private System.Windows.Forms.Label GainLabel;
     }
 }
 

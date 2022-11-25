@@ -423,6 +423,7 @@ namespace Tama_s_BlackJack
         private void CheckCredits()
         {
             MentalLabel.Text = this.credits + "";
+            GainLabel.Text = this.credits + this.point - 2000 + "";
             float avgDmg = MaxCredits / this.totalDeal;
             float Pt = (float)this.point / 100.0f;
             float tScore = (100.0f - avgDmg) * Pt;
