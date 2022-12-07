@@ -1439,7 +1439,7 @@ namespace Tama_s_BlackJack
             // 
             // PointTimer
             // 
-            this.PointTimer.Interval = 5;
+            this.PointTimer.Interval = 10;
             this.PointTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // ColorTimer

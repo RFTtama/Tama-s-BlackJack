@@ -423,9 +423,11 @@ namespace Tama_s_BlackJack
         private void CheckCredits()
         {
             MentalLabel.Text = this.credits + "";
-            float avgDmg = MaxCredits / this.totalDeal;
+            float me = MaxCredits;
+            float avgDmg = me / this.totalDeal;
             float Pt = (float)this.point / 100.0f;
-            float tScore = (100.0f - avgDmg) * Pt;
+            float dmgTolerance = 20.0f * this.defaultMagn;
+            float tScore = (dmgTolerance - avgDmg) * Pt;
             if (tScore < 0) tScore = 0;
             tScore += this.additionalScore;
             TscoreLabel.Text = "T-Score: " + (int)tScore;
@@ -484,13 +486,13 @@ namespace Tama_s_BlackJack
             if(po < 50000)
             {
                 PointEvalPicture.Image = Properties.Resources.coin;
-            }else if(po < 5000)
+            }else if(po < 500000)
             {
                 PointEvalPicture.Image = Properties.Resources.coins;
-            }else if(po < 100000)
+            }else if(po < 1000000)
             {
                 PointEvalPicture.Image = Properties.Resources.bill;
-            }else if(po < 1000000)
+            }else if(po < 10000000)
             {
                 PointEvalPicture.Image = Properties.Resources.bills;
             }
