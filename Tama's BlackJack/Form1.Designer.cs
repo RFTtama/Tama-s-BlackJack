@@ -60,7 +60,6 @@ namespace Tama_s_BlackJack
             this.MemberPicture = new System.Windows.Forms.PictureBox();
             this.AdditionalLabel = new System.Windows.Forms.Label();
             this.BustIcon = new System.Windows.Forms.PictureBox();
-            this.TabPicture3 = new System.Windows.Forms.PictureBox();
             this.TabPicture2 = new System.Windows.Forms.PictureBox();
             this.TabPicture1 = new System.Windows.Forms.PictureBox();
             this.MemberPanel = new System.Windows.Forms.Panel();
@@ -236,7 +235,6 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BustIcon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TabPicture3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture1)).BeginInit();
             this.MemberPanel.SuspendLayout();
@@ -681,17 +679,6 @@ namespace Tama_s_BlackJack
             this.BustIcon.TabStop = false;
             this.toolTip1.SetToolTip(this.BustIcon, "次のカードを引いた際にプレイヤーがバストする確率です");
             this.BustIcon.Visible = false;
-            // 
-            // TabPicture3
-            // 
-            this.TabPicture3.Image = global::Tama_s_BlackJack.Properties.Resources.point3;
-            this.TabPicture3.Location = new System.Drawing.Point(192, 87);
-            this.TabPicture3.Name = "TabPicture3";
-            this.TabPicture3.Size = new System.Drawing.Size(20, 20);
-            this.TabPicture3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.TabPicture3.TabIndex = 45;
-            this.TabPicture3.TabStop = false;
-            this.TabPicture3.Click += new System.EventHandler(this.TabPicture3_Click);
             // 
             // TabPicture2
             // 
@@ -1527,7 +1514,6 @@ namespace Tama_s_BlackJack
             // ExplainPanel
             // 
             this.ExplainPanel.BackColor = System.Drawing.SystemColors.Info;
-            this.ExplainPanel.Controls.Add(this.TabPicture3);
             this.ExplainPanel.Controls.Add(this.TabPicture2);
             this.ExplainPanel.Controls.Add(this.TabPicture1);
             this.ExplainPanel.Controls.Add(this.ExplainLabel);
@@ -2542,7 +2528,6 @@ namespace Tama_s_BlackJack
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MemberPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BustIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TabPicture3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TabPicture1)).EndInit();
             this.MemberPanel.ResumeLayout(false);
@@ -2811,7 +2796,6 @@ namespace Tama_s_BlackJack
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.VScrollBar HelpScrollBar;
         private System.Windows.Forms.Panel HelpParentPanel;
-        private System.Windows.Forms.PictureBox TabPicture3;
         private System.Windows.Forms.PictureBox MemberPicture;
         private System.Windows.Forms.Panel MemberPanel;
         private System.Windows.Forms.Label MemberLvLabel;
