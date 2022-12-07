@@ -69,6 +69,8 @@ namespace Tama_s_BlackJack
             StatPanel.Left = this.Width / 2 - StatPanel.Width / 2;
             MemberPanel.Top = this.Height / 2 - MemberPanel.Height / 2;
             MemberPanel.Left = this.Width / 2 - MemberPanel.Width / 2;
+            ExplainPanel.Left = 525;
+            ExplainPanel.Top = 263;
 
             HelpPanel.Parent = HelpParentPanel;
 

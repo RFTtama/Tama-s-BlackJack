@@ -64,6 +64,7 @@ namespace Tama_s_BlackJack
             this.TabPicture2 = new System.Windows.Forms.PictureBox();
             this.TabPicture1 = new System.Windows.Forms.PictureBox();
             this.MemberPanel = new System.Windows.Forms.Panel();
+            this.RatePlusLabel = new System.Windows.Forms.Label();
             this.RankPreviewPanel = new System.Windows.Forms.Panel();
             this.RankListFlowPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox42 = new System.Windows.Forms.PictureBox();
@@ -225,7 +226,6 @@ namespace Tama_s_BlackJack
             this.BustTimer = new System.Windows.Forms.Timer(this.components);
             this.RankPreviewTimer = new System.Windows.Forms.Timer(this.components);
             this.RankedAnimationTimer = new System.Windows.Forms.Timer(this.components);
-            this.RatePlusLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.SplitPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SurrenderPicture)).BeginInit();
@@ -733,6 +733,16 @@ namespace Tama_s_BlackJack
             this.MemberPanel.TabIndex = 48;
             this.MemberPanel.Visible = false;
             this.MemberPanel.VisibleChanged += new System.EventHandler(this.MemberPanel_VisibleChanged);
+            // 
+            // RatePlusLabel
+            // 
+            this.RatePlusLabel.AutoSize = true;
+            this.RatePlusLabel.Font = new System.Drawing.Font("Mistral", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RatePlusLabel.Location = new System.Drawing.Point(254, 62);
+            this.RatePlusLabel.Name = "RatePlusLabel";
+            this.RatePlusLabel.Size = new System.Drawing.Size(0, 22);
+            this.RatePlusLabel.TabIndex = 17;
+            this.RatePlusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // RankPreviewPanel
             // 
@@ -1521,7 +1531,7 @@ namespace Tama_s_BlackJack
             this.ExplainPanel.Controls.Add(this.TabPicture2);
             this.ExplainPanel.Controls.Add(this.TabPicture1);
             this.ExplainPanel.Controls.Add(this.ExplainLabel);
-            this.ExplainPanel.Location = new System.Drawing.Point(525, 263);
+            this.ExplainPanel.Location = new System.Drawing.Point(758, 320);
             this.ExplainPanel.Name = "ExplainPanel";
             this.ExplainPanel.Size = new System.Drawing.Size(218, 123);
             this.ExplainPanel.TabIndex = 42;
@@ -2455,16 +2465,6 @@ namespace Tama_s_BlackJack
             this.RankedAnimationTimer.Interval = 5;
             this.RankedAnimationTimer.Tick += new System.EventHandler(this.RankedAnimationTimer_Tick);
             // 
-            // RatePlusLabel
-            // 
-            this.RatePlusLabel.AutoSize = true;
-            this.RatePlusLabel.Font = new System.Drawing.Font("Mistral", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RatePlusLabel.Location = new System.Drawing.Point(254, 62);
-            this.RatePlusLabel.Name = "RatePlusLabel";
-            this.RatePlusLabel.Size = new System.Drawing.Size(0, 22);
-            this.RatePlusLabel.TabIndex = 17;
-            this.RatePlusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2473,6 +2473,7 @@ namespace Tama_s_BlackJack
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
             this.ClientSize = new System.Drawing.Size(1284, 781);
             this.Controls.Add(this.HelpPanel);
+            this.Controls.Add(this.ExplainPanel);
             this.Controls.Add(this.MemberPanel);
             this.Controls.Add(this.HelpParentPanel);
             this.Controls.Add(this.StatPanel);
@@ -2509,7 +2510,6 @@ namespace Tama_s_BlackJack
             this.Controls.Add(this.DealerTotalLabel);
             this.Controls.Add(this.DealButton);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.ExplainPanel);
             this.Controls.Add(this.MemberPicture);
             this.Controls.Add(this.panel18);
             this.Controls.Add(this.panel17);
