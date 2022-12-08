@@ -2459,10 +2459,10 @@ namespace Tama_s_BlackJack
             this.BackgroundImage = global::Tama_s_BlackJack.Properties.Resources.playmat_green1;
             this.ClientSize = new System.Drawing.Size(1284, 781);
             this.Controls.Add(this.HelpPanel);
+            this.Controls.Add(this.StatPanel);
             this.Controls.Add(this.ExplainPanel);
             this.Controls.Add(this.MemberPanel);
             this.Controls.Add(this.HelpParentPanel);
-            this.Controls.Add(this.StatPanel);
             this.Controls.Add(this.HelpLabel);
             this.Controls.Add(this.SplitPicture);
             this.Controls.Add(this.StatPicture);

@@ -951,7 +951,7 @@ namespace Tama_s_BlackJack
         }
 
         /// <summary>
-        /// カジュアルモード
+        /// Tower
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -959,9 +959,9 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture2.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "Casual" + LB + LB + "Decks: 2" + LB + "Credits: 100" + LB +
+            ExplainLabel.Text = "Cat's Tower" + LB + LB + "Decks: 4" + LB + "Credits: 100" + LB +
             "Bets: 10";
-            this.deck = 2;
+            this.deck = 4;
             this.maxMental = 100;
             this.mainPoint = 1000;
             this.credits = this.maxMental;
@@ -969,7 +969,7 @@ namespace Tama_s_BlackJack
             this.betMagn = this.defaultMagn;
             this.BackgroundImage = Properties.Resources.playmat_green1;
             pData.SetNowGameMode(2);
-            MemberPicture.Visible = false;
+            MemberPicture.Visible = true;
             MemberPanel.Visible = false;
             SetStats();
             MentalLabel.Text = this.credits + "";
