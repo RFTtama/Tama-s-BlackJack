@@ -10,6 +10,7 @@ namespace Tama_s_BlackJack
         private const int count = 9;
         public readonly int interval = 400;
         private readonly int MaxRate;
+        public bool enableRateBenalty = false;
         public int rate
         {
             get
@@ -42,6 +43,19 @@ namespace Tama_s_BlackJack
             {
                 this._rate = 0;
             }
+        }
+
+        /// <summary>
+        /// 切断時ペナルティを追加
+        /// </summary>
+        public void SetRatePenalty()
+        {
+            if (!enableRateBenalty) return;
+            //切断時ペナルティ
+            int ratePenalty = this.rate;
+            ratePenalty -= 100;
+            if (ratePenalty < 0) ratePenalty = 0;
+            encrypt.Encrypt(ratePenalty.ToString());
         }
 
         public void CalcRate(float tScore)

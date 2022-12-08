@@ -50,7 +50,8 @@ namespace Tama_s_BlackJack
         private Bitmap jackCardPattern;                         //カードの柄(jack)
         private Bitmap queenCardPattern;                        //カードの柄(queen)
         private Bitmap kingCardPattern;                         //カードの柄(king)
-        private int totalSurrender = 0;                             //サレンダー回数
+        private int totalSurrender = 0;                         //サレンダー回数
+        private bool firstBet = true;                           //最初の賭けかどうか
 
         /// <summary>
         /// Formコンストラクタ
@@ -659,6 +660,11 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            if (firstBet)
+            {
+                rateMan.SetRatePenalty();
+                firstBet = false;
+            }
             if(DealButton.Text == "Replay")
             {
                 Init();
@@ -946,6 +952,7 @@ namespace Tama_s_BlackJack
             this.BackgroundImage = Properties.Resources.playmat_green1;
             MemberPicture.Visible = false;
             MemberPanel.Visible = false;
+            rateMan.enableRateBenalty = false;
             SetStats();
             MentalLabel.Text = this.credits + "";
         }
@@ -971,6 +978,7 @@ namespace Tama_s_BlackJack
             pData.SetNowGameMode(2);
             MemberPicture.Visible = true;
             MemberPanel.Visible = false;
+            rateMan.enableRateBenalty = true;
             SetStats();
             MentalLabel.Text = this.credits + "";
         }
