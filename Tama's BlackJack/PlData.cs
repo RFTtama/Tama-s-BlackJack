@@ -8,7 +8,7 @@ namespace Tama_s_BlackJack
         private List<int> point;        //ポイントデータ保存リスト
         private List<int> tScore;       //スコアデータ保存リスト
         private List<int> gameMode;     //ゲームモード保存リスト
-        private const int modeNum = 3;  //ゲームモードの数
+        private const int modeNum = 2;  //ゲームモードの数
         private int nowGameMode;        //現在のゲームモード
         private int[] dataNum;          //データの個数
 

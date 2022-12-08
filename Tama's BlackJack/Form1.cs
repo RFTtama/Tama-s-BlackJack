@@ -50,7 +50,8 @@ namespace Tama_s_BlackJack
         private Bitmap jackCardPattern;                         //カードの柄(jack)
         private Bitmap queenCardPattern;                        //カードの柄(queen)
         private Bitmap kingCardPattern;                         //カードの柄(king)
-        private int totalSurrender = 0;                             //サレンダー回数
+        private int totalSurrender = 0;                         //サレンダー回数
+        private bool firstBet = true;                           //最初の賭けかどうか
 
         /// <summary>
         /// Formコンストラクタ
@@ -69,6 +70,8 @@ namespace Tama_s_BlackJack
             StatPanel.Left = this.Width / 2 - StatPanel.Width / 2;
             MemberPanel.Top = this.Height / 2 - MemberPanel.Height / 2;
             MemberPanel.Left = this.Width / 2 - MemberPanel.Width / 2;
+            ExplainPanel.Left = 525;
+            ExplainPanel.Top = 263;
 
             HelpPanel.Parent = HelpParentPanel;
 
@@ -457,7 +460,7 @@ namespace Tama_s_BlackJack
                 }
                 pData.AddData(this.point, (int)tScore);
                 SetStats();
-                if (pData.GetNowGameMode() == 3)
+                if (pData.GetNowGameMode() == 2)
                 {
                     rateMan.CalcRate(tScore);
                     EnableRankedGameEndAnimation();
@@ -473,7 +476,7 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void SetStats()
         {
-            String[] modeName = new String[] { "Standard", "Casual", "T's BJ Member" };
+            String[] modeName = new String[] { "Casual", "T's BJ Member" };
             ModeLabel.Text = modeName[pData.GetNowGameMode() - 1];
             AvgCoinsLabel.Text = pData.GetMaxOfPoint() + "";
             int avg = (int)pData.GetAvgOftScore();
@@ -620,7 +623,7 @@ namespace Tama_s_BlackJack
         {
             this.oldPoint = this.point;
             this.point += (int)(value * this.pointMagn);
-            if(pData.GetNowGameMode() == 3)this.point += (int)(total[1] * mainPoint / 50);
+            //if(pData.GetNowGameMode() == 3)this.point += (int)(total[1] * mainPoint / 50);
             this.PointLabel.ForeColor = Color.Red;
             PointTimer.Enabled = true;
         }
@@ -657,6 +660,11 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            if (firstBet)
+            {
+                rateMan.SetRatePenalty();
+                firstBet = false;
+            }
             if(DealButton.Text == "Replay")
             {
                 Init();
@@ -944,12 +952,13 @@ namespace Tama_s_BlackJack
             this.BackgroundImage = Properties.Resources.playmat_green1;
             MemberPicture.Visible = false;
             MemberPanel.Visible = false;
+            rateMan.enableRateBenalty = false;
             SetStats();
             MentalLabel.Text = this.credits + "";
         }
 
         /// <summary>
-        /// カジュアルモード
+        /// Tower
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -957,9 +966,9 @@ namespace Tama_s_BlackJack
         {
             SetTabRed();
             TabPicture2.Image = Properties.Resources.point2;
-            ExplainLabel.Text = "Casual" + LB + LB + "Decks: 2" + LB + "Credits: 100" + LB +
+            ExplainLabel.Text = "Cat's Tower" + LB + LB + "Decks: 4" + LB + "Credits: 100" + LB +
             "Bets: 10";
-            this.deck = 2;
+            this.deck = 4;
             this.maxMental = 100;
             this.mainPoint = 1000;
             this.credits = this.maxMental;
@@ -967,8 +976,9 @@ namespace Tama_s_BlackJack
             this.betMagn = this.defaultMagn;
             this.BackgroundImage = Properties.Resources.playmat_green1;
             pData.SetNowGameMode(2);
-            MemberPicture.Visible = false;
+            MemberPicture.Visible = true;
             MemberPanel.Visible = false;
+            rateMan.enableRateBenalty = true;
             SetStats();
             MentalLabel.Text = this.credits + "";
         }
@@ -980,7 +990,6 @@ namespace Tama_s_BlackJack
         {
             TabPicture1.Image = Properties.Resources.point3;
             TabPicture2.Image = Properties.Resources.point3;
-            TabPicture3.Image = Properties.Resources.point3;
         }
 
         /// <summary>
@@ -1003,6 +1012,7 @@ namespace Tama_s_BlackJack
             HelpPanel.Top = this.helpPanelDefaultTopPosition - HelpScrollBar.Value;
         }
 
+        /*
         private void TabPicture3_Click(object sender, EventArgs e)
         {
             SetTabRed();
@@ -1020,6 +1030,7 @@ namespace Tama_s_BlackJack
             SetStats();
             MentalLabel.Text = this.credits + "";
         }
+        */
 
         /// <summary>
         /// ランクアイコン
