@@ -318,7 +318,7 @@ namespace Tama_s_BlackJack
                         }));
                         bjFlg[0] = true;
                         DealerTotalLabel.ForeColor = Color.Red;
-                        if (Pictures[0, 0].Image == tenCardPattern)
+                        if (Pictures[0, 0].Image == tenCardPattern && Pictures[0, 1].Image == Properties.Resources.ace_nyan)
                         {
                             ColorTimer.Enabled = true;
                         }
@@ -348,7 +348,7 @@ namespace Tama_s_BlackJack
                         }));
                         bjFlg[1] = true;
                         PlayerTotalLabel.ForeColor = Color.Red;
-                        if (Pictures[1, 0].Image == tenCardPattern)
+                        if (Pictures[0, 0].Image == tenCardPattern && Pictures[0, 1].Image == Properties.Resources.ace_nyan)
                         {
                             ColorTimer.Enabled = true;
                         }
@@ -679,6 +679,7 @@ namespace Tama_s_BlackJack
             ExplainPanel.Visible = false;
             ArrowTimer.Enabled = false;
             ColorTimer.Enabled = false;
+            TscoreLabel.ForeColor = Color.Black;
             ButtonUnlock();
             DealButton.Enabled = false;
             InsurancePicture.Visible = false;
