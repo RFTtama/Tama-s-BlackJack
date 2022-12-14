@@ -52,6 +52,7 @@ namespace Tama_s_BlackJack
         private Bitmap kingCardPattern;                         //カードの柄(king)
         private int totalSurrender = 0;                         //サレンダー回数
         private bool firstBet = true;                           //最初の賭けかどうか
+        private const int TASK_DELAY_TIME = 600;                //タスクの待ち時間
 
         /// <summary>
         /// Formコンストラクタ
@@ -196,6 +197,8 @@ namespace Tama_s_BlackJack
                 Pictures[1, i].Image = Properties.Resources.card;
                 Numbers[0, i].Visible = true;
                 Numbers[1, i].Visible = true;
+                DealerTotalLabel.Text = "0";
+                PlayerTotalLabel.Text = "0";
                 if (i < 2)
                 {
                     this.cardIndex[i] = 0;
@@ -216,8 +219,12 @@ namespace Tama_s_BlackJack
         /// <param name="tag">タグ: プレイヤーかディーラーか</param>
         /// <param name="cp">カード情報</param>
         /// <param name="wasHidden">隠されていたカードかどうか</param>
-        private void SetCard(int tag, CardProperties cp, bool wasHidden)
+        private async Task SetCardAsync(int tag, CardProperties cp, bool wasHidden)
         {
+            if (cardIndex[tag] > 8 && total[tag] < 21)
+            {
+                overFlg[tag] = true;
+            }
             if (wasHidden)
             {
                 cardIndex[tag]--;
@@ -352,16 +359,13 @@ namespace Tama_s_BlackJack
                         {
                             ColorTimer.Enabled = true;
                         }
-                        SetCard(0, hiddenCard, true);
+                        await SetCardAsync(0, hiddenCard, true);
                         BattleCards();
                     }
                     break;
             }
             cardIndex[tag]++;
-            if (cardIndex[tag] > 8 && total[tag] < 21)
-            {
-                overFlg[tag] = true;
-            }
+            await Task.Delay(TASK_DELAY_TIME);
         }
 
         /// <summary>
@@ -397,7 +401,7 @@ namespace Tama_s_BlackJack
         /// 隠されたカードを設定する
         /// </summary>
         /// <param name="cp">カード情報</param>
-        private void SetHiddenCard(CardProperties cp)
+        private async Task SetHiddenCardAsync(CardProperties cp)
         {
             hiddenCard = cp;
             Numbers[0, 1].Visible = false;
@@ -405,16 +409,17 @@ namespace Tama_s_BlackJack
             Pictures[0, 1].Image = backCardPattern;
             DealerTotalLabel.Text += " ?";
             cardIndex[0]++;
+            await Task.Delay(TASK_DELAY_TIME);
         }
 
         /// <summary>
         /// ディーラーのカードヒットを行う
         /// </summary>
-        private void HitDealerCard()
+        private async Task HitDealerCardAsync()
         {
             while(total[0] < 17)
             {
-                SetCard(0, card.DrawCard(), false);
+                await SetCardAsync(0, card.DrawCard(), false);
             }
             BattleCards();
         }
@@ -658,14 +663,19 @@ namespace Tama_s_BlackJack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_ClickAsync(object sender, EventArgs e)
+        {
+            button1_click();
+        }
+
+        async private void button1_click()
         {
             if (firstBet)
             {
                 rateMan.SetRatePenalty();
                 firstBet = false;
             }
-            if(DealButton.Text == "Replay")
+            if (DealButton.Text == "Replay")
             {
                 Init();
                 DealButton.Text = "Deal";
@@ -722,12 +732,12 @@ namespace Tama_s_BlackJack
             }
             ClearCards();
             SetCardTip();
-            SetCard(0, card.DrawCard(), false);
-            SetHiddenCard(card.DrawCard());
-            SetCard(1, card.DrawCard(), false);
-            SetCard(1, card.DrawCard(), false);
+            await SetCardAsync(0, card.DrawCard(), false);
+            await SetCardAsync(1, card.DrawCard(), false);
+            await SetHiddenCardAsync(card.DrawCard());
+            await SetCardAsync(1, card.DrawCard(), false);
             SetBustPer();
-            if(Cards[0, 0].number == 1 && !bjFlg[1])
+            if (Cards[0, 0].number == 1 && !bjFlg[1])
             {
                 InsurancePicture.Visible = true;
             }
@@ -738,15 +748,20 @@ namespace Tama_s_BlackJack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HitPicture_Click(object sender, EventArgs e)
+        private void HitPicture_ClickAsync(object sender, EventArgs e)
+        {
+            HitPicture_Click();
+        }
+
+        private async void HitPicture_Click()
         {
             DoublePicture.Visible = false;
             SurrenderPicture.Visible = false;
             InsurancePicture.Visible = false;
-            SetCard(1, card.DrawCard(), false);
+            await SetCardAsync(1, card.DrawCard(), false);
             if (total[1] >= 21)
             {
-                SetCard(0, hiddenCard, true);
+                await SetCardAsync(0, hiddenCard, true);
                 BattleCards();
             }
             SetBustPer();
@@ -787,10 +802,15 @@ namespace Tama_s_BlackJack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void StandPicture_Click(object sender, EventArgs e)
+        private void StandPicture_ClickAsync(object sender, EventArgs e)
         {
-            SetCard(0, hiddenCard, true);
-            HitDealerCard();
+            StandPicture_Click();
+        }
+
+        private async void StandPicture_Click()
+        {
+            await SetCardAsync(0, hiddenCard, true);
+            await HitDealerCardAsync();
         }
 
         /// <summary>
@@ -798,13 +818,18 @@ namespace Tama_s_BlackJack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DoublePicture_Click(object sender, EventArgs e)
+        private void DoublePicture_ClickAsync(object sender, EventArgs e)
+        {
+            DoublePicture_Click();
+        }
+
+        private async void DoublePicture_Click()
         {
             this.pointMagn *= 2.0f;
             this.betMagn *= 2.0f;
-            SetCard(1, card.DrawCard(), false);
-            SetCard(0, hiddenCard, true);
-            HitDealerCard();
+            await SetCardAsync(1, card.DrawCard(), false);
+            await SetCardAsync(0, hiddenCard, true);
+            await HitDealerCardAsync();
         }
 
         /// <summary>
@@ -812,12 +837,17 @@ namespace Tama_s_BlackJack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void InsurancePicture_Click(object sender, EventArgs e)
+        private void InsurancePicture_ClickAsync(object sender, EventArgs e)
         {
-            if(hiddenCard.number >= 10)
+            InsurancePicture_Click();
+        }
+
+        private async void InsurancePicture_Click()
+        {
+            if (hiddenCard.number >= 10)
             {
                 ButtonLock();
-                SetCard(0, hiddenCard, true);
+                await SetCardAsync(0, hiddenCard, true);
                 InformationLabel.Text = "Insurance success";
             }
             else
@@ -834,11 +864,16 @@ namespace Tama_s_BlackJack
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SurrenderPicture_Click(object sender, EventArgs e)
+        private void SurrenderPicture_ClickAsync(object sender, EventArgs e)
+        {
+            SurrenderPicture_Click();
+        }
+
+        private async void SurrenderPicture_Click()
         {
             Slash(true);
             ButtonLock();
-            SetCard(0, hiddenCard, true);
+            await SetCardAsync(0, hiddenCard, true);
             InformationLabel.Text = "You surrendered";
             this.credits -= 5;
             this.winStreak = 0;

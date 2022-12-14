@@ -332,7 +332,7 @@ namespace Tama_s_BlackJack
             this.DealButton.Text = "Deal";
             this.toolTip1.SetToolTip(this.DealButton, "ディールを開始します");
             this.DealButton.UseVisualStyleBackColor = false;
-            this.DealButton.Click += new System.EventHandler(this.button1_Click);
+            this.DealButton.Click += new System.EventHandler(this.button1_ClickAsync);
             // 
             // label1
             // 
@@ -565,7 +565,7 @@ namespace Tama_s_BlackJack
             this.SurrenderPicture.TabIndex = 30;
             this.SurrenderPicture.TabStop = false;
             this.toolTip1.SetToolTip(this.SurrenderPicture, "*サレンダー*\r\nこのディールを降ります\r\n・負けた際の1/2のクレジットが返却されます");
-            this.SurrenderPicture.Click += new System.EventHandler(this.SurrenderPicture_Click);
+            this.SurrenderPicture.Click += new System.EventHandler(this.SurrenderPicture_ClickAsync);
             this.SurrenderPicture.MouseEnter += new System.EventHandler(this.SurrenderPicture_MouseEnter);
             this.SurrenderPicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
@@ -579,7 +579,7 @@ namespace Tama_s_BlackJack
             this.InsurancePicture.TabIndex = 29;
             this.InsurancePicture.TabStop = false;
             this.toolTip1.SetToolTip(this.InsurancePicture, "*インシュランス*\r\nディーラーのブラックジャックに対して5クレジットの保険をかけます\r\nディーラーがブラックジャックだった場合、クレジットが返却されます");
-            this.InsurancePicture.Click += new System.EventHandler(this.InsurancePicture_Click);
+            this.InsurancePicture.Click += new System.EventHandler(this.InsurancePicture_ClickAsync);
             this.InsurancePicture.MouseEnter += new System.EventHandler(this.InsurancePicture_MouseEnter);
             this.InsurancePicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
@@ -594,7 +594,7 @@ namespace Tama_s_BlackJack
             this.DoublePicture.TabIndex = 28;
             this.DoublePicture.TabStop = false;
             this.toolTip1.SetToolTip(this.DoublePicture, "*ダブルダウン*\r\n賭けるクレジットを2倍にして\r\n1枚だけカードを追加します");
-            this.DoublePicture.Click += new System.EventHandler(this.DoublePicture_Click);
+            this.DoublePicture.Click += new System.EventHandler(this.DoublePicture_ClickAsync);
             this.DoublePicture.MouseEnter += new System.EventHandler(this.DoublePicture_MouseEnter);
             this.DoublePicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
@@ -609,7 +609,7 @@ namespace Tama_s_BlackJack
             this.StandPicture.TabIndex = 27;
             this.StandPicture.TabStop = false;
             this.toolTip1.SetToolTip(this.StandPicture, "*スタンド*\r\nディーラーの手札と勝負します");
-            this.StandPicture.Click += new System.EventHandler(this.StandPicture_Click);
+            this.StandPicture.Click += new System.EventHandler(this.StandPicture_ClickAsync);
             this.StandPicture.MouseEnter += new System.EventHandler(this.StandPicture_MouseEnter);
             this.StandPicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
@@ -624,7 +624,7 @@ namespace Tama_s_BlackJack
             this.HitPicture.TabIndex = 26;
             this.HitPicture.TabStop = false;
             this.toolTip1.SetToolTip(this.HitPicture, "*ヒット*\r\nカードを1枚追加します");
-            this.HitPicture.Click += new System.EventHandler(this.HitPicture_Click);
+            this.HitPicture.Click += new System.EventHandler(this.HitPicture_ClickAsync);
             this.HitPicture.MouseEnter += new System.EventHandler(this.HitPicture_MouseEnter);
             this.HitPicture.MouseLeave += new System.EventHandler(this.HitPicture_MouseLeave);
             // 
