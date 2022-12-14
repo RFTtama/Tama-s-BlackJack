@@ -761,8 +761,7 @@ namespace Tama_s_BlackJack
             await SetCardAsync(1, card.DrawCard(), false);
             if (total[1] >= 21)
             {
-                await SetCardAsync(0, hiddenCard, true);
-                BattleCards();
+                StandPicture_Click();
             }
             SetBustPer();
         }
