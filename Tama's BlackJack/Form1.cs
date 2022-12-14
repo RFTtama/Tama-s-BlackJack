@@ -52,7 +52,7 @@ namespace Tama_s_BlackJack
         private Bitmap kingCardPattern;                         //カードの柄(king)
         private int totalSurrender = 0;                         //サレンダー回数
         private bool firstBet = true;                           //最初の賭けかどうか
-        private const int TASK_DELAY_TIME = 600;                //タスクの待ち時間
+        private const int TASK_DELAY_TIME = 700;                //タスクの待ち時間
 
         /// <summary>
         /// Formコンストラクタ
