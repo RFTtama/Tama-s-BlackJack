@@ -6,11 +6,15 @@ namespace Tama_s_BlackJack
 {
     class RateManager
     {
-        private int _rate;
-        private const int count = 9;
-        public readonly int interval = 400;
-        private readonly int MaxRate;
-        public bool enableRateBenalty = false;
+        private int _rate;                          //レート
+        private const int RANK_NUM = 9;             //区切りの個数
+        public const int RANK_INTERVAL = 400;       //区切りの間隔
+        private readonly int MaxRate;               //最高レート
+        public bool enableRatePenalty = false;      //ランクペナルティ
+
+        /// <summary>
+        /// 現在のレート
+        /// </summary>
         public int rate
         {
             get
@@ -18,7 +22,13 @@ namespace Tama_s_BlackJack
                 return this._rate;
             }
         }
+
+        //更新前のレート
         private int _rateBef;
+
+        /// <summary>
+        /// 更新前のレート
+        /// </summary>
         public int rateBef
         {
             get
@@ -27,12 +37,15 @@ namespace Tama_s_BlackJack
             }
         }
 
-        private Encryption encrypt = new Encryption();
+        private Encryption encrypt = new Encryption();  //暗号化用
         
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public RateManager()
         {
             _rateBef = 0;
-            MaxRate = interval * count - 1;
+            MaxRate = RANK_INTERVAL * RANK_NUM - 1;
             encrypt.fileName = "rateData.dat";
             try
             {
@@ -50,7 +63,7 @@ namespace Tama_s_BlackJack
         /// </summary>
         public void SetRatePenalty()
         {
-            if (!enableRateBenalty) return;
+            if (!enableRatePenalty) return;
             //切断時ペナルティ
             int ratePenalty = this.rate;
             ratePenalty -= 100;
@@ -58,6 +71,10 @@ namespace Tama_s_BlackJack
             encrypt.Encrypt(ratePenalty.ToString());
         }
 
+        /// <summary>
+        /// レートを計算
+        /// </summary>
+        /// <param name="tScore">tScore</param>
         public void CalcRate(float tScore)
         {
             _rateBef = rate;
