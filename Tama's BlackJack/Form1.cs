@@ -987,7 +987,7 @@ namespace Tama_s_BlackJack
             this.BackgroundImage = Properties.Resources.playmat_green1;
             MemberPicture.Visible = false;
             MemberPanel.Visible = false;
-            rateMan.enableRateBenalty = false;
+            rateMan.enableRatePenalty = false;
             SetStats();
             MentalLabel.Text = this.credits + "";
         }
@@ -1013,7 +1013,7 @@ namespace Tama_s_BlackJack
             pData.SetNowGameMode(2);
             MemberPicture.Visible = true;
             MemberPanel.Visible = false;
-            rateMan.enableRateBenalty = true;
+            rateMan.enableRatePenalty = true;
             SetStats();
             MentalLabel.Text = this.credits + "";
         }
@@ -1099,13 +1099,13 @@ namespace Tama_s_BlackJack
         private void SetMemberData()
         {
             MemberLvLabel.Text = rateMan.rate + "";
-            int upRate = (rateMan.rate / rateMan.interval) * rateMan.interval + rateMan.interval;
+            int upRate = (rateMan.rate / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL + RateManager.RANK_INTERVAL;
             upRate = upRate - rateMan.rate;
             RankUpLabel.Text = upRate + "";
-            int downRate = (rateMan.rate / rateMan.interval) * rateMan.interval;
+            int downRate = (rateMan.rate / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL;
             downRate = rateMan.rate - downRate;
             RankDownLabel.Text = downRate + "";
-            RankPic.Image = rankResources[rateMan.rate / rateMan.interval];
+            RankPic.Image = rankResources[rateMan.rate / RateManager.RANK_INTERVAL];
         }
 
         private void MemberPicture_Click(object sender, EventArgs e)
@@ -1388,13 +1388,13 @@ namespace Tama_s_BlackJack
             }
 
             MemberLvLabel.Text = rateIncreasing + "";
-            int upRate = (rateIncreasing / rateMan.interval) * rateMan.interval + rateMan.interval;
+            int upRate = (rateIncreasing / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL + RateManager.RANK_INTERVAL;
             upRate = upRate - rateIncreasing;
             RankUpLabel.Text = upRate + "";
-            int downRate = (rateIncreasing / rateMan.interval) * rateMan.interval;
+            int downRate = (rateIncreasing / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL;
             downRate = rateIncreasing - downRate;
             RankDownLabel.Text = downRate + "";
-            RankPic.Image = rankResources[rateIncreasing / rateMan.interval];
+            RankPic.Image = rankResources[rateIncreasing / RateManager.RANK_INTERVAL];
             if(rateIncreasing > rateMan.rate)
             {
                 MemberLvLabel.ForeColor = Color.Blue;
