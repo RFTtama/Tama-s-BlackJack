@@ -808,6 +808,7 @@ namespace Tama_s_BlackJack
 
         private async void StandPicture_Click()
         {
+            ButtonLock();
             await SetCardAsync(0, hiddenCard, true);
             await HitDealerCardAsync();
         }
