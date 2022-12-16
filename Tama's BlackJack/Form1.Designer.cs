@@ -2434,7 +2434,7 @@ namespace Tama_s_BlackJack
             // 
             // BustIncreaseTimer
             // 
-            this.BustIncreaseTimer.Interval = 5;
+            this.BustIncreaseTimer.Interval = 1;
             this.BustIncreaseTimer.Tick += new System.EventHandler(this.BustIncreaseTimer_Tick);
             // 
             // BustTimer
