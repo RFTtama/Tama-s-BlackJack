@@ -826,8 +826,10 @@ namespace Tama_s_BlackJack
         private async void StandPicture_Click()
         {
             ButtonLock();
+            DealButton.Enabled = false;
             await SetCardAsync(0, hiddenCard, true);
             await HitDealerCardAsync();
+            DealButton.Enabled = true;
         }
 
         /// <summary>
