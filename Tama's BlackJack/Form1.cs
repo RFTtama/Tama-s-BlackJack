@@ -49,9 +49,10 @@ namespace Tama_s_BlackJack
         private Bitmap jackCardPattern;                         //カードの柄(jack)
         private Bitmap queenCardPattern;                        //カードの柄(queen)
         private Bitmap kingCardPattern;                         //カードの柄(king)
-        private int totalSurrender = -2;                         //サレンダー回数
+        private int totalSurrender = -2;                        //サレンダー回数
         private bool firstBet = true;                           //最初の賭けかどうか
         private const int TASK_DELAY_TIME = 700;                //タスクの待ち時間
+        private const int BONUS_INCREASE_BUSTPER = 50;          //ボーナスが増加するバスト確率
 
         /// <summary>
         /// Formコンストラクタ
@@ -505,6 +506,8 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void BattleCards()
         {
+            InformationLabel.ForeColor = Color.Black;
+            BustPerLabel.ForeColor = Color.Black;
             ButtonLock();
             this.totalDeal++;
             if (overFlg[0] && overFlg[1])
@@ -525,7 +528,7 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "Player's misfortune";
                 SetAdditionalScore(20, "Super Luck");
                 PlusPoint((int)(mainPoint * 2.0));
-                if(pointMagn == 2.0)
+                if(pointMagn >= 2.0)
                 {
                     SetAdditionalScore(5, "Smart");
                 }
@@ -549,7 +552,7 @@ namespace Tama_s_BlackJack
                 Slash(false);
                 InformationLabel.Text = "Dealer's bust";
                 PlusPoint(mainPoint);
-                if (pointMagn == 2.0)
+                if (pointMagn >= 2.0)
                 {
                     SetAdditionalScore(5, "Smart");
                 }
@@ -594,7 +597,7 @@ namespace Tama_s_BlackJack
                 Slash(false);
                 InformationLabel.Text = "Player wins";
                 PlusPoint(mainPoint);
-                if (pointMagn == 2.0)
+                if (pointMagn >= 2.0)
                 {
                     SetAdditionalScore(5, "Smart");
                 }
@@ -731,6 +734,13 @@ namespace Tama_s_BlackJack
             SetBustPer();
             if (!bjFlg[1])
             {
+                if (bustPer > BONUS_INCREASE_BUSTPER)
+                {
+                    InformationLabel.ForeColor = Color.Red;
+                    BustPerLabel.ForeColor = Color.Red;
+                    int bonus = (int)((pointMagn - 1.0f) * 100);
+                    InformationLabel.Text = "Bonus occurs on hit!!\tCurrent bonus +" + bonus + "%";
+                }
                 ButtonUnlock();
                 DealButton.Enabled = false;
                 InsurancePicture.Visible = false;
@@ -753,15 +763,28 @@ namespace Tama_s_BlackJack
 
         private async void HitPicture_Click()
         {
+            if(bustPer > BONUS_INCREASE_BUSTPER)
+            {
+                pointMagn += 0.25f;
+            }
             DoublePicture.Visible = false;
             SurrenderPicture.Visible = false;
             InsurancePicture.Visible = false;
             await SetCardAsync(1, card.DrawCard(), false);
             if (total[1] >= 21)
             {
+                InformationLabel.ForeColor = Color.Black;
+                BustPerLabel.ForeColor = Color.Black;
                 StandPicture_Click();
             }
             SetBustPer();
+            if(bustPer > BONUS_INCREASE_BUSTPER)
+            {
+                InformationLabel.ForeColor = Color.Red;
+                BustPerLabel.ForeColor = Color.Red;
+                int bonus = (int)((pointMagn - 1.0f) * 100);
+                InformationLabel.Text = "Bonus occurs on hit!!\tCurrent bonus +" + bonus + "%";
+            }
         }
 
         /// <summary>
