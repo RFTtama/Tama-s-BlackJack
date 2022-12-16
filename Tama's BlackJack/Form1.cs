@@ -50,7 +50,7 @@ namespace Tama_s_BlackJack
         private Bitmap jackCardPattern;                         //カードの柄(jack)
         private Bitmap queenCardPattern;                        //カードの柄(queen)
         private Bitmap kingCardPattern;                         //カードの柄(king)
-        private int totalSurrender = 0;                         //サレンダー回数
+        private int totalSurrender = -2;                         //サレンダー回数
         private bool firstBet = true;                           //最初の賭けかどうか
         private const int TASK_DELAY_TIME = 700;                //タスクの待ち時間
 
@@ -738,9 +738,12 @@ namespace Tama_s_BlackJack
             await SetHiddenCardAsync(card.DrawCard());
             await SetCardAsync(1, card.DrawCard(), false);
             SetBustPer();
-            ButtonUnlock();
-            DealButton.Enabled = false;
-            InsurancePicture.Visible = false;
+            if (!bjFlg[1])
+            {
+                ButtonUnlock();
+                DealButton.Enabled = false;
+                InsurancePicture.Visible = false;
+            }
             if (Cards[0, 0].number == 1 && !bjFlg[1])
             {
                 InsurancePicture.Visible = true;
@@ -890,7 +893,10 @@ namespace Tama_s_BlackJack
             InformationLabel.Text = "You surrendered";
             this.credits -= 5;
             this.winStreak = 0;
-            SetAdditionalScore(totalSurrender * -5, "Nope");
+            if (totalSurrender > 0)
+            {
+                SetAdditionalScore(totalSurrender * -5, "Nope");
+            }
             totalSurrender++;
             CheckCredits();
         }
