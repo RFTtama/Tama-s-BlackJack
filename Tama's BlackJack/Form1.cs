@@ -178,6 +178,7 @@ namespace Tama_s_BlackJack
             HelpParentPanel.Visible = false;
             ExplainPanel.Visible = true;
             BustPerLabel.Text = string.Empty;
+            firstBet = true;
         }
 
         /// <summary>
