@@ -670,6 +670,7 @@ namespace Tama_s_BlackJack
 
         async private void button1_click()
         {
+            DealButton.Enabled = false;
             if (firstBet)
             {
                 rateMan.SetRatePenalty();
@@ -690,9 +691,6 @@ namespace Tama_s_BlackJack
             ArrowTimer.Enabled = false;
             ColorTimer.Enabled = false;
             TscoreLabel.ForeColor = Color.Black;
-            ButtonUnlock();
-            DealButton.Enabled = false;
-            InsurancePicture.Visible = false;
             try
             {
                 if (card.GetRemainingCardsPer() < shafflePer)
@@ -737,6 +735,9 @@ namespace Tama_s_BlackJack
             await SetHiddenCardAsync(card.DrawCard());
             await SetCardAsync(1, card.DrawCard(), false);
             SetBustPer();
+            ButtonUnlock();
+            DealButton.Enabled = false;
+            InsurancePicture.Visible = false;
             if (Cards[0, 0].number == 1 && !bjFlg[1])
             {
                 InsurancePicture.Visible = true;
