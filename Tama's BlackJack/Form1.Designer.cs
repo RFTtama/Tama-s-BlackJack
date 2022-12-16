@@ -605,6 +605,7 @@ namespace Tama_s_BlackJack
             // MemberPanel
             // 
             this.MemberPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.MemberPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MemberPanel.Controls.Add(this.RatePlusLabel);
             this.MemberPanel.Controls.Add(this.RankPreviewPanel);
             this.MemberPanel.Controls.Add(this.pictureBox41);
