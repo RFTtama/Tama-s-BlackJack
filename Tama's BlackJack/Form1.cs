@@ -734,7 +734,7 @@ namespace Tama_s_BlackJack
             SetBustPer();
             if (!bjFlg[1])
             {
-                if (bustPer > BONUS_INCREASE_BUSTPER)
+                if (bustPer >= BONUS_INCREASE_BUSTPER)
                 {
                     InformationLabel.ForeColor = Color.Red;
                     BustPerLabel.ForeColor = Color.Red;
@@ -763,7 +763,7 @@ namespace Tama_s_BlackJack
 
         private async void HitPicture_Click()
         {
-            if(bustPer > BONUS_INCREASE_BUSTPER)
+            if(bustPer >= BONUS_INCREASE_BUSTPER)
             {
                 pointMagn += 0.25f;
             }
@@ -778,7 +778,7 @@ namespace Tama_s_BlackJack
                 StandPicture_Click();
             }
             SetBustPer();
-            if(bustPer > BONUS_INCREASE_BUSTPER)
+            if(bustPer >= BONUS_INCREASE_BUSTPER)
             {
                 InformationLabel.ForeColor = Color.Red;
                 BustPerLabel.ForeColor = Color.Red;
