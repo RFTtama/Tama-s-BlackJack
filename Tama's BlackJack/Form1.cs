@@ -40,7 +40,6 @@ namespace Tama_s_BlackJack
         private int totalDeal;                                  //合計ディール数
         private int[] cardIndex;                                //次のカード置き場所
         private CardProperties hiddenCard;                      //隠されたカード
-        private int helpPanelDefaultTopPosition;                //ヘルプパネルの初期位置
         private int additionalScore = 0;                        //追加t-score
         private int winStreak = 0;                              //勢い
         private const int reaPer = 10;                          //レア確率
@@ -65,19 +64,12 @@ namespace Tama_s_BlackJack
             encryption.fileName = "encryptedData.dat";
 
             //パネルを初期値に戻す
-            HelpParentPanel.Top = this.Height / 2 - HelpParentPanel.Height / 2;
-            HelpParentPanel.Left = this.Width / 2 - HelpParentPanel.Width / 2;
             StatPanel.Top = this.Height / 2 - StatPanel.Height / 2;
             StatPanel.Left = this.Width / 2 - StatPanel.Width / 2;
             MemberPanel.Top = this.Height / 2 - MemberPanel.Height / 2;
             MemberPanel.Left = this.Width / 2 - MemberPanel.Width / 2;
             ExplainPanel.Left = 525;
             ExplainPanel.Top = 263;
-
-            HelpPanel.Parent = HelpParentPanel;
-
-            HelpPanel.Left = 0;
-            HelpPanel.Top = 0;
 
             Init();
         }
@@ -139,7 +131,6 @@ namespace Tama_s_BlackJack
             this.pointMagn = 1.0f;
             this.defaultMagn = 1.0f;
             this.mainPoint = 500;
-            this.helpPanelDefaultTopPosition = HelpPanel.Top;
             this.card = new CardManager();
             this.Cards = new CardProperties[2, maxCards];
             this.hiddenCard = new CardProperties();
@@ -175,7 +166,6 @@ namespace Tama_s_BlackJack
             TscoreLabel.Text = "T-Score:";
             StatPanel.Visible = false;
             MemberPanel.Visible = false;
-            HelpParentPanel.Visible = false;
             ExplainPanel.Visible = true;
             BustPerLabel.Text = string.Empty;
             firstBet = true;
@@ -1048,26 +1038,6 @@ namespace Tama_s_BlackJack
         {
             TabPicture1.Image = Properties.Resources.point3;
             TabPicture2.Image = Properties.Resources.point3;
-        }
-
-        /// <summary>
-        /// ヘルプ表示切り替え
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HelpLabel_Click(object sender, EventArgs e)
-        {
-            HelpParentPanel.Visible = !HelpParentPanel.Visible;
-        }
-
-        /// <summary>
-        /// ヘルプのスクロール
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HelpScrollBar_Scroll_1(object sender, ScrollEventArgs e)
-        {
-            HelpPanel.Top = this.helpPanelDefaultTopPosition - HelpScrollBar.Value;
         }
 
         /*
