@@ -425,6 +425,7 @@ namespace Tama_s_BlackJack
             // SplitPicture
             // 
             this.SplitPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.SplitPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SplitPicture.Image = global::Tama_s_BlackJack.Properties.Resources.split;
             this.SplitPicture.Location = new System.Drawing.Point(638, 394);
             this.SplitPicture.Name = "SplitPicture";
@@ -452,6 +453,7 @@ namespace Tama_s_BlackJack
             // SurrenderPicture
             // 
             this.SurrenderPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.SurrenderPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SurrenderPicture.Image = global::Tama_s_BlackJack.Properties.Resources.surrender;
             this.SurrenderPicture.Location = new System.Drawing.Point(639, 182);
             this.SurrenderPicture.Name = "SurrenderPicture";
@@ -466,6 +468,7 @@ namespace Tama_s_BlackJack
             // InsurancePicture
             // 
             this.InsurancePicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.InsurancePicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.InsurancePicture.Image = global::Tama_s_BlackJack.Properties.Resources.insurance;
             this.InsurancePicture.Location = new System.Drawing.Point(639, 288);
             this.InsurancePicture.Name = "InsurancePicture";
@@ -480,6 +483,7 @@ namespace Tama_s_BlackJack
             // DoublePicture
             // 
             this.DoublePicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.DoublePicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.DoublePicture.Image = global::Tama_s_BlackJack.Properties.Resources._double;
             this.DoublePicture.Location = new System.Drawing.Point(532, 394);
             this.DoublePicture.Name = "DoublePicture";
@@ -495,6 +499,7 @@ namespace Tama_s_BlackJack
             // StandPicture
             // 
             this.StandPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.StandPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StandPicture.Image = global::Tama_s_BlackJack.Properties.Resources.stand;
             this.StandPicture.Location = new System.Drawing.Point(532, 288);
             this.StandPicture.Name = "StandPicture";
@@ -510,6 +515,7 @@ namespace Tama_s_BlackJack
             // HitPicture
             // 
             this.HitPicture.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.HitPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.HitPicture.Image = global::Tama_s_BlackJack.Properties.Resources.hit;
             this.HitPicture.Location = new System.Drawing.Point(532, 182);
             this.HitPicture.Name = "HitPicture";
@@ -1358,6 +1364,7 @@ namespace Tama_s_BlackJack
             // StatPanel
             // 
             this.StatPanel.BackColor = System.Drawing.SystemColors.Info;
+            this.StatPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.StatPanel.Controls.Add(this.ModeLabel);
             this.StatPanel.Controls.Add(this.label18);
             this.StatPanel.Controls.Add(this.PointEvalPicture);
@@ -1408,6 +1415,7 @@ namespace Tama_s_BlackJack
             // ExplainPanel
             // 
             this.ExplainPanel.BackColor = System.Drawing.SystemColors.Info;
+            this.ExplainPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ExplainPanel.Controls.Add(this.TabPicture2);
             this.ExplainPanel.Controls.Add(this.TabPicture1);
             this.ExplainPanel.Controls.Add(this.ExplainLabel);
@@ -1464,6 +1472,7 @@ namespace Tama_s_BlackJack
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel17.Controls.Add(this.label65);
             this.panel17.Controls.Add(this.InformationLabel);
             this.panel17.Location = new System.Drawing.Point(-6, 506);
@@ -1484,6 +1493,7 @@ namespace Tama_s_BlackJack
             // panel18
             // 
             this.panel18.BackColor = System.Drawing.Color.Gold;
+            this.panel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel18.Controls.Add(this.MentalLabel);
             this.panel18.Location = new System.Drawing.Point(552, 132);
             this.panel18.Name = "panel18";
