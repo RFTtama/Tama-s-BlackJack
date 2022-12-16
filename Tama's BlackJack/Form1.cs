@@ -52,7 +52,7 @@ namespace Tama_s_BlackJack
         private int totalSurrender = -2;                        //サレンダー回数
         private bool firstBet = true;                           //最初の賭けかどうか
         private const int TASK_DELAY_TIME = 700;                //タスクの待ち時間
-        private const int BONUS_INCREASE_BUSTPER = 50;          //ボーナスが増加するバスト確率
+        private const int BONUS_INCREASE_BUSTPER = 40;          //ボーナスが増加するバスト確率
 
         /// <summary>
         /// Formコンストラクタ
