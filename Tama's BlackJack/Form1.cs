@@ -551,6 +551,7 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "Player's bust";
                 this.credits -= (int)(10 * betMagn);
                 this.winStreak = 0;
+                ResetBustPer();
             }
             else if(total[0] > 21)
             {
@@ -588,6 +589,7 @@ namespace Tama_s_BlackJack
                     SetAdditionalScore(this.winStreak * 3, "Streak bonus");
                 }
                 this.winStreak++;
+                ResetBustPer();
             }
             else if(total[0] > total[1])
             {
@@ -670,6 +672,7 @@ namespace Tama_s_BlackJack
 
         async private void button1_click()
         {
+            ResetBustPer();
             DealButton.Enabled = false;
             if (firstBet)
             {
@@ -795,6 +798,15 @@ namespace Tama_s_BlackJack
             this.bustPer = per;
             MoveBustPer();
             BustPerLabel.Text = per.ToString("F0") + "%";
+        }
+
+        /// <summary>
+        /// バスト確率を0にする
+        /// </summary>
+        private void ResetBustPer()
+        {
+            this.bustPer = 0;
+            MoveBustPer();
         }
 
         /// <summary>
