@@ -734,13 +734,6 @@ namespace Tama_s_BlackJack
             SetBustPer();
             if (!bjFlg[1])
             {
-                if (bustPer >= BONUS_INCREASE_BUSTPER)
-                {
-                    InformationLabel.ForeColor = Color.Red;
-                    BustPerLabel.ForeColor = Color.Red;
-                    int bonus = (int)((pointMagn - 1.0f) * 100);
-                    //InformationLabel.Text = "Hit bonus +" + bonus + "%";
-                }
                 ButtonUnlock();
                 DealButton.Enabled = false;
                 InsurancePicture.Visible = false;
@@ -763,10 +756,6 @@ namespace Tama_s_BlackJack
 
         private async void HitPicture_Click()
         {
-            if(bustPer >= BONUS_INCREASE_BUSTPER)
-            {
-                pointMagn += 0.25f;
-            }
             DoublePicture.Visible = false;
             SurrenderPicture.Visible = false;
             InsurancePicture.Visible = false;
@@ -778,13 +767,6 @@ namespace Tama_s_BlackJack
                 StandPicture_Click();
             }
             SetBustPer();
-            if(bustPer >= BONUS_INCREASE_BUSTPER)
-            {
-                InformationLabel.ForeColor = Color.Red;
-                BustPerLabel.ForeColor = Color.Red;
-                int bonus = (int)((pointMagn - 1.0f) * 100);
-                //InformationLabel.Text = "Hit bonus +" + bonus + "%";
-            }
         }
 
         /// <summary>
@@ -1114,13 +1096,7 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void SetMemberData()
         {
-            MemberLvLabel.Text = rateMan.rate + "";
-            int upRate = (rateMan.rate / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL + RateManager.RANK_INTERVAL;
-            upRate = upRate - rateMan.rate;
-            RankUpLabel.Text = upRate + "";
-            int downRate = (rateMan.rate / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL;
-            downRate = rateMan.rate - downRate;
-            RankDownLabel.Text = downRate + "";
+            RankBarPic.Width = 100 * (rateMan.rate % RateManager.RANK_INTERVAL) / RateManager.RANK_INTERVAL;
             RankPic.Image = rankResources[rateMan.rate / RateManager.RANK_INTERVAL];
         }
 
@@ -1392,40 +1368,19 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void RankedAnimationTimer_Tick(object sender, EventArgs e)
         {
-            if (rateMan.rate - rateIncreasing > 0)//+の際のアニメーション
-            {
-                RatePlusLabel.ForeColor = Color.Red;//文字色を赤に
-                RatePlusLabel.Text = "+" + (rateMan.rate - rateIncreasing);//+の変動値を出力
-            }
-            else//-の際のアニメーション
-            {
-                RatePlusLabel.ForeColor = Color.Blue;//文字色を青に
-                RatePlusLabel.Text = rateMan.rate - rateIncreasing + "";//-の変動値を出力
-            }
-
-            MemberLvLabel.Text = rateIncreasing + "";
-            int upRate = (rateIncreasing / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL + RateManager.RANK_INTERVAL;
-            upRate = upRate - rateIncreasing;
-            RankUpLabel.Text = upRate + "";
-            int downRate = (rateIncreasing / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL;
-            downRate = rateIncreasing - downRate;
-            RankDownLabel.Text = downRate + "";
+            RankBarPic.Width = 100 * (rateIncreasing % RateManager.RANK_INTERVAL) / RateManager.RANK_INTERVAL;
             RankPic.Image = rankResources[rateIncreasing / RateManager.RANK_INTERVAL];
             if(rateIncreasing > rateMan.rate)
             {
-                MemberLvLabel.ForeColor = Color.Blue;
                 rateIncreasing--;
             }
             else if(rateIncreasing < rateMan.rate)
             {
-                MemberLvLabel.ForeColor = Color.Red;
                 rateIncreasing++;
             }
             else//アニメーション終了
             {
-                MemberLvLabel.ForeColor = Color.Black;
                 RankedAnimationTimer.Enabled = false;
-                RatePlusLabel.Text = string.Empty;
                 SetMemberData();
             }
         }
