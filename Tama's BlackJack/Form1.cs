@@ -739,7 +739,7 @@ namespace Tama_s_BlackJack
                     InformationLabel.ForeColor = Color.Red;
                     BustPerLabel.ForeColor = Color.Red;
                     int bonus = (int)((pointMagn - 1.0f) * 100);
-                    InformationLabel.Text = "Hit bonus +" + bonus + "%";
+                    //InformationLabel.Text = "Hit bonus +" + bonus + "%";
                 }
                 ButtonUnlock();
                 DealButton.Enabled = false;
@@ -783,7 +783,7 @@ namespace Tama_s_BlackJack
                 InformationLabel.ForeColor = Color.Red;
                 BustPerLabel.ForeColor = Color.Red;
                 int bonus = (int)((pointMagn - 1.0f) * 100);
-                InformationLabel.Text = "Hit bonus +" + bonus + "%";
+                //InformationLabel.Text = "Hit bonus +" + bonus + "%";
             }
         }
 
