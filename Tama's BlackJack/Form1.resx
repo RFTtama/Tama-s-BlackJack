@@ -166,6 +166,21 @@
         mZmZmZmZmZmZmZmZmZmZmZmZ3bu//vofVRD71QRjtNIAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="panel19.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGQAAAAKCAYAAABCHPt+AAAABGdBTUEAALGPC/xhBQAAAIFJREFUWEft
+        l7ENwCAMBL0UXSZig1QZLUswSRZweIIlhFC6OC7+pWsQND7J2DLlqChxBTVfpl3Yc9arFOIAam11h4Ax
+        uqW0fES+B7WHg0eFyFlZXiR+wEF3QRlR6FIoJAomhC0rAF1Ga1kIP/UfmT91Szvk2OvH29hr4WLoz7AY
+        ityHTYBqcd6LNAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="RankBarPic.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAGQAAAAKCAYAAABCHPt+AAAABGdBTUEAALGPC/xhBQAAAGdJREFUWEft
+        ljEOgDAMA/MznsbPyrMi0aGAatShUTdMBp90W7LYQ2IiOUf1vZze5Pc+WSP2mVJ9i5YkwTt71DAIByVN
+        1NCJBiRf1KFCsog6OtGA5IkaBjrqPxod9Re9vTyXb6/IgNkFQKn265A6VmwAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="RankPic.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAYAAAB5fY51AAAABGdBTUEAALGPC/xhBQAACE9JREFUeF7t

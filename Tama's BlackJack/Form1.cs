@@ -40,7 +40,6 @@ namespace Tama_s_BlackJack
         private int totalDeal;                                  //合計ディール数
         private int[] cardIndex;                                //次のカード置き場所
         private CardProperties hiddenCard;                      //隠されたカード
-        private int helpPanelDefaultTopPosition;                //ヘルプパネルの初期位置
         private int additionalScore = 0;                        //追加t-score
         private int winStreak = 0;                              //勢い
         private const int reaPer = 10;                          //レア確率
@@ -50,9 +49,10 @@ namespace Tama_s_BlackJack
         private Bitmap jackCardPattern;                         //カードの柄(jack)
         private Bitmap queenCardPattern;                        //カードの柄(queen)
         private Bitmap kingCardPattern;                         //カードの柄(king)
-        private int totalSurrender = 0;                         //サレンダー回数
+        private int totalSurrender = -2;                        //サレンダー回数
         private bool firstBet = true;                           //最初の賭けかどうか
         private const int TASK_DELAY_TIME = 700;                //タスクの待ち時間
+        private const int BONUS_INCREASE_BUSTPER = 40;          //ボーナスが増加するバスト確率
 
         /// <summary>
         /// Formコンストラクタ
@@ -65,19 +65,12 @@ namespace Tama_s_BlackJack
             encryption.fileName = "encryptedData.dat";
 
             //パネルを初期値に戻す
-            HelpParentPanel.Top = this.Height / 2 - HelpParentPanel.Height / 2;
-            HelpParentPanel.Left = this.Width / 2 - HelpParentPanel.Width / 2;
             StatPanel.Top = this.Height / 2 - StatPanel.Height / 2;
             StatPanel.Left = this.Width / 2 - StatPanel.Width / 2;
             MemberPanel.Top = this.Height / 2 - MemberPanel.Height / 2;
             MemberPanel.Left = this.Width / 2 - MemberPanel.Width / 2;
             ExplainPanel.Left = 525;
             ExplainPanel.Top = 263;
-
-            HelpPanel.Parent = HelpParentPanel;
-
-            HelpPanel.Left = 0;
-            HelpPanel.Top = 0;
 
             Init();
         }
@@ -139,7 +132,6 @@ namespace Tama_s_BlackJack
             this.pointMagn = 1.0f;
             this.defaultMagn = 1.0f;
             this.mainPoint = 500;
-            this.helpPanelDefaultTopPosition = HelpPanel.Top;
             this.card = new CardManager();
             this.Cards = new CardProperties[2, maxCards];
             this.hiddenCard = new CardProperties();
@@ -175,9 +167,9 @@ namespace Tama_s_BlackJack
             TscoreLabel.Text = "T-Score:";
             StatPanel.Visible = false;
             MemberPanel.Visible = false;
-            HelpParentPanel.Visible = false;
             ExplainPanel.Visible = true;
             BustPerLabel.Text = string.Empty;
+            firstBet = true;
         }
 
         /// <summary>
@@ -514,6 +506,8 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void BattleCards()
         {
+            InformationLabel.ForeColor = Color.Black;
+            BustPerLabel.ForeColor = Color.Black;
             ButtonLock();
             this.totalDeal++;
             if (overFlg[0] && overFlg[1])
@@ -534,7 +528,7 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "Player's misfortune";
                 SetAdditionalScore(20, "Super Luck");
                 PlusPoint((int)(mainPoint * 2.0));
-                if(pointMagn == 2.0)
+                if(pointMagn >= 2.0)
                 {
                     SetAdditionalScore(5, "Smart");
                 }
@@ -551,13 +545,14 @@ namespace Tama_s_BlackJack
                 InformationLabel.Text = "Player's bust";
                 this.credits -= (int)(10 * betMagn);
                 this.winStreak = 0;
+                ResetBustPer();
             }
             else if(total[0] > 21)
             {
                 Slash(false);
                 InformationLabel.Text = "Dealer's bust";
                 PlusPoint(mainPoint);
-                if (pointMagn == 2.0)
+                if (pointMagn >= 2.0)
                 {
                     SetAdditionalScore(5, "Smart");
                 }
@@ -588,6 +583,7 @@ namespace Tama_s_BlackJack
                     SetAdditionalScore(this.winStreak * 3, "Streak bonus");
                 }
                 this.winStreak++;
+                ResetBustPer();
             }
             else if(total[0] > total[1])
             {
@@ -601,7 +597,7 @@ namespace Tama_s_BlackJack
                 Slash(false);
                 InformationLabel.Text = "Player wins";
                 PlusPoint(mainPoint);
-                if (pointMagn == 2.0)
+                if (pointMagn >= 2.0)
                 {
                     SetAdditionalScore(5, "Smart");
                 }
@@ -670,6 +666,8 @@ namespace Tama_s_BlackJack
 
         async private void button1_click()
         {
+            ResetBustPer();
+            DealButton.Enabled = false;
             if (firstBet)
             {
                 rateMan.SetRatePenalty();
@@ -690,9 +688,6 @@ namespace Tama_s_BlackJack
             ArrowTimer.Enabled = false;
             ColorTimer.Enabled = false;
             TscoreLabel.ForeColor = Color.Black;
-            ButtonUnlock();
-            DealButton.Enabled = false;
-            InsurancePicture.Visible = false;
             try
             {
                 if (card.GetRemainingCardsPer() < shafflePer)
@@ -737,6 +732,12 @@ namespace Tama_s_BlackJack
             await SetHiddenCardAsync(card.DrawCard());
             await SetCardAsync(1, card.DrawCard(), false);
             SetBustPer();
+            if (!bjFlg[1])
+            {
+                ButtonUnlock();
+                DealButton.Enabled = false;
+                InsurancePicture.Visible = false;
+            }
             if (Cards[0, 0].number == 1 && !bjFlg[1])
             {
                 InsurancePicture.Visible = true;
@@ -761,6 +762,8 @@ namespace Tama_s_BlackJack
             await SetCardAsync(1, card.DrawCard(), false);
             if (total[1] >= 21)
             {
+                InformationLabel.ForeColor = Color.Black;
+                BustPerLabel.ForeColor = Color.Black;
                 StandPicture_Click();
             }
             SetBustPer();
@@ -797,6 +800,15 @@ namespace Tama_s_BlackJack
         }
 
         /// <summary>
+        /// バスト確率を0にする
+        /// </summary>
+        private void ResetBustPer()
+        {
+            this.bustPer = 0;
+            MoveBustPer();
+        }
+
+        /// <summary>
         /// カードのスタンドを行う
         /// </summary>
         /// <param name="sender"></param>
@@ -808,8 +820,11 @@ namespace Tama_s_BlackJack
 
         private async void StandPicture_Click()
         {
+            ButtonLock();
+            DealButton.Enabled = false;
             await SetCardAsync(0, hiddenCard, true);
             await HitDealerCardAsync();
+            DealButton.Enabled = true;
         }
 
         /// <summary>
@@ -876,7 +891,10 @@ namespace Tama_s_BlackJack
             InformationLabel.Text = "You surrendered";
             this.credits -= 5;
             this.winStreak = 0;
-            SetAdditionalScore(totalSurrender * -5, "Nope");
+            if (totalSurrender > 0)
+            {
+                SetAdditionalScore(totalSurrender * -5, "Nope");
+            }
             totalSurrender++;
             CheckCredits();
         }
@@ -1027,26 +1045,6 @@ namespace Tama_s_BlackJack
             TabPicture2.Image = Properties.Resources.point3;
         }
 
-        /// <summary>
-        /// ヘルプ表示切り替え
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HelpLabel_Click(object sender, EventArgs e)
-        {
-            HelpParentPanel.Visible = !HelpParentPanel.Visible;
-        }
-
-        /// <summary>
-        /// ヘルプのスクロール
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HelpScrollBar_Scroll_1(object sender, ScrollEventArgs e)
-        {
-            HelpPanel.Top = this.helpPanelDefaultTopPosition - HelpScrollBar.Value;
-        }
-
         /*
         private void TabPicture3_Click(object sender, EventArgs e)
         {
@@ -1098,13 +1096,7 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void SetMemberData()
         {
-            MemberLvLabel.Text = rateMan.rate + "";
-            int upRate = (rateMan.rate / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL + RateManager.RANK_INTERVAL;
-            upRate = upRate - rateMan.rate;
-            RankUpLabel.Text = upRate + "";
-            int downRate = (rateMan.rate / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL;
-            downRate = rateMan.rate - downRate;
-            RankDownLabel.Text = downRate + "";
+            RankBarPic.Width = 100 * (rateMan.rate % RateManager.RANK_INTERVAL) / RateManager.RANK_INTERVAL;
             RankPic.Image = rankResources[rateMan.rate / RateManager.RANK_INTERVAL];
         }
 
@@ -1376,40 +1368,19 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void RankedAnimationTimer_Tick(object sender, EventArgs e)
         {
-            if (rateMan.rate - rateIncreasing > 0)//+の際のアニメーション
-            {
-                RatePlusLabel.ForeColor = Color.Red;//文字色を赤に
-                RatePlusLabel.Text = "+" + (rateMan.rate - rateIncreasing);//+の変動値を出力
-            }
-            else//-の際のアニメーション
-            {
-                RatePlusLabel.ForeColor = Color.Blue;//文字色を青に
-                RatePlusLabel.Text = rateMan.rate - rateIncreasing + "";//-の変動値を出力
-            }
-
-            MemberLvLabel.Text = rateIncreasing + "";
-            int upRate = (rateIncreasing / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL + RateManager.RANK_INTERVAL;
-            upRate = upRate - rateIncreasing;
-            RankUpLabel.Text = upRate + "";
-            int downRate = (rateIncreasing / RateManager.RANK_INTERVAL) * RateManager.RANK_INTERVAL;
-            downRate = rateIncreasing - downRate;
-            RankDownLabel.Text = downRate + "";
+            RankBarPic.Width = 100 * (rateIncreasing % RateManager.RANK_INTERVAL) / RateManager.RANK_INTERVAL;
             RankPic.Image = rankResources[rateIncreasing / RateManager.RANK_INTERVAL];
             if(rateIncreasing > rateMan.rate)
             {
-                MemberLvLabel.ForeColor = Color.Blue;
                 rateIncreasing--;
             }
             else if(rateIncreasing < rateMan.rate)
             {
-                MemberLvLabel.ForeColor = Color.Red;
                 rateIncreasing++;
             }
             else//アニメーション終了
             {
-                MemberLvLabel.ForeColor = Color.Black;
                 RankedAnimationTimer.Enabled = false;
-                RatePlusLabel.Text = string.Empty;
                 SetMemberData();
             }
         }

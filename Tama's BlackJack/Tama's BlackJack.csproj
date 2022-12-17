@@ -192,8 +192,6 @@
     <None Include="Resources\handmade1.png" />
     <None Include="Resources\playmat_green1.png" />
     <None Include="Resources\TsMember.png" />
-    <None Include="Resources\bar2.png" />
-    <None Include="Resources\bar1.png" />
     <None Include="Resources\ranked_playmat.png" />
     <None Include="Resources\slash_1.png" />
     <None Include="Resources\slash_2.png" />
@@ -211,6 +209,8 @@
     <None Include="Resources\neko3_2.png" />
     <None Include="Resources\neko3_3.png" />
     <None Include="Resources\barcode.png" />
+    <None Include="Resources\bar_empty.png" />
+    <None Include="Resources\bar_full.png" />
     <Content Include="tb.ico" />
     <Content Include="tb1.ico" />
   </ItemGroup>
