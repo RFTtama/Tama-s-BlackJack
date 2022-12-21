@@ -59,8 +59,12 @@ namespace Tama_s_BlackJack
         public Form1()
         {
             InitializeComponent();
+
+            //フォームのサイズを初期化
             this.Width = 775;
             this.Height = 564;
+
+            //暗号化ファイルを指定
             encryption.fileName = "encryptedData.dat";
 
             //パネルを初期値に戻す
@@ -71,6 +75,7 @@ namespace Tama_s_BlackJack
             ExplainPanel.Left = 525;
             ExplainPanel.Top = 263;
 
+            //初期化
             Init();
         }
 
@@ -79,14 +84,22 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void Init()
         {
+            //レート管理クラス
             rateMan = new RateManager();
+
+            //データ管理クラス
             pData = new PlData();
+
+            //ゲームモードの設定
             pData.SetNowGameMode(1);
+
+            //セーブデータ
             saveData = new List<String>();
 
             //カード柄の設定
             if (rand.Next(100) >= reaPer)
             {
+                //レア
                 aceCardPattern = Properties.Resources.tamaAce;
                 backCardPattern = Properties.Resources.card_ura;
                 tenCardPattern = Properties.Resources.tenrea;
@@ -96,6 +109,7 @@ namespace Tama_s_BlackJack
             }
             else
             {
+                //ノーマル
                 aceCardPattern = Properties.Resources.tamaAce_handmade;
                 backCardPattern = Properties.Resources.card_ura_handmade;
                 tenCardPattern = Properties.Resources.tenrea;
@@ -104,25 +118,35 @@ namespace Tama_s_BlackJack
                 kingCardPattern = Properties.Resources.king_handmade;
             }
 
+            //セーブデータ取得処理
             try
             {
+                //セーブデータを復号化して変数に格納
                 saveData = encryption.Decrypt();
             }
             catch (FileNotFoundException)
             {
-
+                //セーブデータ未発見
             }
             catch (Exception ex)
             {
+                //未定義の例外
                 MessageBox.Show(ex.Message, ex.GetType() + "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             for (int i = 0; i < saveData.Count; i++)
             {
+                //セーブデータを分ける
                 String[] arr = saveData[i].Split(',');
                 pData.AddData(int.Parse(arr[0]), int.Parse(arr[1]), int.Parse(arr[2]));
             }
+
+            //成績の設定
             SetStats();
+
+            //ボタン操作を停止
             ButtonLock();
+
+            //設定の初期化
             this.deck = 3;
             this.credits = maxMental;
             this.point = 0;
@@ -131,11 +155,17 @@ namespace Tama_s_BlackJack
             this.pointMagn = 1.0f;
             this.defaultMagn = 1.0f;
             this.mainPoint = 500;
+
+            //コンポネントの初期化
             this.card = new CardManager();
             this.Cards = new CardProperties[2, maxCards];
             this.hiddenCard = new CardProperties();
+
+            //フラグの初期化
             this.bjFlg = new bool[2] { false, false };
             this.overFlg = new bool[2] { false, false };
+
+            //その他の初期化
             this.total = new int[2];
             this.cardIndex = new int[2] { 0, 0 };
             this.Panels = new Panel[2, maxCards]
@@ -154,7 +184,11 @@ namespace Tama_s_BlackJack
                 { pictureBox9, pictureBox10, pictureBox11, pictureBox12, pictureBox13, pictureBox14, pictureBox15, pictureBox16 }
             };
             DeckPicture.Image = backCardPattern;
+
+            //ランクモード設定
             SetMemberData();
+
+            //表示設定の初期化
             MentalLabel.Text = this.credits + "";
             ArrowTimer.Enabled = true;
 
@@ -168,6 +202,8 @@ namespace Tama_s_BlackJack
             MemberPanel.Visible = false;
             ExplainPanel.Visible = true;
             BustPerLabel.Text = string.Empty;
+
+            //ファーストベット
             firstBet = true;
         }
 
@@ -176,6 +212,7 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void ClearCards()
         {
+            //場のカードを1枚ずつ初期化
             for(int i = 0; i < maxCards; i++)
             {
                 Cards[0, i] = new CardProperties();
