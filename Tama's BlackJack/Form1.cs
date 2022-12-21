@@ -251,8 +251,11 @@ namespace Tama_s_BlackJack
         {
             if (cardIndex[tag] > 8 && total[tag] < 21)
             {
+                //ミスフォーチュン
                 overFlg[tag] = true;
             }
+
+            //隠されているカード
             if (wasHidden)
             {
                 cardIndex[tag]--;
@@ -260,10 +263,16 @@ namespace Tama_s_BlackJack
                 Numbers[0, 1].Visible = true;
                 Panels[0, 1].Visible = true;
             }
+
+            //カード情報の設定
             Cards[tag, cardIndex[tag]] = cp;
-            if (cp.number == 1)
+
+            //数字別設定
+            if (cp.number == 1)//1
             {
                 Numbers[tag, cardIndex[tag]].Visible = false;
+
+                //10%でレア柄に
                 if (rand.Next(9) == 0)
                 {
                     Pictures[tag, cardIndex[tag]].Image = Properties.Resources.ace_nyan;
@@ -273,27 +282,27 @@ namespace Tama_s_BlackJack
                     Pictures[tag, cardIndex[tag]].Image = aceCardPattern;
                 }
             }
-            else if (cp.number == 11)
+            else if (cp.number == 11)//11の絵柄
             {
                 Numbers[tag, cardIndex[tag]].Visible = false;
                 Pictures[tag, cardIndex[tag]].Image = jackCardPattern;
             }
-            else if (cp.number == 12)
+            else if (cp.number == 12)//12の絵柄
             {
                 Numbers[tag, cardIndex[tag]].Visible = false;
                 Pictures[tag, cardIndex[tag]].Image = queenCardPattern;
             }
-            else if (cp.number == 13)
+            else if (cp.number == 13)//13の絵柄
             {
                 Numbers[tag, cardIndex[tag]].Visible = false;
                 Pictures[tag, cardIndex[tag]].Image = kingCardPattern;
             }
-            else if (cp.number == 10 && rand.Next(7) == 0)
+            else if (cp.number == 10 && rand.Next(7) == 0)//10の絵柄or数字
             {
                 Numbers[tag, cardIndex[tag]].Visible = false;
                 Pictures[tag, cardIndex[tag]].Image = tenCardPattern;
             }
-            else
+            else//ただの数字カード
             {
                 Numbers[tag, cardIndex[tag]].Text = cp.number + "";
             }
