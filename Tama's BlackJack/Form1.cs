@@ -203,6 +203,9 @@ namespace Tama_s_BlackJack
             ExplainPanel.Visible = true;
             BustPerLabel.Text = string.Empty;
 
+            //スラッシュアニメーションの非表示
+            ResetSlash();
+
             //ファーストベット
             firstBet = true;
         }
@@ -510,6 +513,7 @@ namespace Tama_s_BlackJack
                 }
                 DealButton.Text = "Replay";
                 DealButton.Enabled = true;
+                SetStandardMode();
             }
         }
 
@@ -1035,6 +1039,14 @@ namespace Tama_s_BlackJack
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TabPicture1_Click(object sender, EventArgs e)
+        {
+            SetStandardMode();
+        }
+
+        /// <summary>
+        /// スタンダードモードを設定する
+        /// </summary>
+        private void SetStandardMode()
         {
             SetTabRed();
             TabPicture1.Image = Properties.Resources.point2;
