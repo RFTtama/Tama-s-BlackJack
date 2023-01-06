@@ -725,16 +725,7 @@ namespace Tama_s_BlackJack
             {
                 Init();
                 //ゲームモードを再設定
-                switch (pData.GetNowGameMode())
-                {
-                    case 1:
-                        SetStandardMode();
-                        break;
-
-                    case 2:
-                        SetTowerMode();
-                        break;
-                }
+                SetStandardMode();
                 DealButton.Text = "Deal";
                 return;
             }
