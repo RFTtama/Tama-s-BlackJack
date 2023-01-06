@@ -513,7 +513,6 @@ namespace Tama_s_BlackJack
                 }
                 DealButton.Text = "Replay";
                 DealButton.Enabled = true;
-                SetStandardMode();
             }
         }
 
@@ -725,6 +724,17 @@ namespace Tama_s_BlackJack
             if (DealButton.Text == "Replay")
             {
                 Init();
+                //ゲームモードを再設定
+                switch (pData.GetNowGameMode())
+                {
+                    case 1:
+                        SetStandardMode();
+                        break;
+
+                    case 2:
+                        SetTowerMode();
+                        break;
+                }
                 DealButton.Text = "Deal";
                 return;
             }
@@ -888,6 +898,8 @@ namespace Tama_s_BlackJack
 
         private async void DoublePicture_Click()
         {
+            ButtonLock();
+            DealButton.Enabled = false;
             this.pointMagn *= 2.0f;
             this.betMagn *= 2.0f;
             await SetCardAsync(1, card.DrawCard(), false);
@@ -1074,6 +1086,14 @@ namespace Tama_s_BlackJack
         /// <param name="e"></param>
         private void TabPicture2_Click(object sender, EventArgs e)
         {
+            SetTowerMode();
+        }
+
+        /// <summary>
+        /// タワーモードを設定する
+        /// </summary>
+        private void SetTowerMode()
+        {
             SetTabRed();
             TabPicture2.Image = Properties.Resources.point2;
             ExplainLabel.Text = "Cat's Tower" + LB + LB + "Decks: 4" + LB + "Credits: 100" + LB +
@@ -1224,6 +1244,7 @@ namespace Tama_s_BlackJack
         /// </summary>
         private void ResetSlash()
         {
+            SlashTimer.Enabled = false;
             SlashPic.Visible = false;
             SlashRevPic.Visible = false;
             SlashPlPic.Visible = false;
